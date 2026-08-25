@@ -119,6 +119,17 @@ class PinnacleAudioEngine {
     if (toggle) toggle.classList.remove('playing');
   }
 
+  // Smoothly reduce ambient volume when video plays
+  duckAmbient(duck) {
+    if (!this.ctx || !this.ambientGain || !this.isPlayingAmbient) return;
+    const now = this.ctx.currentTime;
+    const targetGain = duck ? 0.04 : 0.95;
+    try {
+      this.ambientGain.gain.cancelScheduledValues(now);
+      this.ambientGain.gain.linearRampToValueAtTime(targetGain, now + 0.5);
+    } catch (e) {}
+  }
+
   // Modulate filter cutoff on mouse/touch motion
   modulateFilter(normY) {
     if (!this.ctx || !this.filterNode) return;

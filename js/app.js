@@ -232,17 +232,19 @@ class HaikelSpatialArchive {
 
     // Touch swipe on Cinema Lightbox
     modalStage?.addEventListener('touchstart', (e) => {
+      if (e.target.closest('video, audio, button, a, input, select, .video-player-wrapper')) return;
       this.touchStartX = e.changedTouches[0].screenX;
       this.touchStartY = e.changedTouches[0].screenY;
     }, { passive: true });
 
     modalStage?.addEventListener('touchend', (e) => {
+      if (e.target.closest('video, audio, button, a, input, select, .video-player-wrapper')) return;
       const touchEndX = e.changedTouches[0].screenX;
       const touchEndY = e.changedTouches[0].screenY;
       const dx = touchEndX - this.touchStartX;
       const dy = touchEndY - this.touchStartY;
 
-      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
         if (dx < 0) {
           this.navigateCinemaModal(1);
         } else {
@@ -510,21 +512,62 @@ class HaikelSpatialArchive {
       const fallbackUrl = item.thumb || item.url;
       if (item.type === 'video') {
         window.CinematicAudio?.playSubDrop();
+        window.CinematicAudio?.duckAmbient(true);
+
         mediaContainer.innerHTML = `
-          <video id="modal-active-video"
-                 src="${item.url}"
-                 poster="${fallbackUrl}"
-                 controls
-                 autoplay
-                 loop
-                 playsinline
-                 preload="auto"
-                 style="max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 12px; background: #000;"
-          ></video>
+          <div class="video-player-wrapper" style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+            <video id="modal-active-video"
+                   src="${item.url}"
+                   poster="${fallbackUrl}"
+                   controls
+                   autoplay
+                   loop
+                   playsinline
+                   preload="auto"
+                   crossorigin="anonymous"
+                   style="max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 12px; background: #000; box-shadow: 0 20px 70px rgba(0, 0, 0, 0.98);"
+            >
+              <source src="${item.url}" type="video/mp4">
+              Browser Anda tidak mendukung pemutaran video HTML5.
+            </video>
+            <div class="video-loading-indicator" id="video-loading" style="display: none; position: absolute; pointer-events: none; color: var(--accent-cyan); font-family: var(--font-mono); font-size: 0.85rem; background: rgba(0,0,0,0.75); padding: 8px 18px; border-radius: 20px; border: 1px solid var(--glass-border); backdrop-filter: blur(8px);">
+              ⏳ MEMUAT VIDEO...
+            </div>
+            <div class="video-error-fallback" id="video-error-box" style="display: none; position: absolute; flex-direction: column; align-items: center; gap: 10px; background: rgba(14, 15, 20, 0.96); padding: 24px 32px; border-radius: 16px; border: 1px solid rgba(239, 68, 68, 0.5); text-align: center; max-width: 90%; z-index: 30; backdrop-filter: blur(16px);">
+              <span style="font-size: 2.2rem;">⚠️</span>
+              <h4 style="font-family: var(--font-heading); color: #fff; font-weight: 700; font-size: 1.1rem;">Video Tidak Dapat Diputar Langsung</h4>
+              <p style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted);" id="video-error-msg">Pastikan server lokal sedang berjalan (<code>python server.py</code> atau <code>npm run dev</code>).</p>
+              <a href="${item.url}" download="${item.title}.mp4" class="modal-action-btn clickable" style="margin-top: 8px; background: var(--accent-cyan); color: #000; font-weight: 800; text-decoration: none; padding: 0.6rem 1.4rem;">📥 UNDUH VIDEO ASLI</a>
+            </div>
+          </div>
         `;
 
         const vid = mediaContainer.querySelector('video');
+        const loadIndicator = mediaContainer.querySelector('#video-loading');
+        const errorBox = mediaContainer.querySelector('#video-error-box');
+
         if (vid) {
+          vid.addEventListener('waiting', () => {
+            if (loadIndicator) loadIndicator.style.display = 'block';
+          });
+          vid.addEventListener('canplay', () => {
+            if (loadIndicator) loadIndicator.style.display = 'none';
+          });
+          vid.addEventListener('playing', () => {
+            if (loadIndicator) loadIndicator.style.display = 'none';
+            if (errorBox) errorBox.style.display = 'none';
+          });
+          vid.addEventListener('error', () => {
+            if (loadIndicator) loadIndicator.style.display = 'none';
+            if (errorBox) {
+              errorBox.style.display = 'flex';
+              const errMsg = mediaContainer.querySelector('#video-error-msg');
+              if (errMsg && vid.error) {
+                errMsg.textContent = `Error Code ${vid.error.code}: File video belum dapat diakses melalui server ini.`;
+              }
+            }
+          });
+
           vid.load();
           const playPromise = vid.play();
           if (playPromise !== undefined) {
@@ -536,6 +579,7 @@ class HaikelSpatialArchive {
           }
         }
       } else {
+        window.CinematicAudio?.duckAmbient(false);
         window.CinematicAudio?.playShutter();
         mediaContainer.innerHTML = `
           <img src="${item.url}" alt="${item.title}" decoding="async" style="transform: translateZ(0); will-change: transform;" onerror="this.src='${fallbackUrl}'" />
@@ -560,6 +604,7 @@ class HaikelSpatialArchive {
       }
       mediaContainer.innerHTML = '';
     }
+    window.CinematicAudio?.duckAmbient(false);
     modal?.classList.remove('active');
     window.CinematicAudio?.playUiClick();
   }
