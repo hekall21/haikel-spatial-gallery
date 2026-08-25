@@ -95,6 +95,32 @@ class HaikelSpatialArchive {
   }
 
   initEvents() {
+    // Theater Intro Opening
+    const theaterOverlay = document.getElementById('intro-theater-overlay');
+    const btnEnterTheater = document.getElementById('btn-enter-theater');
+    const btnEnterSilent = document.getElementById('btn-enter-silent');
+
+    btnEnterTheater?.addEventListener('click', () => {
+      window.CinematicAudio?.playCinemaBoom();
+      theaterOverlay?.classList.add('curtains-open');
+      setTimeout(() => {
+        window.CinematicAudio?.startAmbient();
+      }, 1200);
+      setTimeout(() => {
+        theaterOverlay?.classList.add('fade-out');
+        setTimeout(() => theaterOverlay?.remove(), 800);
+      }, 1600);
+    });
+
+    btnEnterSilent?.addEventListener('click', () => {
+      window.CinematicAudio?.playUiClick();
+      theaterOverlay?.classList.add('curtains-open');
+      setTimeout(() => {
+        theaterOverlay?.classList.add('fade-out');
+        setTimeout(() => theaterOverlay?.remove(), 800);
+      }, 1200);
+    });
+
     // Stage Mode Switcher (3D SPACE vs GRID VIEW)
     const btnSpace = document.getElementById('btn-view-space');
     const btnGrid = document.getElementById('btn-view-grid');
@@ -520,6 +546,14 @@ class HaikelSpatialArchive {
         mediaContainer.innerHTML = `
           <div class="video-player-wrapper" style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
             <div class="video-loading-spinner" id="vid-spinner" style="position: absolute; width: 44px; height: 44px; border: 3px solid rgba(56,189,248,0.2); border-top-color: #38bdf8; border-radius: 50%; animation: spin 0.8s linear infinite; pointer-events: none; z-index: 5;"></div>
+            
+            <div class="video-play-center-btn" id="modal-vid-play-btn">
+              <div class="play-circle-glow">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+              <span class="play-btn-hint">KLIK UNTUK MEMUTAR 4K REEL</span>
+            </div>
+
             <video id="modal-active-video"
                    src="${item.url}"
                    poster="${fallbackUrl}"
@@ -528,12 +562,68 @@ class HaikelSpatialArchive {
                    loop
                    playsinline
                    preload="metadata"
-                   style="max-width: 100%; max-height: 100%; border-radius: 12px; transform: translateZ(0); will-change: transform; backface-visibility: hidden;"
-                   oncanplay="const s=document.getElementById('vid-spinner'); if(s) s.style.display='none';"
-                   onloadeddata="const s=document.getElementById('vid-spinner'); if(s) s.style.display='none';"
-                   onerror="this.parentElement.innerHTML='<div style=\\'position: relative; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;\\'><img src=\\'${fallbackUrl}\\' style=\\'max-height: 100%; max-width: 100%; border-radius: 12px; object-fit: contain;\\' /><div style=\\'position: absolute; bottom: 20px; padding: 6px 16px; background: rgba(0,0,0,0.85); border: 1px solid rgba(56,189,248,0.4); border-radius: 20px; color: #38bdf8; font-family: monospace; font-size: 11px; font-weight: bold;\\'>▶ VIDEO PREVIEW MASTER</div></div>'"></video>
+                   style="max-width: 100%; max-height: 100%; border-radius: 12px; transform: translateZ(0); will-change: transform; backface-visibility: hidden; cursor: pointer;"
+            ></video>
           </div>
         `;
+
+        const vid = mediaContainer.querySelector('video');
+        const spinner = document.getElementById('vid-spinner');
+        const playBtn = document.getElementById('modal-vid-play-btn');
+
+        const hidePlayOverlay = () => {
+          playBtn?.classList.add('hidden');
+        };
+
+        const showPlayOverlay = () => {
+          playBtn?.classList.remove('hidden');
+        };
+
+        if (vid) {
+          vid.addEventListener('canplay', () => {
+            if (spinner) spinner.style.display = 'none';
+          });
+          vid.addEventListener('playing', () => {
+            if (spinner) spinner.style.display = 'none';
+            hidePlayOverlay();
+          });
+          vid.addEventListener('pause', showPlayOverlay);
+          vid.addEventListener('ended', showPlayOverlay);
+
+          // Attempt safe play
+          const promise = vid.play();
+          if (promise !== undefined) {
+            promise.then(() => {
+              hidePlayOverlay();
+            }).catch(() => {
+              // Autoplay with sound blocked -> fallback to muted autoplay
+              vid.muted = true;
+              vid.play().then(() => {
+                hidePlayOverlay();
+              }).catch(() => {
+                showPlayOverlay();
+              });
+            });
+          }
+
+          // User Click / Tap to Play
+          playBtn?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            vid.muted = false;
+            vid.play().then(hidePlayOverlay).catch(() => {
+              vid.muted = true;
+              vid.play().then(hidePlayOverlay);
+            });
+          });
+
+          vid.addEventListener('click', () => {
+            if (vid.paused) {
+              vid.play().then(hidePlayOverlay);
+            } else {
+              vid.pause();
+            }
+          });
+        }
       } else {
         window.CinematicAudio?.playShutter();
         mediaContainer.innerHTML = `

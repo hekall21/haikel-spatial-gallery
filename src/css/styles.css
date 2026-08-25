@@ -1,0 +1,196 @@
+/* ==========================================================================
+   HAIKEL SPATIAL NOIR GALLERY — DESIGN SYSTEM & VISUAL TOKENS
+   Master CSS: Visual Styling, Animations & Responsive Layouts
+   ========================================================================== */
+
+/* 1. Root Design Tokens & Variables */
+:root {
+  /* Surface & Noir Palettes */
+  --bg-pure-noir: #070709;
+  --bg-canvas: #0a0a0d;
+  --bg-card: rgba(18, 18, 22, 0.85);
+  --bg-card-elevated: rgba(26, 26, 34, 0.92);
+  --bg-pill: rgba(24, 24, 28, 0.65);
+
+  /* Accents & Highlights */
+  --accent-silver: #b8c0c4;
+  --accent-bone: #e6e5e5;
+  --accent-sky: #38bdf8;
+  --accent-emerald: #10b981;
+  --accent-gold: #f59e0b;
+  --accent-cobalt: #3b82f6;
+
+  /* Borders & Hairlines */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.28);
+  --border-glow-sky: rgba(56, 189, 248, 0.45);
+  --border-glow-gold: rgba(245, 158, 11, 0.45);
+
+  /* Typography Stacks */
+  --font-editorial: 'Playfair Display', Georgia, serif;
+  --font-display: 'Syne', 'Playfair Display', sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Motion & Physics Transitions */
+  --ease-cinematic: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --duration-fast: 200ms;
+  --duration-normal: 350ms;
+  --duration-slow: 600ms;
+}
+
+/* 2. Global Resets & Body Styling */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-pure-noir);
+  color: var(--accent-bone);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 3. Custom Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-pure-noir);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.32);
+}
+
+/* 4. Cinematic Textures: Film Grain & Radial Vignette */
+.noise-overlay {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 0);
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+
+.cinematic-vignette {
+  background: radial-gradient(circle at center, transparent 30%, rgba(5, 5, 7, 0.85) 100%);
+  pointer-events: none;
+}
+
+/* 5. Luxury Glassmorphism Utilities */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+  transition: border-color var(--duration-normal) var(--ease-cinematic),
+              box-shadow var(--duration-normal) var(--ease-cinematic);
+}
+
+.glass-panel:hover {
+  border-color: var(--border-hover);
+}
+
+.glass-panel-elevated {
+  background: var(--bg-card-elevated);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+}
+
+.glass-pill {
+  background: var(--bg-pill);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border-subtle);
+}
+
+/* 6. Keyframe Animations */
+@keyframes float-subtle {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(1.5deg);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes eq-wave-1 {
+  0%, 100% { height: 4px; }
+  50% { height: 16px; }
+}
+
+@keyframes eq-wave-2 {
+  0%, 100% { height: 14px; }
+  50% { height: 6px; }
+}
+
+@keyframes eq-wave-3 {
+  0%, 100% { height: 8px; }
+  50% { height: 18px; }
+}
+
+.animate-floating {
+  animation: float-subtle 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.eq-bar-1 { animation: eq-wave-1 0.75s ease-in-out infinite; }
+.eq-bar-2 { animation: eq-wave-2 0.55s ease-in-out infinite; }
+.eq-bar-3 { animation: eq-wave-3 0.85s ease-in-out infinite; }
+
+/* 7. Responsive Layouts & Column Masonry */
+.editorial-masonry {
+  column-count: 1;
+  column-gap: 1.25rem;
+  column-fill: balance;
+}
+
+@media (min-width: 640px) {
+  .editorial-masonry {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .editorial-masonry {
+    column-count: 3;
+  }
+}
+
+@media (min-width: 1280px) {
+  .editorial-masonry {
+    column-count: 4;
+  }
+}
+
+.masonry-card-break {
+  break-inside: avoid;
+  margin-bottom: 1.25rem;
+}

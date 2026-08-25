@@ -1,64 +1,251 @@
 @import "tailwindcss";
 
+/* ============================================
+   DESIGN TOKENS — MICHAEL GATT INSPIRED
+   ============================================ */
 :root {
-  --col-noir: #0a0a0c;
-  --col-canvas: #0e0e11;
-  --col-card: #141418;
-  --col-card-elevated: #1a1a22;
-  --col-silver: #b8c0c4;
-  --col-bone: #e6e5e5;
-  --col-accent-sky: #38bdf8;
-  --col-accent-emerald: #10b981;
-  --col-accent-gold: #f59e0b;
-  --col-border: rgba(255, 255, 255, 0.08);
-  --col-border-hover: rgba(255, 255, 255, 0.28);
-  
-  --font-display: 'Syne', 'Playfair Display', Georgia, serif;
-  --font-editorial: 'Playfair Display', Georgia, serif;
+  /* Pure black cinematic palette */
+  --col-bg: #000000;
+  --col-surface: #0a0a0a;
+  --col-card: #111111;
+  --col-white: #ffffff;
+  --col-gray-1: #e6e5e5;
+  --col-gray-2: #c5c5c5;
+  --col-gray-3: #969da0;
+  --col-gray-4: #535658;
+  --col-gray-5: #404040;
+  --col-gray-6: #1a1a1a;
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
+
+  /* Spacing & sizing */
+  --letter-spacing-wide: 0.35em;
+  --letter-spacing-medium: 0.15em;
+  --letter-spacing-tight: 0.05em;
+}
+
+/* ============================================
+   BASE RESET
+   ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  background-color: var(--col-canvas);
-  color: var(--col-bone);
+  background-color: var(--col-bg);
+  color: var(--col-gray-2);
   font-family: var(--font-sans);
-  overflow-x: hidden;
+  overflow: hidden;
   user-select: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  height: 100%;
 }
 
-/* Custom Scrollbars */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #0e0e11;
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
+::selection {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #fff;
 }
 
-/* Cinematic Grain & Vignette */
-.cinematic-vignette {
-  background: radial-gradient(circle at center, transparent 35%, rgba(10, 10, 12, 0.75) 100%);
+/* ============================================
+   TYPOGRAPHY UTILITIES
+   ============================================ */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.tracking-cinematic {
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.tracking-editorial {
+  letter-spacing: var(--letter-spacing-medium);
+}
+
+/* ============================================
+   INTRO OVERLAY ANIMATIONS
+   ============================================ */
+@keyframes wordFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes subtlePulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-word-fade {
+  animation: wordFadeIn 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-subtle-pulse {
+  animation: subtlePulse 3s ease-in-out infinite;
+}
+
+.animate-gentle-float {
+  animation: gentleFloat 4s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-scale-reveal {
+  animation: scaleReveal 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+/* ============================================
+   SCATTERED CANVAS — IMAGE STYLES
+   ============================================ */
+.scattered-image {
+  position: absolute;
+  cursor: pointer;
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+              opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+              filter 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform, opacity;
+}
+
+.scattered-image:hover {
+  z-index: 50 !important;
+}
+
+.scattered-image img,
+.scattered-image video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Project title tooltip on hover */
+.scattered-image .project-title {
+  position: absolute;
+  bottom: -2em;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-family: var(--font-sans);
+  font-size: clamp(8px, 0.7rem, 14px);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  color: var(--col-gray-2);
+  opacity: 0;
+  transition: opacity 0.4s ease;
   pointer-events: none;
 }
 
-.noise-overlay {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0);
-  background-size: 24px 24px;
+.scattered-image:hover .project-title {
+  opacity: 1;
 }
 
-/* Glassmorphism */
+/* ============================================
+   BOTTOM NAV — POETIC STYLE
+   ============================================ */
+.poetic-nav {
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.poetic-nav .nav-link {
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+  transition: color 0.4s ease;
+}
+
+.poetic-nav .nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: calc(100% - 0.3em);
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.4s ease;
+}
+
+.poetic-nav .nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* ============================================
+   GLASSMORPHISM (kept for lightbox)
+   ============================================ */
 .glass-panel {
   background: rgba(18, 18, 22, 0.75);
   backdrop-filter: blur(16px);
@@ -73,24 +260,20 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.14);
 }
 
-.glass-pill {
-  background: rgba(25, 25, 30, 0.65);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.09);
+/* ============================================
+   CANVAS DRAG — CURSOR & INTERACTION
+   ============================================ */
+.canvas-draggable {
+  cursor: grab;
 }
 
-/* Shimmer animation */
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+.canvas-draggable:active {
+  cursor: grabbing;
 }
 
-.animate-shimmer {
-  animation: shimmer 2s infinite;
-}
-
-/* Equalizer Bars */
+/* ============================================
+   EQUALIZER BARS (for sound toggle)
+   ============================================ */
 @keyframes eq-pulse-1 {
   0%, 100% { height: 4px; }
   50% { height: 16px; }
@@ -107,3 +290,31 @@ body {
 .eq-bar-1 { animation: eq-pulse-1 0.8s ease-in-out infinite; }
 .eq-bar-2 { animation: eq-pulse-2 0.6s ease-in-out infinite; }
 .eq-bar-3 { animation: eq-pulse-3 0.9s ease-in-out infinite; }
+
+/* ============================================
+   CUSTOM SCROLLBAR (for lightbox panels)
+   ============================================ */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ============================================
+   LOADING SPINNER
+   ============================================ */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin 2s linear infinite;
+}

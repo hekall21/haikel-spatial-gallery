@@ -2,497 +2,497 @@ window.MEDIA_CATALOG = [
   {
     "id": "vid-001",
     "slug": "video-1",
-    "title": "VIDEO EKALL 001",
-    "type": "video",
-    "category": "4K Cinematic Video",
-    "url": "/@media/videos/VIDEO_EKALL_001.mp4",
-    "date": "2026",
-    "size": "8.7 MB",
-    "thumb": "/thumbs/thumb_vid_001.webp"
-  },
-  {
-    "id": "vid-002",
-    "slug": "video-2",
-    "title": "VIDEO EKALL 002",
-    "type": "video",
-    "category": "4K Cinematic Video",
-    "url": "/@media/videos/VIDEO_EKALL_002.mp4",
-    "date": "2026",
-    "size": "2.1 MB",
-    "thumb": "/thumbs/thumb_vid_002.webp"
-  },
-  {
-    "id": "vid-003",
-    "slug": "video-3",
-    "title": "VIDEO EKALL 003",
-    "type": "video",
-    "category": "4K Cinematic Video",
-    "url": "/@media/videos/VIDEO_EKALL_003.mp4",
-    "date": "2026",
-    "size": "2.8 MB",
-    "thumb": "/thumbs/thumb_vid_003.webp"
-  },
-  {
-    "id": "vid-004",
-    "slug": "video-4",
-    "title": "VIDEO EKALL 004",
-    "type": "video",
-    "category": "4K Cinematic Video",
-    "url": "/@media/videos/VIDEO_EKALL_004.mp4",
-    "date": "2026",
-    "size": "8.8 MB",
-    "thumb": "/thumbs/thumb_vid_004.webp"
-  },
-  {
-    "id": "vid-005",
-    "slug": "video-5",
-    "title": "VIDEO EKALL 005",
-    "type": "video",
-    "category": "4K Cinematic Video",
-    "url": "/@media/videos/VIDEO_EKALL_005.mp4",
-    "date": "2026",
-    "size": "3.6 MB",
-    "thumb": "/thumbs/thumb_vid_005.webp"
-  },
-  {
-    "id": "vid-006",
-    "slug": "video-6",
-    "title": "VIDEO EKALL 006",
-    "type": "video",
-    "category": "4K Cinematic Video",
-    "url": "/@media/videos/VIDEO_EKALL_006.mp4",
-    "date": "2026",
-    "size": "8.7 MB",
-    "thumb": "/thumbs/thumb_vid_006.webp"
-  },
-  {
-    "id": "vid-007",
-    "slug": "video-7",
-    "title": "VIDEO EKALL 007",
-    "type": "video",
-    "category": "4K Cinematic Video",
-    "url": "/@media/videos/VIDEO_EKALL_007.mp4",
-    "date": "2026",
-    "size": "79.6 MB",
-    "thumb": "/thumbs/thumb_vid_007.webp"
-  },
-  {
-    "id": "vid-008",
-    "slug": "video-8",
-    "title": "VIDEO EKALL 008",
-    "type": "video",
-    "category": "4K Cinematic Video",
-    "url": "/@media/videos/VIDEO_EKALL_008.mp4",
-    "date": "2026",
-    "size": "45.5 MB",
-    "thumb": "/thumbs/thumb_vid_008.webp"
-  },
-  {
-    "id": "vid-009",
-    "slug": "video-9",
-    "title": "VIDEO EKALL 009",
-    "type": "video",
-    "category": "4K Cinematic Video",
-    "url": "/@media/videos/VIDEO_EKALL_009.mp4",
-    "date": "2026",
-    "size": "7.1 MB",
-    "thumb": "/thumbs/thumb_vid_009.webp"
-  },
-  {
-    "id": "vid-010",
-    "slug": "video-10",
-    "title": "VIDEO EKALL 010",
-    "type": "video",
-    "category": "4K Cinematic Video",
-    "url": "/@media/videos/VIDEO_EKALL_010.mp4",
-    "date": "2026",
-    "size": "39.4 MB",
-    "thumb": "/thumbs/thumb_vid_010.webp"
-  },
-  {
-    "id": "vid-011",
-    "slug": "video-11",
-    "title": "VIDEO EKALL 011",
-    "type": "video",
-    "category": "4K Cinematic Video",
-    "url": "/@media/videos/VIDEO_EKALL_011.mp4",
-    "date": "2026",
-    "size": "22.4 MB",
-    "thumb": "/thumbs/thumb_vid_011.webp"
-  },
-  {
-    "id": "vid-012",
-    "slug": "video-12",
-    "title": "VIDEO EKALL 012",
-    "type": "video",
-    "category": "4K Cinematic Video",
-    "url": "/@media/videos/VIDEO_EKALL_012.mp4",
-    "date": "2026",
-    "size": "12 MB",
-    "thumb": "/thumbs/thumb_vid_012.webp"
-  },
-  {
-    "id": "vid-013",
-    "slug": "video-13",
-    "title": "VIDEO EKALL 013",
-    "type": "video",
-    "category": "4K Cinematic Video",
-    "url": "/@media/videos/VIDEO_EKALL_013.mp4",
-    "date": "2026",
-    "size": "4.4 MB",
-    "thumb": "/thumbs/thumb_vid_013.webp"
-  },
-  {
-    "id": "vid-014",
-    "slug": "video-14",
-    "title": "VIDEO EKALL 014",
-    "type": "video",
-    "category": "4K Cinematic Video",
-    "url": "/@media/videos/VIDEO_EKALL_014.mp4",
-    "date": "2026",
-    "size": "3.1 MB",
-    "thumb": "/thumbs/thumb_vid_014.webp"
-  },
-  {
-    "id": "vid-015",
-    "slug": "video-15",
-    "title": "VIDEO EKALL 015",
-    "type": "video",
-    "category": "4K Cinematic Video",
-    "url": "/@media/videos/VIDEO_EKALL_015.mp4",
-    "date": "2026",
-    "size": "3.8 MB",
-    "thumb": "/thumbs/thumb_vid_015.webp"
-  },
-  {
-    "id": "vid-016",
-    "slug": "video-16",
-    "title": "VIDEO EKALL 016",
-    "type": "video",
-    "category": "4K Cinematic Video",
-    "url": "/@media/videos/VIDEO_EKALL_016.mp4",
-    "date": "2026",
-    "size": "3.6 MB",
-    "thumb": "/thumbs/thumb_vid_016.webp"
-  },
-  {
-    "id": "vid-017",
-    "slug": "video-17",
-    "title": "VIDEO EKALL 017",
-    "type": "video",
-    "category": "4K Cinematic Video",
-    "url": "/@media/videos/VIDEO_EKALL_017.mp4",
-    "date": "2026",
-    "size": "29 MB",
-    "thumb": "/thumbs/thumb_vid_017.webp"
-  },
-  {
-    "id": "vid-018",
-    "slug": "video-18",
-    "title": "VIDEO EKALL 018",
-    "type": "video",
-    "category": "4K Cinematic Video",
-    "url": "/@media/videos/VIDEO_EKALL_018.mp4",
-    "date": "2026",
-    "size": "17.5 MB",
-    "thumb": "/thumbs/thumb_vid_018.webp"
-  },
-  {
-    "id": "vid-019",
-    "slug": "video-19",
-    "title": "VIDEO EKALL 019",
-    "type": "video",
-    "category": "4K Cinematic Video",
-    "url": "/@media/videos/VIDEO_EKALL_019.mp4",
-    "date": "2026",
-    "size": "29 MB",
-    "thumb": "/thumbs/thumb_vid_019.webp"
-  },
-  {
-    "id": "vid-020",
-    "slug": "video-20",
-    "title": "VIDEO EKALL 020",
-    "type": "video",
-    "category": "4K Cinematic Video",
-    "url": "/@media/videos/VIDEO_EKALL_020.mp4",
-    "date": "2026",
-    "size": "213.9 MB",
-    "thumb": "/thumbs/thumb_vid_020.webp"
-  },
-  {
-    "id": "vid-021",
-    "slug": "video-21",
-    "title": "VIDEO EKALL 021",
-    "type": "video",
-    "category": "4K Cinematic Video",
-    "url": "/@media/videos/VIDEO_EKALL_021.mp4",
-    "date": "2026",
-    "size": "21.9 MB",
-    "thumb": "/thumbs/thumb_vid_021.webp"
-  },
-  {
-    "id": "vid-022",
-    "slug": "video-22",
-    "title": "VIDEO EKALL 022",
-    "type": "video",
-    "category": "4K Cinematic Video",
-    "url": "/@media/videos/VIDEO_EKALL_022.mp4",
-    "date": "2026",
-    "size": "8.8 MB",
-    "thumb": "/thumbs/thumb_vid_022.webp"
-  },
-  {
-    "id": "vid-023",
-    "slug": "video-23",
-    "title": "VIDEO EKALL 023",
-    "type": "video",
-    "category": "4K Cinematic Video",
-    "url": "/@media/videos/VIDEO_EKALL_023.mp4",
-    "date": "2026",
-    "size": "586.4 MB",
-    "thumb": "/thumbs/thumb_vid_023.webp"
-  },
-  {
-    "id": "vid-024",
-    "slug": "video-24",
-    "title": "VIDEO EKALL 024",
-    "type": "video",
-    "category": "4K Cinematic Video",
-    "url": "/@media/videos/VIDEO_EKALL_024.mp4",
-    "date": "2026",
-    "size": "14.2 MB",
-    "thumb": "/thumbs/thumb_vid_024.webp"
-  },
-  {
-    "id": "vid-025",
-    "slug": "video-25",
-    "title": "VIDEO EKALL 025",
-    "type": "video",
-    "category": "4K Cinematic Video",
-    "url": "/@media/videos/VIDEO_EKALL_025.mp4",
-    "date": "2026",
-    "size": "6.3 MB",
-    "thumb": "/thumbs/thumb_vid_025.webp"
-  },
-  {
-    "id": "vid-026",
-    "slug": "video-26",
     "title": "VIDEO TEMPLATE 001",
     "type": "video",
     "category": "4K Cinematic Video",
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_001.mp4",
+    "thumb": "/thumbs/thumb_vid_001.webp",
     "date": "2026",
-    "size": "51 MB",
-    "thumb": "/thumbs/thumb_vid_026.webp"
+    "size": "51.0 MB"
   },
   {
-    "id": "vid-027",
-    "slug": "video-27",
+    "id": "vid-002",
+    "slug": "video-2",
     "title": "VIDEO TEMPLATE 002",
     "type": "video",
     "category": "4K Cinematic Video",
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_002.mp4",
+    "thumb": "/thumbs/thumb_vid_002.webp",
     "date": "2026",
-    "size": "81.9 MB",
-    "thumb": "/thumbs/thumb_vid_027.webp"
+    "size": "81.9 MB"
   },
   {
-    "id": "vid-028",
-    "slug": "video-28",
+    "id": "vid-003",
+    "slug": "video-3",
     "title": "VIDEO TEMPLATE 003",
     "type": "video",
     "category": "4K Cinematic Video",
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_003.mp4",
+    "thumb": "/thumbs/thumb_vid_003.webp",
     "date": "2026",
-    "size": "5.8 MB",
-    "thumb": "/thumbs/thumb_vid_028.webp"
+    "size": "5.8 MB"
   },
   {
-    "id": "vid-029",
-    "slug": "video-29",
+    "id": "vid-004",
+    "slug": "video-4",
     "title": "VIDEO TEMPLATE 004",
     "type": "video",
     "category": "4K Cinematic Video",
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_004.mp4",
+    "thumb": "/thumbs/thumb_vid_004.webp",
     "date": "2026",
-    "size": "64 MB",
-    "thumb": "/thumbs/thumb_vid_029.webp"
+    "size": "64.0 MB"
   },
   {
-    "id": "vid-030",
-    "slug": "video-30",
+    "id": "vid-005",
+    "slug": "video-5",
     "title": "VIDEO TEMPLATE 005",
     "type": "video",
     "category": "4K Cinematic Video",
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_005.mp4",
+    "thumb": "/thumbs/thumb_vid_005.webp",
     "date": "2026",
-    "size": "33.1 MB",
-    "thumb": "/thumbs/thumb_vid_030.webp"
+    "size": "33.1 MB"
   },
   {
-    "id": "vid-031",
-    "slug": "video-31",
+    "id": "vid-006",
+    "slug": "video-6",
     "title": "VIDEO TEMPLATE 006",
     "type": "video",
     "category": "4K Cinematic Video",
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_006.mp4",
+    "thumb": "/thumbs/thumb_vid_006.webp",
     "date": "2026",
-    "size": "83.2 MB",
-    "thumb": "/thumbs/thumb_vid_031.webp"
+    "size": "83.2 MB"
   },
   {
-    "id": "vid-032",
-    "slug": "video-32",
+    "id": "vid-007",
+    "slug": "video-7",
     "title": "VIDEO TEMPLATE 007",
     "type": "video",
     "category": "4K Cinematic Video",
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_007.mp4",
+    "thumb": "/thumbs/thumb_vid_007.webp",
     "date": "2026",
-    "size": "15.8 MB",
-    "thumb": "/thumbs/thumb_vid_032.webp"
+    "size": "15.8 MB"
   },
   {
-    "id": "vid-033",
-    "slug": "video-33",
+    "id": "vid-008",
+    "slug": "video-8",
     "title": "VIDEO TEMPLATE 008",
     "type": "video",
     "category": "4K Cinematic Video",
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_008.mp4",
+    "thumb": "/thumbs/thumb_vid_008.webp",
     "date": "2026",
-    "size": "94.5 MB",
-    "thumb": "/thumbs/thumb_vid_033.webp"
+    "size": "94.5 MB"
   },
   {
-    "id": "vid-034",
-    "slug": "video-34",
+    "id": "vid-009",
+    "slug": "video-9",
     "title": "VIDEO TEMPLATE 009",
     "type": "video",
     "category": "4K Cinematic Video",
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_009.mp4",
+    "thumb": "/thumbs/thumb_vid_009.webp",
     "date": "2026",
-    "size": "70.2 MB",
-    "thumb": "/thumbs/thumb_vid_034.webp"
+    "size": "70.2 MB"
   },
   {
-    "id": "vid-035",
-    "slug": "video-35",
+    "id": "vid-010",
+    "slug": "video-10",
     "title": "VIDEO TEMPLATE 010",
     "type": "video",
     "category": "4K Cinematic Video",
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_010.mp4",
+    "thumb": "/thumbs/thumb_vid_010.webp",
     "date": "2026",
-    "size": "58.1 MB",
-    "thumb": "/thumbs/thumb_vid_035.webp"
+    "size": "58.1 MB"
   },
   {
-    "id": "vid-036",
-    "slug": "video-36",
+    "id": "vid-011",
+    "slug": "video-11",
     "title": "VIDEO TEMPLATE 011",
     "type": "video",
     "category": "4K Cinematic Video",
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_011.mp4",
+    "thumb": "/thumbs/thumb_vid_011.webp",
     "date": "2026",
-    "size": "13.5 MB",
-    "thumb": "/thumbs/thumb_vid_036.webp"
+    "size": "13.5 MB"
   },
   {
-    "id": "vid-037",
-    "slug": "video-37",
+    "id": "vid-012",
+    "slug": "video-12",
     "title": "VIDEO TEMPLATE 012",
     "type": "video",
     "category": "4K Cinematic Video",
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_012.mp4",
+    "thumb": "/thumbs/thumb_vid_012.webp",
     "date": "2026",
-    "size": "26.1 MB",
-    "thumb": "/thumbs/thumb_vid_037.webp"
+    "size": "26.1 MB"
   },
   {
-    "id": "vid-038",
-    "slug": "video-38",
+    "id": "vid-013",
+    "slug": "video-13",
     "title": "VIDEO TEMPLATE 013",
     "type": "video",
     "category": "4K Cinematic Video",
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_013.mp4",
+    "thumb": "/thumbs/thumb_vid_013.webp",
     "date": "2026",
-    "size": "12.2 MB",
-    "thumb": "/thumbs/thumb_vid_038.webp"
+    "size": "12.2 MB"
   },
   {
-    "id": "vid-039",
-    "slug": "video-39",
+    "id": "vid-014",
+    "slug": "video-14",
     "title": "VIDEO TEMPLATE 014",
     "type": "video",
     "category": "4K Cinematic Video",
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_014.mp4",
+    "thumb": "/thumbs/thumb_vid_014.webp",
     "date": "2026",
-    "size": "7 MB",
-    "thumb": "/thumbs/thumb_vid_039.webp"
+    "size": "7.0 MB"
   },
   {
-    "id": "vid-040",
-    "slug": "video-40",
+    "id": "vid-015",
+    "slug": "video-15",
     "title": "VIDEO TEMPLATE 015",
     "type": "video",
     "category": "4K Cinematic Video",
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_015.mp4",
+    "thumb": "/thumbs/thumb_vid_015.webp",
     "date": "2026",
-    "size": "57.4 MB",
-    "thumb": "/thumbs/thumb_vid_040.webp"
+    "size": "57.4 MB"
   },
   {
-    "id": "vid-041",
-    "slug": "video-41",
+    "id": "vid-016",
+    "slug": "video-16",
     "title": "VIDEO TEMPLATE 016",
     "type": "video",
     "category": "4K Cinematic Video",
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_016.mp4",
+    "thumb": "/thumbs/thumb_vid_016.webp",
     "date": "2026",
-    "size": "26.1 MB",
-    "thumb": "/thumbs/thumb_vid_041.webp"
+    "size": "26.1 MB"
   },
   {
-    "id": "vid-042",
-    "slug": "video-42",
+    "id": "vid-017",
+    "slug": "video-17",
     "title": "VIDEO TEMPLATE 017",
     "type": "video",
     "category": "4K Cinematic Video",
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_017.mp4",
+    "thumb": "/thumbs/thumb_vid_017.webp",
     "date": "2026",
-    "size": "7 MB",
-    "thumb": "/thumbs/thumb_vid_042.webp"
+    "size": "7.0 MB"
   },
   {
-    "id": "vid-043",
-    "slug": "video-43",
+    "id": "vid-018",
+    "slug": "video-18",
     "title": "VIDEO TEMPLATE 018",
     "type": "video",
     "category": "4K Cinematic Video",
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_018.mp4",
+    "thumb": "/thumbs/thumb_vid_018.webp",
     "date": "2026",
-    "size": "122.8 MB",
-    "thumb": "/thumbs/thumb_vid_043.webp"
+    "size": "122.8 MB"
   },
   {
-    "id": "vid-044",
-    "slug": "video-44",
+    "id": "vid-019",
+    "slug": "video-19",
     "title": "VIDEO TEMPLATE 019",
     "type": "video",
     "category": "4K Cinematic Video",
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_019.mp4",
+    "thumb": "/thumbs/thumb_vid_019.webp",
     "date": "2026",
-    "size": "13.5 MB",
-    "thumb": "/thumbs/thumb_vid_044.webp"
+    "size": "13.5 MB"
   },
   {
-    "id": "vid-045",
-    "slug": "video-45",
+    "id": "vid-020",
+    "slug": "video-20",
     "title": "VIDEO TEMPLATE 020",
     "type": "video",
     "category": "4K Cinematic Video",
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_020.mp4",
+    "thumb": "/thumbs/thumb_vid_020.webp",
     "date": "2026",
-    "size": "2.8 MB",
-    "thumb": "/thumbs/thumb_vid_045.webp"
+    "size": "2.8 MB"
+  },
+  {
+    "id": "vid-021",
+    "slug": "video-21",
+    "title": "VIDEO EKALL 001",
+    "type": "video",
+    "category": "4K Cinematic Video",
+    "url": "/@media/videos/VIDEO_EKALL_001.mp4",
+    "thumb": "/thumbs/thumb_vid_021.webp",
+    "date": "2026",
+    "size": "8.7 MB"
+  },
+  {
+    "id": "vid-022",
+    "slug": "video-22",
+    "title": "VIDEO EKALL 002",
+    "type": "video",
+    "category": "4K Cinematic Video",
+    "url": "/@media/videos/VIDEO_EKALL_002.mp4",
+    "thumb": "/thumbs/thumb_vid_022.webp",
+    "date": "2026",
+    "size": "2.1 MB"
+  },
+  {
+    "id": "vid-023",
+    "slug": "video-23",
+    "title": "VIDEO EKALL 003",
+    "type": "video",
+    "category": "4K Cinematic Video",
+    "url": "/@media/videos/VIDEO_EKALL_003.mp4",
+    "thumb": "/thumbs/thumb_vid_023.webp",
+    "date": "2026",
+    "size": "2.8 MB"
+  },
+  {
+    "id": "vid-024",
+    "slug": "video-24",
+    "title": "VIDEO EKALL 004",
+    "type": "video",
+    "category": "4K Cinematic Video",
+    "url": "/@media/videos/VIDEO_EKALL_004.mp4",
+    "thumb": "/thumbs/thumb_vid_024.webp",
+    "date": "2026",
+    "size": "8.8 MB"
+  },
+  {
+    "id": "vid-025",
+    "slug": "video-25",
+    "title": "VIDEO EKALL 005",
+    "type": "video",
+    "category": "4K Cinematic Video",
+    "url": "/@media/videos/VIDEO_EKALL_005.mp4",
+    "thumb": "/thumbs/thumb_vid_025.webp",
+    "date": "2026",
+    "size": "3.6 MB"
+  },
+  {
+    "id": "vid-026",
+    "slug": "video-26",
+    "title": "VIDEO EKALL 006",
+    "type": "video",
+    "category": "4K Cinematic Video",
+    "url": "/@media/videos/VIDEO_EKALL_006.mp4",
+    "thumb": "/thumbs/thumb_vid_026.webp",
+    "date": "2026",
+    "size": "8.7 MB"
+  },
+  {
+    "id": "vid-027",
+    "slug": "video-27",
+    "title": "VIDEO EKALL 007",
+    "type": "video",
+    "category": "4K Cinematic Video",
+    "url": "/@media/videos/VIDEO_EKALL_007.mp4",
+    "thumb": "/thumbs/thumb_vid_027.webp",
+    "date": "2026",
+    "size": "79.6 MB"
+  },
+  {
+    "id": "vid-028",
+    "slug": "video-28",
+    "title": "VIDEO EKALL 008",
+    "type": "video",
+    "category": "4K Cinematic Video",
+    "url": "/@media/videos/VIDEO_EKALL_008.mp4",
+    "thumb": "/thumbs/thumb_vid_028.webp",
+    "date": "2026",
+    "size": "45.5 MB"
+  },
+  {
+    "id": "vid-029",
+    "slug": "video-29",
+    "title": "VIDEO EKALL 009",
+    "type": "video",
+    "category": "4K Cinematic Video",
+    "url": "/@media/videos/VIDEO_EKALL_009.mp4",
+    "thumb": "/thumbs/thumb_vid_029.webp",
+    "date": "2026",
+    "size": "7.1 MB"
+  },
+  {
+    "id": "vid-030",
+    "slug": "video-30",
+    "title": "VIDEO EKALL 010",
+    "type": "video",
+    "category": "4K Cinematic Video",
+    "url": "/@media/videos/VIDEO_EKALL_010.mp4",
+    "thumb": "/thumbs/thumb_vid_030.webp",
+    "date": "2026",
+    "size": "39.4 MB"
+  },
+  {
+    "id": "vid-031",
+    "slug": "video-31",
+    "title": "VIDEO EKALL 011",
+    "type": "video",
+    "category": "4K Cinematic Video",
+    "url": "/@media/videos/VIDEO_EKALL_011.mp4",
+    "thumb": "/thumbs/thumb_vid_031.webp",
+    "date": "2026",
+    "size": "22.4 MB"
+  },
+  {
+    "id": "vid-032",
+    "slug": "video-32",
+    "title": "VIDEO EKALL 012",
+    "type": "video",
+    "category": "4K Cinematic Video",
+    "url": "/@media/videos/VIDEO_EKALL_012.mp4",
+    "thumb": "/thumbs/thumb_vid_032.webp",
+    "date": "2026",
+    "size": "12.0 MB"
+  },
+  {
+    "id": "vid-033",
+    "slug": "video-33",
+    "title": "VIDEO EKALL 013",
+    "type": "video",
+    "category": "4K Cinematic Video",
+    "url": "/@media/videos/VIDEO_EKALL_013.mp4",
+    "thumb": "/thumbs/thumb_vid_033.webp",
+    "date": "2026",
+    "size": "4.4 MB"
+  },
+  {
+    "id": "vid-034",
+    "slug": "video-34",
+    "title": "VIDEO EKALL 014",
+    "type": "video",
+    "category": "4K Cinematic Video",
+    "url": "/@media/videos/VIDEO_EKALL_014.mp4",
+    "thumb": "/thumbs/thumb_vid_034.webp",
+    "date": "2026",
+    "size": "3.1 MB"
+  },
+  {
+    "id": "vid-035",
+    "slug": "video-35",
+    "title": "VIDEO EKALL 015",
+    "type": "video",
+    "category": "4K Cinematic Video",
+    "url": "/@media/videos/VIDEO_EKALL_015.mp4",
+    "thumb": "/thumbs/thumb_vid_035.webp",
+    "date": "2026",
+    "size": "3.8 MB"
+  },
+  {
+    "id": "vid-036",
+    "slug": "video-36",
+    "title": "VIDEO EKALL 016",
+    "type": "video",
+    "category": "4K Cinematic Video",
+    "url": "/@media/videos/VIDEO_EKALL_016.mp4",
+    "thumb": "/thumbs/thumb_vid_036.webp",
+    "date": "2026",
+    "size": "3.6 MB"
+  },
+  {
+    "id": "vid-037",
+    "slug": "video-37",
+    "title": "VIDEO EKALL 017",
+    "type": "video",
+    "category": "4K Cinematic Video",
+    "url": "/@media/videos/VIDEO_EKALL_017.mp4",
+    "thumb": "/thumbs/thumb_vid_037.webp",
+    "date": "2026",
+    "size": "29.0 MB"
+  },
+  {
+    "id": "vid-038",
+    "slug": "video-38",
+    "title": "VIDEO EKALL 018",
+    "type": "video",
+    "category": "4K Cinematic Video",
+    "url": "/@media/videos/VIDEO_EKALL_018.mp4",
+    "thumb": "/thumbs/thumb_vid_038.webp",
+    "date": "2026",
+    "size": "17.5 MB"
+  },
+  {
+    "id": "vid-039",
+    "slug": "video-39",
+    "title": "VIDEO EKALL 019",
+    "type": "video",
+    "category": "4K Cinematic Video",
+    "url": "/@media/videos/VIDEO_EKALL_019.mp4",
+    "thumb": "/thumbs/thumb_vid_039.webp",
+    "date": "2026",
+    "size": "29.0 MB"
+  },
+  {
+    "id": "vid-040",
+    "slug": "video-40",
+    "title": "VIDEO EKALL 020",
+    "type": "video",
+    "category": "4K Cinematic Video",
+    "url": "/@media/videos/VIDEO_EKALL_020.mp4",
+    "thumb": "/thumbs/thumb_vid_040.webp",
+    "date": "2026",
+    "size": "213.9 MB"
+  },
+  {
+    "id": "vid-041",
+    "slug": "video-41",
+    "title": "VIDEO EKALL 021",
+    "type": "video",
+    "category": "4K Cinematic Video",
+    "url": "/@media/videos/VIDEO_EKALL_021.mp4",
+    "thumb": "/thumbs/thumb_vid_041.webp",
+    "date": "2026",
+    "size": "21.9 MB"
+  },
+  {
+    "id": "vid-042",
+    "slug": "video-42",
+    "title": "VIDEO EKALL 022",
+    "type": "video",
+    "category": "4K Cinematic Video",
+    "url": "/@media/videos/VIDEO_EKALL_022.mp4",
+    "thumb": "/thumbs/thumb_vid_042.webp",
+    "date": "2026",
+    "size": "8.8 MB"
+  },
+  {
+    "id": "vid-043",
+    "slug": "video-43",
+    "title": "VIDEO EKALL 023",
+    "type": "video",
+    "category": "4K Cinematic Video",
+    "url": "/@media/videos/VIDEO_EKALL_023.mp4",
+    "thumb": "/thumbs/thumb_vid_043.webp",
+    "date": "2026",
+    "size": "586.4 MB"
+  },
+  {
+    "id": "vid-044",
+    "slug": "video-44",
+    "title": "VIDEO EKALL 024",
+    "type": "video",
+    "category": "4K Cinematic Video",
+    "url": "/@media/videos/VIDEO_EKALL_024.mp4",
+    "thumb": "/thumbs/thumb_vid_044.webp",
+    "date": "2026",
+    "size": "14.2 MB"
+  },
+  {
+    "id": "vid-045",
+    "slug": "video-45",
+    "title": "VIDEO EKALL 025",
+    "type": "video",
+    "category": "4K Cinematic Video",
+    "url": "/@media/videos/VIDEO_EKALL_025.mp4",
+    "thumb": "/thumbs/thumb_vid_045.webp",
+    "date": "2026",
+    "size": "6.3 MB"
   },
   {
     "id": "img-001",
@@ -501,9 +501,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_001.jpg",
+    "thumb": "/thumbs/thumb_img_001.webp",
     "date": "2026",
-    "size": "0.4 MB",
-    "thumb": "/thumbs/thumb_img_001.webp"
+    "size": "0.4 MB"
   },
   {
     "id": "img-002",
@@ -512,9 +512,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_002.jpg",
+    "thumb": "/thumbs/thumb_img_002.webp",
     "date": "2026",
-    "size": "0.18 MB",
-    "thumb": "/thumbs/thumb_img_002.webp"
+    "size": "0.18 MB"
   },
   {
     "id": "img-003",
@@ -523,9 +523,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_003.jpg",
+    "thumb": "/thumbs/thumb_img_003.webp",
     "date": "2026",
-    "size": "0.17 MB",
-    "thumb": "/thumbs/thumb_img_003.webp"
+    "size": "0.17 MB"
   },
   {
     "id": "img-004",
@@ -534,9 +534,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_004.jpg",
+    "thumb": "/thumbs/thumb_img_004.webp",
     "date": "2026",
-    "size": "0.24 MB",
-    "thumb": "/thumbs/thumb_img_004.webp"
+    "size": "0.24 MB"
   },
   {
     "id": "img-005",
@@ -545,9 +545,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_005.jpg",
+    "thumb": "/thumbs/thumb_img_005.webp",
     "date": "2026",
-    "size": "0.06 MB",
-    "thumb": "/thumbs/thumb_img_005.webp"
+    "size": "0.06 MB"
   },
   {
     "id": "img-006",
@@ -556,9 +556,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_006.jpg",
+    "thumb": "/thumbs/thumb_img_006.webp",
     "date": "2026",
-    "size": "0.25 MB",
-    "thumb": "/thumbs/thumb_img_006.webp"
+    "size": "0.25 MB"
   },
   {
     "id": "img-007",
@@ -567,9 +567,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_007.jpg",
+    "thumb": "/thumbs/thumb_img_007.webp",
     "date": "2026",
-    "size": "0.24 MB",
-    "thumb": "/thumbs/thumb_img_007.webp"
+    "size": "0.24 MB"
   },
   {
     "id": "img-008",
@@ -578,9 +578,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_008.jpg",
+    "thumb": "/thumbs/thumb_img_008.webp",
     "date": "2026",
-    "size": "0.25 MB",
-    "thumb": "/thumbs/thumb_img_008.webp"
+    "size": "0.25 MB"
   },
   {
     "id": "img-009",
@@ -589,9 +589,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_009.jpg",
+    "thumb": "/thumbs/thumb_img_009.webp",
     "date": "2026",
-    "size": "0.33 MB",
-    "thumb": "/thumbs/thumb_img_009.webp"
+    "size": "0.33 MB"
   },
   {
     "id": "img-010",
@@ -600,9 +600,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_010.jpg",
+    "thumb": "/thumbs/thumb_img_010.webp",
     "date": "2026",
-    "size": "0.15 MB",
-    "thumb": "/thumbs/thumb_img_010.webp"
+    "size": "0.15 MB"
   },
   {
     "id": "img-011",
@@ -611,9 +611,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_011.jpg",
+    "thumb": "/thumbs/thumb_img_011.webp",
     "date": "2026",
-    "size": "0.12 MB",
-    "thumb": "/thumbs/thumb_img_011.webp"
+    "size": "0.12 MB"
   },
   {
     "id": "img-012",
@@ -622,9 +622,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_012.jpg",
+    "thumb": "/thumbs/thumb_img_012.webp",
     "date": "2026",
-    "size": "0.1 MB",
-    "thumb": "/thumbs/thumb_img_012.webp"
+    "size": "0.1 MB"
   },
   {
     "id": "img-013",
@@ -633,9 +633,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_013.jpg",
+    "thumb": "/thumbs/thumb_img_013.webp",
     "date": "2026",
-    "size": "0.11 MB",
-    "thumb": "/thumbs/thumb_img_013.webp"
+    "size": "0.11 MB"
   },
   {
     "id": "img-014",
@@ -644,9 +644,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_014.jpg",
+    "thumb": "/thumbs/thumb_img_014.webp",
     "date": "2026",
-    "size": "0.2 MB",
-    "thumb": "/thumbs/thumb_img_014.webp"
+    "size": "0.2 MB"
   },
   {
     "id": "img-015",
@@ -655,9 +655,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_015.jpg",
+    "thumb": "/thumbs/thumb_img_015.webp",
     "date": "2026",
-    "size": "0.66 MB",
-    "thumb": "/thumbs/thumb_img_015.webp"
+    "size": "0.66 MB"
   },
   {
     "id": "img-016",
@@ -666,9 +666,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_016.jpg",
+    "thumb": "/thumbs/thumb_img_016.webp",
     "date": "2026",
-    "size": "0.26 MB",
-    "thumb": "/thumbs/thumb_img_016.webp"
+    "size": "0.26 MB"
   },
   {
     "id": "img-017",
@@ -677,9 +677,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_017.jpg",
+    "thumb": "/thumbs/thumb_img_017.webp",
     "date": "2026",
-    "size": "0.3 MB",
-    "thumb": "/thumbs/thumb_img_017.webp"
+    "size": "0.3 MB"
   },
   {
     "id": "img-018",
@@ -688,9 +688,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_018.jpg",
+    "thumb": "/thumbs/thumb_img_018.webp",
     "date": "2026",
-    "size": "0.29 MB",
-    "thumb": "/thumbs/thumb_img_018.webp"
+    "size": "0.29 MB"
   },
   {
     "id": "img-019",
@@ -699,9 +699,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_019.jpg",
+    "thumb": "/thumbs/thumb_img_019.webp",
     "date": "2026",
-    "size": "0.1 MB",
-    "thumb": "/thumbs/thumb_img_019.webp"
+    "size": "0.1 MB"
   },
   {
     "id": "img-020",
@@ -710,9 +710,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_020.jpg",
+    "thumb": "/thumbs/thumb_img_020.webp",
     "date": "2026",
-    "size": "0.07 MB",
-    "thumb": "/thumbs/thumb_img_020.webp"
+    "size": "0.07 MB"
   },
   {
     "id": "img-021",
@@ -721,9 +721,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_021.jpg",
+    "thumb": "/thumbs/thumb_img_021.webp",
     "date": "2026",
-    "size": "0.1 MB",
-    "thumb": "/thumbs/thumb_img_021.webp"
+    "size": "0.1 MB"
   },
   {
     "id": "img-022",
@@ -732,9 +732,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_022.jpg",
+    "thumb": "/thumbs/thumb_img_022.webp",
     "date": "2026",
-    "size": "11.32 MB",
-    "thumb": "/thumbs/thumb_img_022.webp"
+    "size": "11.32 MB"
   },
   {
     "id": "img-023",
@@ -743,9 +743,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_023.jpg",
+    "thumb": "/thumbs/thumb_img_023.webp",
     "date": "2026",
-    "size": "0.35 MB",
-    "thumb": "/thumbs/thumb_img_023.webp"
+    "size": "0.35 MB"
   },
   {
     "id": "img-024",
@@ -754,9 +754,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_024.jpg",
+    "thumb": "/thumbs/thumb_img_024.webp",
     "date": "2026",
-    "size": "2.95 MB",
-    "thumb": "/thumbs/thumb_img_024.webp"
+    "size": "2.95 MB"
   },
   {
     "id": "img-025",
@@ -765,9 +765,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_025.jpg",
+    "thumb": "/thumbs/thumb_img_025.webp",
     "date": "2026",
-    "size": "4.46 MB",
-    "thumb": "/thumbs/thumb_img_025.webp"
+    "size": "4.46 MB"
   },
   {
     "id": "img-026",
@@ -776,9 +776,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_026.jpg",
+    "thumb": "/thumbs/thumb_img_026.webp",
     "date": "2026",
-    "size": "1.29 MB",
-    "thumb": "/thumbs/thumb_img_026.webp"
+    "size": "1.29 MB"
   },
   {
     "id": "img-027",
@@ -787,9 +787,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_027.jpg",
+    "thumb": "/thumbs/thumb_img_027.webp",
     "date": "2026",
-    "size": "2.85 MB",
-    "thumb": "/thumbs/thumb_img_027.webp"
+    "size": "2.85 MB"
   },
   {
     "id": "img-028",
@@ -798,9 +798,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_028.jpg",
+    "thumb": "/thumbs/thumb_img_028.webp",
     "date": "2026",
-    "size": "2.87 MB",
-    "thumb": "/thumbs/thumb_img_028.webp"
+    "size": "2.87 MB"
   },
   {
     "id": "img-029",
@@ -809,9 +809,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_029.jpg",
+    "thumb": "/thumbs/thumb_img_029.webp",
     "date": "2026",
-    "size": "3.06 MB",
-    "thumb": "/thumbs/thumb_img_029.webp"
+    "size": "3.06 MB"
   },
   {
     "id": "img-030",
@@ -820,9 +820,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_030.jpg",
+    "thumb": "/thumbs/thumb_img_030.webp",
     "date": "2026",
-    "size": "0.52 MB",
-    "thumb": "/thumbs/thumb_img_030.webp"
+    "size": "0.52 MB"
   },
   {
     "id": "img-031",
@@ -831,9 +831,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_031.jpg",
+    "thumb": "/thumbs/thumb_img_031.webp",
     "date": "2026",
-    "size": "0.2 MB",
-    "thumb": "/thumbs/thumb_img_031.webp"
+    "size": "0.2 MB"
   },
   {
     "id": "img-032",
@@ -842,9 +842,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_032.jpg",
+    "thumb": "/thumbs/thumb_img_032.webp",
     "date": "2026",
-    "size": "0.03 MB",
-    "thumb": "/thumbs/thumb_img_032.webp"
+    "size": "0.03 MB"
   },
   {
     "id": "img-033",
@@ -853,9 +853,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_033.jpg",
+    "thumb": "/thumbs/thumb_img_033.webp",
     "date": "2026",
-    "size": "0.03 MB",
-    "thumb": "/thumbs/thumb_img_033.webp"
+    "size": "0.03 MB"
   },
   {
     "id": "img-034",
@@ -864,9 +864,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_034.jpg",
+    "thumb": "/thumbs/thumb_img_034.webp",
     "date": "2026",
-    "size": "0.06 MB",
-    "thumb": "/thumbs/thumb_img_034.webp"
+    "size": "0.06 MB"
   },
   {
     "id": "img-035",
@@ -875,9 +875,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_035.jpg",
+    "thumb": "/thumbs/thumb_img_035.webp",
     "date": "2026",
-    "size": "0.01 MB",
-    "thumb": "/thumbs/thumb_img_035.webp"
+    "size": "0.01 MB"
   },
   {
     "id": "img-036",
@@ -886,9 +886,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_036.jpg",
+    "thumb": "/thumbs/thumb_img_036.webp",
     "date": "2026",
-    "size": "0.02 MB",
-    "thumb": "/thumbs/thumb_img_036.webp"
+    "size": "0.02 MB"
   },
   {
     "id": "img-037",
@@ -897,9 +897,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_037.jpg",
+    "thumb": "/thumbs/thumb_img_037.webp",
     "date": "2026",
-    "size": "0.05 MB",
-    "thumb": "/thumbs/thumb_img_037.webp"
+    "size": "0.05 MB"
   },
   {
     "id": "img-038",
@@ -908,9 +908,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_038.jpg",
+    "thumb": "/thumbs/thumb_img_038.webp",
     "date": "2026",
-    "size": "0.07 MB",
-    "thumb": "/thumbs/thumb_img_038.webp"
+    "size": "0.07 MB"
   },
   {
     "id": "img-039",
@@ -919,9 +919,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_039.jpg",
+    "thumb": "/thumbs/thumb_img_039.webp",
     "date": "2026",
-    "size": "0.08 MB",
-    "thumb": "/thumbs/thumb_img_039.webp"
+    "size": "0.08 MB"
   },
   {
     "id": "img-040",
@@ -930,9 +930,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_040.jpg",
+    "thumb": "/thumbs/thumb_img_040.webp",
     "date": "2026",
-    "size": "0.06 MB",
-    "thumb": "/thumbs/thumb_img_040.webp"
+    "size": "0.06 MB"
   },
   {
     "id": "img-041",
@@ -941,9 +941,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_041.jpg",
+    "thumb": "/thumbs/thumb_img_041.webp",
     "date": "2026",
-    "size": "0.08 MB",
-    "thumb": "/thumbs/thumb_img_041.webp"
+    "size": "0.08 MB"
   },
   {
     "id": "img-042",
@@ -952,9 +952,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_042.jpg",
+    "thumb": "/thumbs/thumb_img_042.webp",
     "date": "2026",
-    "size": "0.03 MB",
-    "thumb": "/thumbs/thumb_img_042.webp"
+    "size": "0.03 MB"
   },
   {
     "id": "img-043",
@@ -963,9 +963,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_043.jpg",
+    "thumb": "/thumbs/thumb_img_043.webp",
     "date": "2026",
-    "size": "0.09 MB",
-    "thumb": "/thumbs/thumb_img_043.webp"
+    "size": "0.09 MB"
   },
   {
     "id": "img-044",
@@ -974,9 +974,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_044.jpg",
+    "thumb": "/thumbs/thumb_img_044.webp",
     "date": "2026",
-    "size": "0.12 MB",
-    "thumb": "/thumbs/thumb_img_044.webp"
+    "size": "0.12 MB"
   },
   {
     "id": "img-045",
@@ -985,9 +985,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_045.jpg",
+    "thumb": "/thumbs/thumb_img_045.webp",
     "date": "2026",
-    "size": "0.11 MB",
-    "thumb": "/thumbs/thumb_img_045.webp"
+    "size": "0.11 MB"
   },
   {
     "id": "img-046",
@@ -996,9 +996,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_046.jpg",
+    "thumb": "/thumbs/thumb_img_046.webp",
     "date": "2026",
-    "size": "0.1 MB",
-    "thumb": "/thumbs/thumb_img_046.webp"
+    "size": "0.1 MB"
   },
   {
     "id": "img-047",
@@ -1007,9 +1007,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_047.jpg",
+    "thumb": "/thumbs/thumb_img_047.webp",
     "date": "2026",
-    "size": "0.09 MB",
-    "thumb": "/thumbs/thumb_img_047.webp"
+    "size": "0.09 MB"
   },
   {
     "id": "img-048",
@@ -1018,9 +1018,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_048.jpg",
+    "thumb": "/thumbs/thumb_img_048.webp",
     "date": "2026",
-    "size": "0.08 MB",
-    "thumb": "/thumbs/thumb_img_048.webp"
+    "size": "0.08 MB"
   },
   {
     "id": "img-049",
@@ -1029,9 +1029,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_049.jpg",
+    "thumb": "/thumbs/thumb_img_049.webp",
     "date": "2026",
-    "size": "0.19 MB",
-    "thumb": "/thumbs/thumb_img_049.webp"
+    "size": "0.19 MB"
   },
   {
     "id": "img-050",
@@ -1040,9 +1040,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_050.jpg",
+    "thumb": "/thumbs/thumb_img_050.webp",
     "date": "2026",
-    "size": "0.13 MB",
-    "thumb": "/thumbs/thumb_img_050.webp"
+    "size": "0.13 MB"
   },
   {
     "id": "img-051",
@@ -1051,9 +1051,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_051.jpg",
+    "thumb": "/thumbs/thumb_img_051.webp",
     "date": "2026",
-    "size": "0.09 MB",
-    "thumb": "/thumbs/thumb_img_051.webp"
+    "size": "0.09 MB"
   },
   {
     "id": "img-052",
@@ -1062,9 +1062,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_052.jpg",
+    "thumb": "/thumbs/thumb_img_052.webp",
     "date": "2026",
-    "size": "0.11 MB",
-    "thumb": "/thumbs/thumb_img_052.webp"
+    "size": "0.11 MB"
   },
   {
     "id": "img-053",
@@ -1073,9 +1073,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_053.jpg",
+    "thumb": "/thumbs/thumb_img_053.webp",
     "date": "2026",
-    "size": "0.08 MB",
-    "thumb": "/thumbs/thumb_img_053.webp"
+    "size": "0.08 MB"
   },
   {
     "id": "img-054",
@@ -1084,9 +1084,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_054.jpg",
+    "thumb": "/thumbs/thumb_img_054.webp",
     "date": "2026",
-    "size": "0.07 MB",
-    "thumb": "/thumbs/thumb_img_054.webp"
+    "size": "0.07 MB"
   },
   {
     "id": "img-055",
@@ -1095,9 +1095,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_055.jpg",
+    "thumb": "/thumbs/thumb_img_055.webp",
     "date": "2026",
-    "size": "0.08 MB",
-    "thumb": "/thumbs/thumb_img_055.webp"
+    "size": "0.08 MB"
   },
   {
     "id": "img-056",
@@ -1106,9 +1106,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_056.jpg",
+    "thumb": "/thumbs/thumb_img_056.webp",
     "date": "2026",
-    "size": "0.11 MB",
-    "thumb": "/thumbs/thumb_img_056.webp"
+    "size": "0.11 MB"
   },
   {
     "id": "img-057",
@@ -1117,9 +1117,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_057.jpg",
+    "thumb": "/thumbs/thumb_img_057.webp",
     "date": "2026",
-    "size": "0.11 MB",
-    "thumb": "/thumbs/thumb_img_057.webp"
+    "size": "0.11 MB"
   },
   {
     "id": "img-058",
@@ -1128,9 +1128,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_058.jpg",
+    "thumb": "/thumbs/thumb_img_058.webp",
     "date": "2026",
-    "size": "0.06 MB",
-    "thumb": "/thumbs/thumb_img_058.webp"
+    "size": "0.06 MB"
   },
   {
     "id": "img-059",
@@ -1139,9 +1139,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_059.jpg",
+    "thumb": "/thumbs/thumb_img_059.webp",
     "date": "2026",
-    "size": "0.06 MB",
-    "thumb": "/thumbs/thumb_img_059.webp"
+    "size": "0.06 MB"
   },
   {
     "id": "img-060",
@@ -1150,9 +1150,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_060.jpg",
+    "thumb": "/thumbs/thumb_img_060.webp",
     "date": "2026",
-    "size": "0.05 MB",
-    "thumb": "/thumbs/thumb_img_060.webp"
+    "size": "0.05 MB"
   },
   {
     "id": "img-061",
@@ -1161,9 +1161,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_061.jpg",
+    "thumb": "/thumbs/thumb_img_061.webp",
     "date": "2026",
-    "size": "0.07 MB",
-    "thumb": "/thumbs/thumb_img_061.webp"
+    "size": "0.07 MB"
   },
   {
     "id": "img-062",
@@ -1172,9 +1172,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_062.jpg",
+    "thumb": "/thumbs/thumb_img_062.webp",
     "date": "2026",
-    "size": "0.08 MB",
-    "thumb": "/thumbs/thumb_img_062.webp"
+    "size": "0.08 MB"
   },
   {
     "id": "img-063",
@@ -1183,9 +1183,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_063.jpg",
+    "thumb": "/thumbs/thumb_img_063.webp",
     "date": "2026",
-    "size": "0.08 MB",
-    "thumb": "/thumbs/thumb_img_063.webp"
+    "size": "0.08 MB"
   },
   {
     "id": "img-064",
@@ -1194,9 +1194,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_064.jpg",
+    "thumb": "/thumbs/thumb_img_064.webp",
     "date": "2026",
-    "size": "0.11 MB",
-    "thumb": "/thumbs/thumb_img_064.webp"
+    "size": "0.11 MB"
   },
   {
     "id": "img-065",
@@ -1205,9 +1205,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_065.jpg",
+    "thumb": "/thumbs/thumb_img_065.webp",
     "date": "2026",
-    "size": "0.06 MB",
-    "thumb": "/thumbs/thumb_img_065.webp"
+    "size": "0.06 MB"
   },
   {
     "id": "img-066",
@@ -1216,9 +1216,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_066.jpg",
+    "thumb": "/thumbs/thumb_img_066.webp",
     "date": "2026",
-    "size": "0.1 MB",
-    "thumb": "/thumbs/thumb_img_066.webp"
+    "size": "0.1 MB"
   },
   {
     "id": "img-067",
@@ -1227,9 +1227,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_067.jpg",
+    "thumb": "/thumbs/thumb_img_067.webp",
     "date": "2026",
-    "size": "0.11 MB",
-    "thumb": "/thumbs/thumb_img_067.webp"
+    "size": "0.11 MB"
   },
   {
     "id": "img-068",
@@ -1238,9 +1238,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_068.jpg",
+    "thumb": "/thumbs/thumb_img_068.webp",
     "date": "2026",
-    "size": "0.05 MB",
-    "thumb": "/thumbs/thumb_img_068.webp"
+    "size": "0.05 MB"
   },
   {
     "id": "img-069",
@@ -1249,9 +1249,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_069.jpg",
+    "thumb": "/thumbs/thumb_img_069.webp",
     "date": "2026",
-    "size": "0.07 MB",
-    "thumb": "/thumbs/thumb_img_069.webp"
+    "size": "0.07 MB"
   },
   {
     "id": "img-070",
@@ -1260,9 +1260,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_070.jpg",
+    "thumb": "/thumbs/thumb_img_070.webp",
     "date": "2026",
-    "size": "0.05 MB",
-    "thumb": "/thumbs/thumb_img_070.webp"
+    "size": "0.05 MB"
   },
   {
     "id": "img-071",
@@ -1271,9 +1271,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_071.jpg",
+    "thumb": "/thumbs/thumb_img_071.webp",
     "date": "2026",
-    "size": "0.06 MB",
-    "thumb": "/thumbs/thumb_img_071.webp"
+    "size": "0.06 MB"
   },
   {
     "id": "img-072",
@@ -1282,9 +1282,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_072.jpg",
+    "thumb": "/thumbs/thumb_img_072.webp",
     "date": "2026",
-    "size": "0.11 MB",
-    "thumb": "/thumbs/thumb_img_072.webp"
+    "size": "0.11 MB"
   },
   {
     "id": "img-073",
@@ -1293,9 +1293,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_073.jpg",
+    "thumb": "/thumbs/thumb_img_073.webp",
     "date": "2026",
-    "size": "0.1 MB",
-    "thumb": "/thumbs/thumb_img_073.webp"
+    "size": "0.1 MB"
   },
   {
     "id": "img-074",
@@ -1304,9 +1304,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_074.jpg",
+    "thumb": "/thumbs/thumb_img_074.webp",
     "date": "2026",
-    "size": "0.15 MB",
-    "thumb": "/thumbs/thumb_img_074.webp"
+    "size": "0.15 MB"
   },
   {
     "id": "img-075",
@@ -1315,9 +1315,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_075.jpg",
+    "thumb": "/thumbs/thumb_img_075.webp",
     "date": "2026",
-    "size": "0.11 MB",
-    "thumb": "/thumbs/thumb_img_075.webp"
+    "size": "0.11 MB"
   },
   {
     "id": "img-076",
@@ -1326,9 +1326,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_076.jpg",
+    "thumb": "/thumbs/thumb_img_076.webp",
     "date": "2026",
-    "size": "0.12 MB",
-    "thumb": "/thumbs/thumb_img_076.webp"
+    "size": "0.12 MB"
   },
   {
     "id": "img-077",
@@ -1337,9 +1337,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_077.jpg",
+    "thumb": "/thumbs/thumb_img_077.webp",
     "date": "2026",
-    "size": "0.1 MB",
-    "thumb": "/thumbs/thumb_img_077.webp"
+    "size": "0.1 MB"
   },
   {
     "id": "img-078",
@@ -1348,9 +1348,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_078.jpg",
+    "thumb": "/thumbs/thumb_img_078.webp",
     "date": "2026",
-    "size": "0.04 MB",
-    "thumb": "/thumbs/thumb_img_078.webp"
+    "size": "0.04 MB"
   },
   {
     "id": "img-079",
@@ -1359,9 +1359,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_079.jpg",
+    "thumb": "/thumbs/thumb_img_079.webp",
     "date": "2026",
-    "size": "0.02 MB",
-    "thumb": "/thumbs/thumb_img_079.webp"
+    "size": "0.02 MB"
   },
   {
     "id": "img-080",
@@ -1370,9 +1370,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_080.jpg",
+    "thumb": "/thumbs/thumb_img_080.webp",
     "date": "2026",
-    "size": "0.04 MB",
-    "thumb": "/thumbs/thumb_img_080.webp"
+    "size": "0.04 MB"
   },
   {
     "id": "img-081",
@@ -1381,9 +1381,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_081.jpg",
+    "thumb": "/thumbs/thumb_img_081.webp",
     "date": "2026",
-    "size": "0.04 MB",
-    "thumb": "/thumbs/thumb_img_081.webp"
+    "size": "0.04 MB"
   },
   {
     "id": "img-082",
@@ -1392,9 +1392,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_082.jpg",
+    "thumb": "/thumbs/thumb_img_082.webp",
     "date": "2026",
-    "size": "0.39 MB",
-    "thumb": "/thumbs/thumb_img_082.webp"
+    "size": "0.39 MB"
   },
   {
     "id": "img-083",
@@ -1403,9 +1403,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_083.jpg",
+    "thumb": "/thumbs/thumb_img_083.webp",
     "date": "2026",
-    "size": "0.47 MB",
-    "thumb": "/thumbs/thumb_img_083.webp"
+    "size": "0.47 MB"
   },
   {
     "id": "img-084",
@@ -1414,9 +1414,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_084.jpg",
+    "thumb": "/thumbs/thumb_img_084.webp",
     "date": "2026",
-    "size": "0.11 MB",
-    "thumb": "/thumbs/thumb_img_084.webp"
+    "size": "0.11 MB"
   },
   {
     "id": "img-085",
@@ -1425,9 +1425,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_085.jpg",
+    "thumb": "/thumbs/thumb_img_085.webp",
     "date": "2026",
-    "size": "0.32 MB",
-    "thumb": "/thumbs/thumb_img_085.webp"
+    "size": "0.32 MB"
   },
   {
     "id": "img-086",
@@ -1436,9 +1436,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_086.jpg",
+    "thumb": "/thumbs/thumb_img_086.webp",
     "date": "2026",
-    "size": "2.66 MB",
-    "thumb": "/thumbs/thumb_img_086.webp"
+    "size": "2.66 MB"
   },
   {
     "id": "img-087",
@@ -1447,9 +1447,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_087.jpg",
+    "thumb": "/thumbs/thumb_img_087.webp",
     "date": "2026",
-    "size": "0.37 MB",
-    "thumb": "/thumbs/thumb_img_087.webp"
+    "size": "0.37 MB"
   },
   {
     "id": "img-088",
@@ -1458,9 +1458,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_088.jpg",
+    "thumb": "/thumbs/thumb_img_088.webp",
     "date": "2026",
-    "size": "2.56 MB",
-    "thumb": "/thumbs/thumb_img_088.webp"
+    "size": "2.56 MB"
   },
   {
     "id": "img-089",
@@ -1469,9 +1469,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_089.jpg",
+    "thumb": "/thumbs/thumb_img_089.webp",
     "date": "2026",
-    "size": "2.53 MB",
-    "thumb": "/thumbs/thumb_img_089.webp"
+    "size": "2.53 MB"
   },
   {
     "id": "img-090",
@@ -1480,9 +1480,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_090.jpg",
+    "thumb": "/thumbs/thumb_img_090.webp",
     "date": "2026",
-    "size": "9.95 MB",
-    "thumb": "/thumbs/thumb_img_090.webp"
+    "size": "9.95 MB"
   },
   {
     "id": "img-091",
@@ -1491,9 +1491,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_091.jpg",
+    "thumb": "/thumbs/thumb_img_091.webp",
     "date": "2026",
-    "size": "3 MB",
-    "thumb": "/thumbs/thumb_img_091.webp"
+    "size": "3.0 MB"
   },
   {
     "id": "img-092",
@@ -1502,9 +1502,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_092.jpg",
+    "thumb": "/thumbs/thumb_img_092.webp",
     "date": "2026",
-    "size": "0.16 MB",
-    "thumb": "/thumbs/thumb_img_092.webp"
+    "size": "0.16 MB"
   },
   {
     "id": "img-093",
@@ -1513,9 +1513,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_093.jpg",
+    "thumb": "/thumbs/thumb_img_093.webp",
     "date": "2026",
-    "size": "3.58 MB",
-    "thumb": "/thumbs/thumb_img_093.webp"
+    "size": "3.58 MB"
   },
   {
     "id": "img-094",
@@ -1524,9 +1524,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_094.jpg",
+    "thumb": "/thumbs/thumb_img_094.webp",
     "date": "2026",
-    "size": "0.16 MB",
-    "thumb": "/thumbs/thumb_img_094.webp"
+    "size": "0.16 MB"
   },
   {
     "id": "img-095",
@@ -1535,9 +1535,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_095.jpg",
+    "thumb": "/thumbs/thumb_img_095.webp",
     "date": "2026",
-    "size": "10.27 MB",
-    "thumb": "/thumbs/thumb_img_095.webp"
+    "size": "10.27 MB"
   },
   {
     "id": "img-096",
@@ -1546,9 +1546,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_096.jpg",
+    "thumb": "/thumbs/thumb_img_096.webp",
     "date": "2026",
-    "size": "10.04 MB",
-    "thumb": "/thumbs/thumb_img_096.webp"
+    "size": "10.04 MB"
   },
   {
     "id": "img-097",
@@ -1557,9 +1557,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_097.jpg",
+    "thumb": "/thumbs/thumb_img_097.webp",
     "date": "2026",
-    "size": "9.43 MB",
-    "thumb": "/thumbs/thumb_img_097.webp"
+    "size": "9.43 MB"
   },
   {
     "id": "img-098",
@@ -1568,9 +1568,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_098.jpg",
+    "thumb": "/thumbs/thumb_img_098.webp",
     "date": "2026",
-    "size": "9.6 MB",
-    "thumb": "/thumbs/thumb_img_098.webp"
+    "size": "9.6 MB"
   },
   {
     "id": "img-099",
@@ -1579,9 +1579,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_099.jpg",
+    "thumb": "/thumbs/thumb_img_099.webp",
     "date": "2026",
-    "size": "0.16 MB",
-    "thumb": "/thumbs/thumb_img_099.webp"
+    "size": "0.16 MB"
   },
   {
     "id": "img-100",
@@ -1590,9 +1590,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_100.jpg",
+    "thumb": "/thumbs/thumb_img_100.webp",
     "date": "2026",
-    "size": "0.28 MB",
-    "thumb": "/thumbs/thumb_img_100.webp"
+    "size": "0.28 MB"
   },
   {
     "id": "img-101",
@@ -1601,9 +1601,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_101.jpg",
+    "thumb": "/thumbs/thumb_img_101.webp",
     "date": "2026",
-    "size": "0.93 MB",
-    "thumb": "/thumbs/thumb_img_101.webp"
+    "size": "0.93 MB"
   },
   {
     "id": "img-102",
@@ -1612,9 +1612,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_102.jpg",
+    "thumb": "/thumbs/thumb_img_102.webp",
     "date": "2026",
-    "size": "0.22 MB",
-    "thumb": "/thumbs/thumb_img_102.webp"
+    "size": "0.22 MB"
   },
   {
     "id": "img-103",
@@ -1623,9 +1623,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_103.jpg",
+    "thumb": "/thumbs/thumb_img_103.webp",
     "date": "2026",
-    "size": "0.12 MB",
-    "thumb": "/thumbs/thumb_img_103.webp"
+    "size": "0.12 MB"
   },
   {
     "id": "img-104",
@@ -1634,9 +1634,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_104.jpg",
+    "thumb": "/thumbs/thumb_img_104.webp",
     "date": "2026",
-    "size": "0.87 MB",
-    "thumb": "/thumbs/thumb_img_104.webp"
+    "size": "0.87 MB"
   },
   {
     "id": "img-105",
@@ -1645,9 +1645,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_105.jpg",
+    "thumb": "/thumbs/thumb_img_105.webp",
     "date": "2026",
-    "size": "0.58 MB",
-    "thumb": "/thumbs/thumb_img_105.webp"
+    "size": "0.58 MB"
   },
   {
     "id": "img-106",
@@ -1656,9 +1656,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_106.jpg",
+    "thumb": "/thumbs/thumb_img_106.webp",
     "date": "2026",
-    "size": "0.77 MB",
-    "thumb": "/thumbs/thumb_img_106.webp"
+    "size": "0.77 MB"
   },
   {
     "id": "img-107",
@@ -1667,9 +1667,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_107.jpg",
+    "thumb": "/thumbs/thumb_img_107.webp",
     "date": "2026",
-    "size": "0.65 MB",
-    "thumb": "/thumbs/thumb_img_107.webp"
+    "size": "0.65 MB"
   },
   {
     "id": "img-108",
@@ -1678,9 +1678,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_108.jpg",
+    "thumb": "/thumbs/thumb_img_108.webp",
     "date": "2026",
-    "size": "0.68 MB",
-    "thumb": "/thumbs/thumb_img_108.webp"
+    "size": "0.68 MB"
   },
   {
     "id": "img-109",
@@ -1689,9 +1689,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_109.jpg",
+    "thumb": "/thumbs/thumb_img_109.webp",
     "date": "2026",
-    "size": "2.81 MB",
-    "thumb": "/thumbs/thumb_img_109.webp"
+    "size": "2.81 MB"
   },
   {
     "id": "img-110",
@@ -1700,9 +1700,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_110.jpg",
+    "thumb": "/thumbs/thumb_img_110.webp",
     "date": "2026",
-    "size": "2.61 MB",
-    "thumb": "/thumbs/thumb_img_110.webp"
+    "size": "2.61 MB"
   },
   {
     "id": "img-111",
@@ -1711,9 +1711,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_111.jpg",
+    "thumb": "/thumbs/thumb_img_111.webp",
     "date": "2026",
-    "size": "1.82 MB",
-    "thumb": "/thumbs/thumb_img_111.webp"
+    "size": "1.82 MB"
   },
   {
     "id": "img-112",
@@ -1722,9 +1722,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_112.jpg",
+    "thumb": "/thumbs/thumb_img_112.webp",
     "date": "2026",
-    "size": "0.15 MB",
-    "thumb": "/thumbs/thumb_img_112.webp"
+    "size": "0.15 MB"
   },
   {
     "id": "img-113",
@@ -1733,9 +1733,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_113.jpg",
+    "thumb": "/thumbs/thumb_img_113.webp",
     "date": "2026",
-    "size": "0.22 MB",
-    "thumb": "/thumbs/thumb_img_113.webp"
+    "size": "0.22 MB"
   },
   {
     "id": "img-114",
@@ -1744,9 +1744,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_114.jpg",
+    "thumb": "/thumbs/thumb_img_114.webp",
     "date": "2026",
-    "size": "0.47 MB",
-    "thumb": "/thumbs/thumb_img_114.webp"
+    "size": "0.47 MB"
   },
   {
     "id": "img-115",
@@ -1755,9 +1755,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_115.jpg",
+    "thumb": "/thumbs/thumb_img_115.webp",
     "date": "2026",
-    "size": "0.42 MB",
-    "thumb": "/thumbs/thumb_img_115.webp"
+    "size": "0.42 MB"
   },
   {
     "id": "img-116",
@@ -1766,9 +1766,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_116.jpg",
+    "thumb": "/thumbs/thumb_img_116.webp",
     "date": "2026",
-    "size": "0.37 MB",
-    "thumb": "/thumbs/thumb_img_116.webp"
+    "size": "0.37 MB"
   },
   {
     "id": "img-117",
@@ -1777,9 +1777,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_117.jpg",
+    "thumb": "/thumbs/thumb_img_117.webp",
     "date": "2026",
-    "size": "4.43 MB",
-    "thumb": "/thumbs/thumb_img_117.webp"
+    "size": "4.43 MB"
   },
   {
     "id": "img-118",
@@ -1788,9 +1788,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_118.jpg",
+    "thumb": "/thumbs/thumb_img_118.webp",
     "date": "2026",
-    "size": "2.61 MB",
-    "thumb": "/thumbs/thumb_img_118.webp"
+    "size": "2.61 MB"
   },
   {
     "id": "img-119",
@@ -1799,9 +1799,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_119.jpg",
+    "thumb": "/thumbs/thumb_img_119.webp",
     "date": "2026",
-    "size": "1.55 MB",
-    "thumb": "/thumbs/thumb_img_119.webp"
+    "size": "1.55 MB"
   },
   {
     "id": "img-120",
@@ -1810,9 +1810,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_120.jpg",
+    "thumb": "/thumbs/thumb_img_120.webp",
     "date": "2026",
-    "size": "1.52 MB",
-    "thumb": "/thumbs/thumb_img_120.webp"
+    "size": "1.52 MB"
   },
   {
     "id": "img-121",
@@ -1821,9 +1821,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_121.jpg",
+    "thumb": "/thumbs/thumb_img_121.webp",
     "date": "2026",
-    "size": "2.26 MB",
-    "thumb": "/thumbs/thumb_img_121.webp"
+    "size": "2.26 MB"
   },
   {
     "id": "img-122",
@@ -1832,9 +1832,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_122.jpg",
+    "thumb": "/thumbs/thumb_img_122.webp",
     "date": "2026",
-    "size": "3.42 MB",
-    "thumb": "/thumbs/thumb_img_122.webp"
+    "size": "3.42 MB"
   },
   {
     "id": "img-123",
@@ -1843,9 +1843,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_123.jpg",
+    "thumb": "/thumbs/thumb_img_123.webp",
     "date": "2026",
-    "size": "3.49 MB",
-    "thumb": "/thumbs/thumb_img_123.webp"
+    "size": "3.49 MB"
   },
   {
     "id": "img-124",
@@ -1854,9 +1854,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_124.jpg",
+    "thumb": "/thumbs/thumb_img_124.webp",
     "date": "2026",
-    "size": "2.89 MB",
-    "thumb": "/thumbs/thumb_img_124.webp"
+    "size": "2.89 MB"
   },
   {
     "id": "img-125",
@@ -1865,9 +1865,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_125.jpg",
+    "thumb": "/thumbs/thumb_img_125.webp",
     "date": "2026",
-    "size": "3.12 MB",
-    "thumb": "/thumbs/thumb_img_125.webp"
+    "size": "3.12 MB"
   },
   {
     "id": "img-126",
@@ -1876,9 +1876,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_126.jpg",
+    "thumb": "/thumbs/thumb_img_126.webp",
     "date": "2026",
-    "size": "2.56 MB",
-    "thumb": "/thumbs/thumb_img_126.webp"
+    "size": "2.56 MB"
   },
   {
     "id": "img-127",
@@ -1887,9 +1887,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_127.jpg",
+    "thumb": "/thumbs/thumb_img_127.webp",
     "date": "2026",
-    "size": "4.22 MB",
-    "thumb": "/thumbs/thumb_img_127.webp"
+    "size": "4.22 MB"
   },
   {
     "id": "img-128",
@@ -1898,9 +1898,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_128.jpg",
+    "thumb": "/thumbs/thumb_img_128.webp",
     "date": "2026",
-    "size": "3.92 MB",
-    "thumb": "/thumbs/thumb_img_128.webp"
+    "size": "3.92 MB"
   },
   {
     "id": "img-129",
@@ -1909,9 +1909,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_129.jpg",
+    "thumb": "/thumbs/thumb_img_129.webp",
     "date": "2026",
-    "size": "2.77 MB",
-    "thumb": "/thumbs/thumb_img_129.webp"
+    "size": "2.77 MB"
   },
   {
     "id": "img-130",
@@ -1920,9 +1920,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_130.jpg",
+    "thumb": "/thumbs/thumb_img_130.webp",
     "date": "2026",
-    "size": "3.18 MB",
-    "thumb": "/thumbs/thumb_img_130.webp"
+    "size": "3.18 MB"
   },
   {
     "id": "img-131",
@@ -1931,9 +1931,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_131.jpg",
+    "thumb": "/thumbs/thumb_img_131.webp",
     "date": "2026",
-    "size": "3.08 MB",
-    "thumb": "/thumbs/thumb_img_131.webp"
+    "size": "3.08 MB"
   },
   {
     "id": "img-132",
@@ -1942,9 +1942,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_132.jpg",
+    "thumb": "/thumbs/thumb_img_132.webp",
     "date": "2026",
-    "size": "3.96 MB",
-    "thumb": "/thumbs/thumb_img_132.webp"
+    "size": "3.96 MB"
   },
   {
     "id": "img-133",
@@ -1953,9 +1953,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_133.jpg",
+    "thumb": "/thumbs/thumb_img_133.webp",
     "date": "2026",
-    "size": "2.66 MB",
-    "thumb": "/thumbs/thumb_img_133.webp"
+    "size": "2.66 MB"
   },
   {
     "id": "img-134",
@@ -1964,9 +1964,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_134.jpg",
+    "thumb": "/thumbs/thumb_img_134.webp",
     "date": "2026",
-    "size": "2.25 MB",
-    "thumb": "/thumbs/thumb_img_134.webp"
+    "size": "2.25 MB"
   },
   {
     "id": "img-135",
@@ -1975,9 +1975,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_135.jpg",
+    "thumb": "/thumbs/thumb_img_135.webp",
     "date": "2026",
-    "size": "2.49 MB",
-    "thumb": "/thumbs/thumb_img_135.webp"
+    "size": "2.49 MB"
   },
   {
     "id": "img-136",
@@ -1986,9 +1986,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_136.jpg",
+    "thumb": "/thumbs/thumb_img_136.webp",
     "date": "2026",
-    "size": "2.5 MB",
-    "thumb": "/thumbs/thumb_img_136.webp"
+    "size": "2.5 MB"
   },
   {
     "id": "img-137",
@@ -1997,9 +1997,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_137.jpg",
+    "thumb": "/thumbs/thumb_img_137.webp",
     "date": "2026",
-    "size": "2.49 MB",
-    "thumb": "/thumbs/thumb_img_137.webp"
+    "size": "2.49 MB"
   },
   {
     "id": "img-138",
@@ -2008,9 +2008,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_138.jpg",
+    "thumb": "/thumbs/thumb_img_138.webp",
     "date": "2026",
-    "size": "2.08 MB",
-    "thumb": "/thumbs/thumb_img_138.webp"
+    "size": "2.08 MB"
   },
   {
     "id": "img-139",
@@ -2019,9 +2019,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_139.jpg",
+    "thumb": "/thumbs/thumb_img_139.webp",
     "date": "2026",
-    "size": "2.06 MB",
-    "thumb": "/thumbs/thumb_img_139.webp"
+    "size": "2.06 MB"
   },
   {
     "id": "img-140",
@@ -2030,9 +2030,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_140.jpg",
+    "thumb": "/thumbs/thumb_img_140.webp",
     "date": "2026",
-    "size": "2.39 MB",
-    "thumb": "/thumbs/thumb_img_140.webp"
+    "size": "2.39 MB"
   },
   {
     "id": "img-141",
@@ -2041,9 +2041,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_141.jpg",
+    "thumb": "/thumbs/thumb_img_141.webp",
     "date": "2026",
-    "size": "2.31 MB",
-    "thumb": "/thumbs/thumb_img_141.webp"
+    "size": "2.31 MB"
   },
   {
     "id": "img-142",
@@ -2052,9 +2052,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_142.jpg",
+    "thumb": "/thumbs/thumb_img_142.webp",
     "date": "2026",
-    "size": "1.62 MB",
-    "thumb": "/thumbs/thumb_img_142.webp"
+    "size": "1.62 MB"
   },
   {
     "id": "img-143",
@@ -2063,9 +2063,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_143.jpg",
+    "thumb": "/thumbs/thumb_img_143.webp",
     "date": "2026",
-    "size": "3.32 MB",
-    "thumb": "/thumbs/thumb_img_143.webp"
+    "size": "3.32 MB"
   },
   {
     "id": "img-144",
@@ -2074,9 +2074,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_144.jpg",
+    "thumb": "/thumbs/thumb_img_144.webp",
     "date": "2026",
-    "size": "3.02 MB",
-    "thumb": "/thumbs/thumb_img_144.webp"
+    "size": "3.02 MB"
   },
   {
     "id": "img-145",
@@ -2085,9 +2085,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_145.jpg",
+    "thumb": "/thumbs/thumb_img_145.webp",
     "date": "2026",
-    "size": "2.3 MB",
-    "thumb": "/thumbs/thumb_img_145.webp"
+    "size": "2.3 MB"
   },
   {
     "id": "img-146",
@@ -2096,9 +2096,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_146.jpg",
+    "thumb": "/thumbs/thumb_img_146.webp",
     "date": "2026",
-    "size": "2.32 MB",
-    "thumb": "/thumbs/thumb_img_146.webp"
+    "size": "2.32 MB"
   },
   {
     "id": "img-147",
@@ -2107,9 +2107,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_147.jpg",
+    "thumb": "/thumbs/thumb_img_147.webp",
     "date": "2026",
-    "size": "2.68 MB",
-    "thumb": "/thumbs/thumb_img_147.webp"
+    "size": "2.68 MB"
   },
   {
     "id": "img-148",
@@ -2118,9 +2118,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_148.jpg",
+    "thumb": "/thumbs/thumb_img_148.webp",
     "date": "2026",
-    "size": "2.06 MB",
-    "thumb": "/thumbs/thumb_img_148.webp"
+    "size": "2.06 MB"
   },
   {
     "id": "img-149",
@@ -2129,9 +2129,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_149.jpg",
+    "thumb": "/thumbs/thumb_img_149.webp",
     "date": "2026",
-    "size": "2.63 MB",
-    "thumb": "/thumbs/thumb_img_149.webp"
+    "size": "2.63 MB"
   },
   {
     "id": "img-150",
@@ -2140,9 +2140,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_150.jpg",
+    "thumb": "/thumbs/thumb_img_150.webp",
     "date": "2026",
-    "size": "2.51 MB",
-    "thumb": "/thumbs/thumb_img_150.webp"
+    "size": "2.51 MB"
   },
   {
     "id": "img-151",
@@ -2151,9 +2151,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_151.jpg",
+    "thumb": "/thumbs/thumb_img_151.webp",
     "date": "2026",
-    "size": "2.51 MB",
-    "thumb": "/thumbs/thumb_img_151.webp"
+    "size": "2.51 MB"
   },
   {
     "id": "img-152",
@@ -2162,9 +2162,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_152.jpg",
+    "thumb": "/thumbs/thumb_img_152.webp",
     "date": "2026",
-    "size": "2.48 MB",
-    "thumb": "/thumbs/thumb_img_152.webp"
+    "size": "2.48 MB"
   },
   {
     "id": "img-153",
@@ -2173,9 +2173,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_153.jpg",
+    "thumb": "/thumbs/thumb_img_153.webp",
     "date": "2026",
-    "size": "2.72 MB",
-    "thumb": "/thumbs/thumb_img_153.webp"
+    "size": "2.72 MB"
   },
   {
     "id": "img-154",
@@ -2184,9 +2184,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_154.jpg",
+    "thumb": "/thumbs/thumb_img_154.webp",
     "date": "2026",
-    "size": "2.16 MB",
-    "thumb": "/thumbs/thumb_img_154.webp"
+    "size": "2.16 MB"
   },
   {
     "id": "img-155",
@@ -2195,9 +2195,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_155.jpg",
+    "thumb": "/thumbs/thumb_img_155.webp",
     "date": "2026",
-    "size": "1.64 MB",
-    "thumb": "/thumbs/thumb_img_155.webp"
+    "size": "1.64 MB"
   },
   {
     "id": "img-156",
@@ -2206,9 +2206,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_156.jpg",
+    "thumb": "/thumbs/thumb_img_156.webp",
     "date": "2026",
-    "size": "2.8 MB",
-    "thumb": "/thumbs/thumb_img_156.webp"
+    "size": "2.8 MB"
   },
   {
     "id": "img-157",
@@ -2217,9 +2217,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_157.jpg",
+    "thumb": "/thumbs/thumb_img_157.webp",
     "date": "2026",
-    "size": "1.91 MB",
-    "thumb": "/thumbs/thumb_img_157.webp"
+    "size": "1.91 MB"
   },
   {
     "id": "img-158",
@@ -2228,9 +2228,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_158.jpg",
+    "thumb": "/thumbs/thumb_img_158.webp",
     "date": "2026",
-    "size": "2.14 MB",
-    "thumb": "/thumbs/thumb_img_158.webp"
+    "size": "2.14 MB"
   },
   {
     "id": "img-159",
@@ -2239,9 +2239,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_159.jpg",
+    "thumb": "/thumbs/thumb_img_159.webp",
     "date": "2026",
-    "size": "2.43 MB",
-    "thumb": "/thumbs/thumb_img_159.webp"
+    "size": "2.43 MB"
   },
   {
     "id": "img-160",
@@ -2250,9 +2250,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_160.jpg",
+    "thumb": "/thumbs/thumb_img_160.webp",
     "date": "2026",
-    "size": "2.47 MB",
-    "thumb": "/thumbs/thumb_img_160.webp"
+    "size": "2.47 MB"
   },
   {
     "id": "img-161",
@@ -2261,9 +2261,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_161.jpg",
+    "thumb": "/thumbs/thumb_img_161.webp",
     "date": "2026",
-    "size": "2.2 MB",
-    "thumb": "/thumbs/thumb_img_161.webp"
+    "size": "2.2 MB"
   },
   {
     "id": "img-162",
@@ -2272,9 +2272,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_162.jpg",
+    "thumb": "/thumbs/thumb_img_162.webp",
     "date": "2026",
-    "size": "2.03 MB",
-    "thumb": "/thumbs/thumb_img_162.webp"
+    "size": "2.03 MB"
   },
   {
     "id": "img-163",
@@ -2283,9 +2283,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_163.jpg",
+    "thumb": "/thumbs/thumb_img_163.webp",
     "date": "2026",
-    "size": "2.49 MB",
-    "thumb": "/thumbs/thumb_img_163.webp"
+    "size": "2.49 MB"
   },
   {
     "id": "img-164",
@@ -2294,9 +2294,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_164.jpg",
+    "thumb": "/thumbs/thumb_img_164.webp",
     "date": "2026",
-    "size": "2.91 MB",
-    "thumb": "/thumbs/thumb_img_164.webp"
+    "size": "2.91 MB"
   },
   {
     "id": "img-165",
@@ -2305,9 +2305,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_165.jpg",
+    "thumb": "/thumbs/thumb_img_165.webp",
     "date": "2026",
-    "size": "1.74 MB",
-    "thumb": "/thumbs/thumb_img_165.webp"
+    "size": "1.74 MB"
   },
   {
     "id": "img-166",
@@ -2316,9 +2316,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_166.jpg",
+    "thumb": "/thumbs/thumb_img_166.webp",
     "date": "2026",
-    "size": "1.48 MB",
-    "thumb": "/thumbs/thumb_img_166.webp"
+    "size": "1.48 MB"
   },
   {
     "id": "img-167",
@@ -2327,9 +2327,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_167.jpg",
+    "thumb": "/thumbs/thumb_img_167.webp",
     "date": "2026",
-    "size": "3.57 MB",
-    "thumb": "/thumbs/thumb_img_167.webp"
+    "size": "3.57 MB"
   },
   {
     "id": "img-168",
@@ -2338,9 +2338,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_168.jpg",
+    "thumb": "/thumbs/thumb_img_168.webp",
     "date": "2026",
-    "size": "1.68 MB",
-    "thumb": "/thumbs/thumb_img_168.webp"
+    "size": "1.68 MB"
   },
   {
     "id": "img-169",
@@ -2349,9 +2349,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_169.jpg",
+    "thumb": "/thumbs/thumb_img_169.webp",
     "date": "2026",
-    "size": "1.86 MB",
-    "thumb": "/thumbs/thumb_img_169.webp"
+    "size": "1.86 MB"
   },
   {
     "id": "img-170",
@@ -2360,9 +2360,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_170.jpg",
+    "thumb": "/thumbs/thumb_img_170.webp",
     "date": "2026",
-    "size": "3.04 MB",
-    "thumb": "/thumbs/thumb_img_170.webp"
+    "size": "3.04 MB"
   },
   {
     "id": "img-171",
@@ -2371,9 +2371,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_171.jpg",
+    "thumb": "/thumbs/thumb_img_171.webp",
     "date": "2026",
-    "size": "2.25 MB",
-    "thumb": "/thumbs/thumb_img_171.webp"
+    "size": "2.25 MB"
   },
   {
     "id": "img-172",
@@ -2382,9 +2382,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_172.jpg",
+    "thumb": "/thumbs/thumb_img_172.webp",
     "date": "2026",
-    "size": "2.41 MB",
-    "thumb": "/thumbs/thumb_img_172.webp"
+    "size": "2.41 MB"
   },
   {
     "id": "img-173",
@@ -2393,9 +2393,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_173.jpg",
+    "thumb": "/thumbs/thumb_img_173.webp",
     "date": "2026",
-    "size": "1.93 MB",
-    "thumb": "/thumbs/thumb_img_173.webp"
+    "size": "1.93 MB"
   },
   {
     "id": "img-174",
@@ -2404,9 +2404,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_174.jpg",
+    "thumb": "/thumbs/thumb_img_174.webp",
     "date": "2026",
-    "size": "1.26 MB",
-    "thumb": "/thumbs/thumb_img_174.webp"
+    "size": "1.26 MB"
   },
   {
     "id": "img-175",
@@ -2415,9 +2415,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_175.jpg",
+    "thumb": "/thumbs/thumb_img_175.webp",
     "date": "2026",
-    "size": "3.45 MB",
-    "thumb": "/thumbs/thumb_img_175.webp"
+    "size": "3.45 MB"
   },
   {
     "id": "img-176",
@@ -2426,9 +2426,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_176.jpg",
+    "thumb": "/thumbs/thumb_img_176.webp",
     "date": "2026",
-    "size": "1.51 MB",
-    "thumb": "/thumbs/thumb_img_176.webp"
+    "size": "1.51 MB"
   },
   {
     "id": "img-177",
@@ -2437,9 +2437,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_177.jpg",
+    "thumb": "/thumbs/thumb_img_177.webp",
     "date": "2026",
-    "size": "1.81 MB",
-    "thumb": "/thumbs/thumb_img_177.webp"
+    "size": "1.81 MB"
   },
   {
     "id": "img-178",
@@ -2448,9 +2448,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_178.jpg",
+    "thumb": "/thumbs/thumb_img_178.webp",
     "date": "2026",
-    "size": "1.7 MB",
-    "thumb": "/thumbs/thumb_img_178.webp"
+    "size": "1.7 MB"
   },
   {
     "id": "img-179",
@@ -2459,9 +2459,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_179.jpg",
+    "thumb": "/thumbs/thumb_img_179.webp",
     "date": "2026",
-    "size": "0.88 MB",
-    "thumb": "/thumbs/thumb_img_179.webp"
+    "size": "0.88 MB"
   },
   {
     "id": "img-180",
@@ -2470,9 +2470,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_180.jpg",
+    "thumb": "/thumbs/thumb_img_180.webp",
     "date": "2026",
-    "size": "0.44 MB",
-    "thumb": "/thumbs/thumb_img_180.webp"
+    "size": "0.44 MB"
   },
   {
     "id": "img-181",
@@ -2481,9 +2481,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_181.jpg",
+    "thumb": "/thumbs/thumb_img_181.webp",
     "date": "2026",
-    "size": "0.71 MB",
-    "thumb": "/thumbs/thumb_img_181.webp"
+    "size": "0.71 MB"
   },
   {
     "id": "img-182",
@@ -2492,9 +2492,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_182.jpg",
+    "thumb": "/thumbs/thumb_img_182.webp",
     "date": "2026",
-    "size": "0.13 MB",
-    "thumb": "/thumbs/thumb_img_182.webp"
+    "size": "0.13 MB"
   },
   {
     "id": "img-183",
@@ -2503,9 +2503,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_183.jpg",
+    "thumb": "/thumbs/thumb_img_183.webp",
     "date": "2026",
-    "size": "0.14 MB",
-    "thumb": "/thumbs/thumb_img_183.webp"
+    "size": "0.14 MB"
   },
   {
     "id": "img-184",
@@ -2514,9 +2514,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_184.jpg",
+    "thumb": "/thumbs/thumb_img_184.webp",
     "date": "2026",
-    "size": "0.12 MB",
-    "thumb": "/thumbs/thumb_img_184.webp"
+    "size": "0.12 MB"
   },
   {
     "id": "img-185",
@@ -2525,9 +2525,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_185.jpg",
+    "thumb": "/thumbs/thumb_img_185.webp",
     "date": "2026",
-    "size": "0.11 MB",
-    "thumb": "/thumbs/thumb_img_185.webp"
+    "size": "0.11 MB"
   },
   {
     "id": "img-186",
@@ -2536,9 +2536,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_186.jpg",
+    "thumb": "/thumbs/thumb_img_186.webp",
     "date": "2026",
-    "size": "0.12 MB",
-    "thumb": "/thumbs/thumb_img_186.webp"
+    "size": "0.12 MB"
   },
   {
     "id": "img-187",
@@ -2547,9 +2547,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_187.jpg",
+    "thumb": "/thumbs/thumb_img_187.webp",
     "date": "2026",
-    "size": "1.18 MB",
-    "thumb": "/thumbs/thumb_img_187.webp"
+    "size": "1.18 MB"
   },
   {
     "id": "img-188",
@@ -2558,9 +2558,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_188.jpg",
+    "thumb": "/thumbs/thumb_img_188.webp",
     "date": "2026",
-    "size": "0.46 MB",
-    "thumb": "/thumbs/thumb_img_188.webp"
+    "size": "0.46 MB"
   },
   {
     "id": "img-189",
@@ -2569,9 +2569,9 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_189.jpg",
+    "thumb": "/thumbs/thumb_img_189.webp",
     "date": "2026",
-    "size": "1 MB",
-    "thumb": "/thumbs/thumb_img_189.webp"
+    "size": "1.0 MB"
   },
   {
     "id": "img-190",
@@ -2580,8 +2580,8 @@ window.MEDIA_CATALOG = [
     "type": "photo",
     "category": "High-Res Photography",
     "url": "/@media/photos/FOTO_EKALL_190.jpg",
+    "thumb": "/thumbs/thumb_img_190.webp",
     "date": "2026",
-    "size": "0.57 MB",
-    "thumb": "/thumbs/thumb_img_190.webp"
+    "size": "0.57 MB"
   }
 ];

@@ -1,34 +1,21 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import { AnimatePresence } from 'framer-motion';
-import { initialMediaCatalog, galleryCategories } from './data/mediaCatalog';
-import { googleSheetsSync } from './utils/googleSheetsSync';
+import { initialMediaCatalog } from './data/mediaCatalog';
 import { soundEngine } from './utils/soundEngine';
 
-import { Navbar } from './components/Navbar';
-import { FilterBar } from './components/FilterBar';
-import { SpatialStage } from './components/SpatialStage';
-import { MasonryStage } from './components/MasonryStage';
+import { IntroOverlay } from './components/IntroOverlay';
+import { ScatteredCanvas } from './components/ScatteredCanvas';
+import { BottomNav } from './components/BottomNav';
 import { CinemaLightbox } from './components/CinemaLightbox';
 import { SyncModal } from './components/SyncModal';
-import { StatsFooter } from './components/StatsFooter';
-import { CinematicIntro } from './components/CinematicIntro';
 
 export function App() {
-  // 1. Media State with Local Storage fallback and Initial Catalog
-  const [mediaList, setMediaList] = useState(() => {
-    const saved = googleSheetsSync.getLocalStoredData();
-    if (saved && Array.isArray(saved) && saved.length > 0) {
-      return saved;
-    }
-    return initialMediaCatalog;
-  });
+  // 1. Media State
+  const [mediaList, setMediaList] = useState(initialMediaCatalog);
 
-  // 2. View, Intro & Filter State
-  const [hasEnteredIntro, setHasEnteredIntro] = useState(false);
-  const [viewMode, setViewMode] = useState('spatial'); // 'spatial' | 'masonry'
+  // 2. App State
+  const [hasEntered, setHasEntered] = useState(false);
   const [activeCategory, setActiveCategory] = useState('all');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [sortBy, setSortBy] = useState('default');
   const [selectedMedia, setSelectedMedia] = useState(null);
   const [isSyncModalOpen, setIsSyncModalOpen] = useState(false);
 
@@ -42,7 +29,6 @@ export function App() {
     }
   });
 
-  // Update likes
   const handleLike = (mediaId) => {
     soundEngine.playClick();
     setUserLikes((prev) => {
@@ -63,64 +49,22 @@ export function App() {
     );
   };
 
-  // 4. Filtered & Sorted Media
+  // 4. Filtered Media
   const filteredMedia = useMemo(() => {
     let result = [...mediaList];
 
-    // Category Filter
     if (activeCategory === 'photos') {
       result = result.filter((m) => m.type === 'image');
     } else if (activeCategory === 'videos') {
       result = result.filter((m) => m.type === 'video');
     } else if (activeCategory === 'featured') {
       result = result.filter((m) => m.featured);
-    } else if (activeCategory === 'edits') {
-      result = result.filter(
-        (m) =>
-          (m.category && (m.category.includes('Template') || m.category.includes('Motion'))) ||
-          (m.tags && m.tags.some((t) => t.toLowerCase().includes('edit') || t.toLowerCase().includes('template')))
-      );
-    } else if (activeCategory === 'street') {
-      result = result.filter(
-        (m) =>
-          (m.category && (m.category.includes('Street') || m.category.includes('Urban'))) ||
-          (m.tags && m.tags.some((t) => t.toLowerCase().includes('street')))
-      );
-    } else if (activeCategory === 'portrait') {
-      result = result.filter(
-        (m) =>
-          (m.category && m.category.includes('Portrait')) ||
-          (m.tags && m.tags.some((t) => t.toLowerCase().includes('portrait')))
-      );
-    }
-
-    // Search Query Filter
-    if (searchQuery.trim()) {
-      const q = searchQuery.toLowerCase().trim();
-      result = result.filter(
-        (m) =>
-          (m.title && m.title.toLowerCase().includes(q)) ||
-          (m.category && m.category.toLowerCase().includes(q)) ||
-          (m.camera && m.camera.toLowerCase().includes(q)) ||
-          (m.location && m.location.toLowerCase().includes(q)) ||
-          (m.story && m.story.toLowerCase().includes(q)) ||
-          (m.tags && m.tags.some((t) => t.toLowerCase().includes(q)))
-      );
-    }
-
-    // Sort
-    if (sortBy === 'featured') {
-      result.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
-    } else if (sortBy === 'likes') {
-      result.sort((a, b) => (b.likes || 0) - (a.likes || 0));
-    } else if (sortBy === 'views') {
-      result.sort((a, b) => (b.views || 0) - (a.views || 0));
     }
 
     return result;
-  }, [mediaList, activeCategory, searchQuery, sortBy]);
+  }, [mediaList, activeCategory]);
 
-  // Lightbox Navigation
+  // 5. Lightbox Navigation
   const currentLightboxIndex = useMemo(() => {
     if (!selectedMedia) return -1;
     return filteredMedia.findIndex((m) => m.id === selectedMedia.id);
@@ -142,74 +86,50 @@ export function App() {
     }
   };
 
-  const photoCount = useMemo(() => mediaList.filter((m) => m.type === 'image').length, [mediaList]);
-  const videoCount = useMemo(() => mediaList.filter((m) => m.type === 'video').length, [mediaList]);
+  // Sync Modal Shortcut: Ctrl+Shift+S
+  React.useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.ctrlKey && e.shiftKey && e.key === 'S') {
+        e.preventDefault();
+        setIsSyncModalOpen(true);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   return (
-    <div className="min-h-screen bg-[#070709] text-[#e6e5e5] relative selection:bg-sky-500/30 selection:text-white flex flex-col justify-between overflow-x-hidden">
+    <div className="w-full h-screen bg-[#050508] text-white/80 overflow-hidden select-none">
       
-      {/* Cinematic Intro Screen */}
+      {/* 1. Cinema Theater Opening Screen (Curtains + Dolby Bass Boom) */}
       <AnimatePresence>
-        {!hasEnteredIntro && (
-          <CinematicIntro
-            onEnter={() => setHasEnteredIntro(true)}
+        {!hasEntered && (
+          <IntroOverlay 
+            onEnter={() => setHasEntered(true)} 
             totalCount={mediaList.length}
           />
         )}
       </AnimatePresence>
 
-      {/* Top Navigation */}
-      <Navbar
-        viewMode={viewMode}
-        setViewMode={setViewMode}
-        totalCount={mediaList.length}
-        photoCount={photoCount}
-        videoCount={videoCount}
-        onOpenSync={() => setIsSyncModalOpen(true)}
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-      />
+      {/* 2. Main Cinema Gallery (Anti-Lag Virtualized Canvas & Mobile Feed) */}
+      {hasEntered && (
+        <>
+          <ScatteredCanvas
+            items={filteredMedia}
+            onSelect={(item) => setSelectedMedia(item)}
+          />
 
-      {/* Main Container */}
-      <main className="flex-1 pt-18">
-        
-        {/* Floating Filter Pills */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-1 pb-1">
-          <FilterBar
-            categories={galleryCategories}
+          {/* Bottom Floating Navigation */}
+          <BottomNav
             activeCategory={activeCategory}
-            setActiveCategory={setActiveCategory}
-            searchQuery={searchQuery}
-            setSearchQuery={setSearchQuery}
-            sortBy={sortBy}
-            setSortBy={setSortBy}
-            filteredCount={filteredMedia.length}
+            onFilterCategory={(cat) => setActiveCategory(cat)}
+            onOpenSync={() => setIsSyncModalOpen(true)}
+            totalCount={filteredMedia.length}
           />
-        </div>
+        </>
+      )}
 
-        {/* Dynamic Display Mode */}
-        {viewMode === 'spatial' ? (
-          <SpatialStage
-            items={filteredMedia}
-            onSelect={(item) => setSelectedMedia(item)}
-          />
-        ) : (
-          <MasonryStage
-            items={filteredMedia}
-            onSelect={(item) => setSelectedMedia(item)}
-          />
-        )}
-      </main>
-
-      {/* Footer & Metrics */}
-      <StatsFooter
-        totalCount={mediaList.length}
-        photoCount={photoCount}
-        videoCount={videoCount}
-        viewMode={viewMode}
-      />
-
-      {/* Fullscreen Instant Cinema Lightbox */}
+      {/* 3. Fullscreen Dolby Cinema Lightbox Player */}
       <AnimatePresence>
         {selectedMedia && (
           <CinemaLightbox
@@ -224,7 +144,7 @@ export function App() {
         )}
       </AnimatePresence>
 
-      {/* Google Sheets Sync Modal */}
+      {/* 4. Google Sheets Sync Modal */}
       <AnimatePresence>
         {isSyncModalOpen && (
           <SyncModal
@@ -235,7 +155,6 @@ export function App() {
           />
         )}
       </AnimatePresence>
-
     </div>
   );
 }

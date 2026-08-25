@@ -1218,3 +1218,248 @@ a, button, .clickable { cursor: pointer; }
 
   .modal-keys-hint { display: none; }
 }
+
+/* ==========================================================================
+   HAIKEL CINEMA THEATER INTRO OVERLAY & VIDEO PLAYER PRO STYLES
+   ========================================================================== */
+
+.intro-theater-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #050508;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  user-select: none;
+  transition: opacity 0.8s ease;
+}
+
+.intro-theater-overlay.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Projector Beam */
+.projector-ray-beam {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90vw;
+  max-width: 900px;
+  height: 85vh;
+  pointer-events: none;
+  opacity: 0.35;
+  background: conic-gradient(from 180deg at 50% 0%, rgba(56,189,248,0.25) 0deg, rgba(245,158,11,0.15) 15deg, transparent 35deg, transparent 325deg, rgba(245,158,11,0.15) 345deg, rgba(56,189,248,0.25) 360deg);
+  filter: blur(35px);
+}
+
+/* Velvet Theater Curtains */
+.curtain-panel {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  z-index: 40;
+  background: linear-gradient(to bottom, #100608 0%, #1e090d 50%, #280b12 100%);
+  box-shadow: 0 0 50px rgba(0,0,0,0.95);
+  transition: transform 1.6s cubic-bezier(0.76, 0, 0.24, 1), opacity 1.6s ease;
+  overflow: hidden;
+}
+
+.curtain-panel.left {
+  left: 0;
+  border-right: 1px solid rgba(245, 158, 11, 0.3);
+  transform-origin: left center;
+}
+
+.curtain-panel.right {
+  right: 0;
+  border-left: 1px solid rgba(245, 158, 11, 0.3);
+  transform-origin: right center;
+}
+
+.curtain-folds {
+  position: absolute;
+  inset: 0;
+  opacity: 0.45;
+  background: repeating-linear-gradient(90deg, rgba(0,0,0,0.85) 0px, rgba(0,0,0,0.85) 24px, rgba(255,255,255,0.06) 48px, rgba(0,0,0,0.85) 72px);
+}
+
+.intro-theater-overlay.curtains-open .curtain-panel.left {
+  transform: translateX(-100%) scaleX(0.8);
+  opacity: 0.1;
+}
+
+.intro-theater-overlay.curtains-open .curtain-panel.right {
+  transform: translateX(100%) scaleX(0.8);
+  opacity: 0.1;
+}
+
+/* Center Theater Card */
+.theater-center-card {
+  position: relative;
+  z-index: 50;
+  max-width: 540px;
+  width: 90%;
+  padding: 2.5rem 2rem;
+  border-radius: 28px;
+  background: rgba(8, 8, 12, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(24px);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.95);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+}
+
+.intro-theater-overlay.curtains-open .theater-center-card {
+  transform: scale(1.08);
+  opacity: 0;
+}
+
+.theater-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 1rem;
+  border-radius: 30px;
+  background: linear-gradient(90deg, rgba(245,158,11,0.15), rgba(56,189,248,0.15));
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  color: #fcd34d;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+}
+
+.theater-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  text-shadow: 0 0 40px rgba(255,255,255,0.4), 0 0 80px rgba(56,189,248,0.25);
+  line-height: 1.1;
+  margin-bottom: 0.6rem;
+}
+
+.theater-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  color: #cbd5e1;
+  text-transform: uppercase;
+  line-height: 1.6;
+  max-width: 420px;
+  margin-bottom: 1.8rem;
+}
+
+.theater-btn-main {
+  width: 100%;
+  max-width: 320px;
+  padding: 1.1rem 1.8rem;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+  color: #020204;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  box-shadow: 0 0 45px rgba(245, 158, 11, 0.45);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.theater-btn-main:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 65px rgba(245, 158, 11, 0.75);
+}
+
+.theater-btn-main:active {
+  transform: scale(0.96);
+}
+
+.theater-btn-silent {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.theater-btn-silent:hover {
+  color: #ffffff;
+}
+
+/* Floating Big Play Button for Video Player */
+.video-play-center-btn {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(2px);
+  cursor: pointer;
+  z-index: 15;
+  transition: all 0.3s ease;
+}
+
+.video-play-center-btn.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.play-circle-glow {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 45px rgba(245, 158, 11, 0.65);
+  transition: transform 0.2s ease;
+}
+
+.video-play-center-btn:hover .play-circle-glow {
+  transform: scale(1.1);
+}
+
+.play-circle-glow svg {
+  width: 32px;
+  height: 32px;
+  fill: #020204;
+  margin-left: 4px;
+}
+
+.play-btn-hint {
+  margin-top: 0.85rem;
+  padding: 0.3rem 0.9rem;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
