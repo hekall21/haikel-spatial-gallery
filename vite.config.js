@@ -16,6 +16,19 @@ function serveDriveMediaPlugin() {
           const rawUrl = req.url || '';
           const urlPath = decodeURIComponent(rawUrl.split('?')[0]);
 
+          // 0. Serve Thumbs
+          if (urlPath.startsWith('/thumbs/')) {
+            const relPath = urlPath.replace('/thumbs/', '');
+            const filePath = path.join(process.cwd(), 'thumbs', relPath);
+
+            if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
+              res.setHeader('Content-Type', 'image/webp');
+              res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+              fs.createReadStream(filePath).pipe(res);
+              return;
+            }
+          }
+
           // 1. Serve Photos
           if (urlPath.startsWith('/@media/photos/')) {
             const relPath = urlPath.replace('/@media/photos/', '');
@@ -37,7 +50,7 @@ function serveDriveMediaPlugin() {
             }
           }
 
-          // 2. Serve Videos with Optimized Range Request Streaming (Zero-Lag 1-2MB Chunks)
+          // 2. Serve Videos with Range Request streaming
           if (urlPath.startsWith('/@media/videos/')) {
             const relPath = urlPath.replace('/@media/videos/', '');
             const filePath = path.join(videoBaseDir, relPath);
@@ -50,10 +63,7 @@ function serveDriveMediaPlugin() {
               if (range) {
                 const parts = range.replace(/bytes=/, "").split("-");
                 const start = parseInt(parts[0], 10);
-                const maxChunk = 2 * 1024 * 1024; // 2MB max chunk for instant playback start
-                let end = parts[1] ? parseInt(parts[1], 10) : start + maxChunk - 1;
-                if (end >= fileSize) end = fileSize - 1;
-                if (end - start + 1 > maxChunk) end = start + maxChunk - 1;
+                const end = parts[1] ? parseInt(parts[1], 10) : fileSize - 1;
                 const chunkSize = (end - start) + 1;
 
                 res.writeHead(206, {
@@ -61,27 +71,20 @@ function serveDriveMediaPlugin() {
                   'Accept-Ranges': 'bytes',
                   'Content-Length': chunkSize,
                   'Content-Type': 'video/mp4',
-                  'Cache-Control': 'public, max-age=86400',
-                  'Access-Control-Allow-Origin': '*'
+                  'Cache-Control': 'no-cache'
                 });
 
                 const stream = fs.createReadStream(filePath, { start, end });
                 stream.pipe(res);
                 return;
               } else {
-                // Initial request - Send first 1.5MB for instant preview
-                const initialEnd = Math.min(1.5 * 1024 * 1024 - 1, fileSize - 1);
-                const chunkSize = initialEnd + 1;
-                res.writeHead(206, {
-                  'Content-Range': `bytes 0-${initialEnd}/${fileSize}`,
-                  'Content-Length': chunkSize,
+                res.writeHead(200, {
+                  'Content-Length': fileSize,
                   'Content-Type': 'video/mp4',
                   'Accept-Ranges': 'bytes',
-                  'Cache-Control': 'public, max-age=86400',
-                  'Access-Control-Allow-Origin': '*'
+                  'Cache-Control': 'public, max-age=86400'
                 });
-                const stream = fs.createReadStream(filePath, { start: 0, end: initialEnd });
-                stream.pipe(res);
+                fs.createReadStream(filePath).pipe(res);
                 return;
               }
             }
@@ -104,7 +107,6 @@ export default defineConfig({
   ],
   server: {
     port: 5173,
-    host: true,
-    allowedHosts: true
+    host: true
   }
 });

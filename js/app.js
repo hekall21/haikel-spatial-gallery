@@ -511,32 +511,21 @@ class HaikelSpatialArchive {
       if (item.type === 'video') {
         window.CinematicAudio?.playSubDrop();
         mediaContainer.innerHTML = `
-          <div class="video-player-wrapper" style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-            <div class="video-loading-spinner" id="vid-spinner" style="position: absolute; width: 44px; height: 44px; border: 3px solid rgba(56,189,248,0.2); border-top-color: #38bdf8; border-radius: 50%; animation: spin 0.8s linear infinite; pointer-events: none; z-index: 5;"></div>
-            <video id="modal-active-video"
-                   src="${item.url}"
-                   poster="${fallbackUrl}"
-                   controls
-                   autoplay
-                   playsinline
-                   preload="auto"
-                   style="max-width: 100%; max-height: 100%; border-radius: 12px; transform: translateZ(0); will-change: transform; cursor: pointer;"
-            ></video>
-          </div>
+          <video id="modal-active-video"
+                 src="${item.url}"
+                 poster="${fallbackUrl}"
+                 controls
+                 autoplay
+                 loop
+                 playsinline
+                 preload="auto"
+                 style="max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 12px; background: #000;"
+          ></video>
         `;
 
         const vid = mediaContainer.querySelector('video');
-        const spinner = document.getElementById('vid-spinner');
-
         if (vid) {
-          vid.addEventListener('canplay', () => {
-            if (spinner) spinner.style.display = 'none';
-          });
-          vid.addEventListener('playing', () => {
-            if (spinner) spinner.style.display = 'none';
-          });
-
-          // Bulletproof safe play
+          vid.load();
           const playPromise = vid.play();
           if (playPromise !== undefined) {
             playPromise.catch(() => {
@@ -545,14 +534,6 @@ class HaikelSpatialArchive {
               vid.play().catch(() => {});
             });
           }
-
-          vid.addEventListener('click', () => {
-            if (vid.paused) {
-              vid.play();
-            } else {
-              vid.pause();
-            }
-          });
         }
       } else {
         window.CinematicAudio?.playShutter();
