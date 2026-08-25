@@ -18,13 +18,13 @@ class PinnacleAudioEngine {
     this.ctx = new AudioContext();
 
     this.masterGain = this.ctx.createGain();
-    this.masterGain.gain.setValueAtTime(0.35, this.ctx.currentTime);
+    this.masterGain.gain.setValueAtTime(0.85, this.ctx.currentTime);
     this.masterGain.connect(this.ctx.destination);
 
     this.filterNode = this.ctx.createBiquadFilter();
     this.filterNode.type = 'lowpass';
-    this.filterNode.frequency.setValueAtTime(800, this.ctx.currentTime);
-    this.filterNode.Q.setValueAtTime(2.0, this.ctx.currentTime);
+    this.filterNode.frequency.setValueAtTime(1200, this.ctx.currentTime);
+    this.filterNode.Q.setValueAtTime(1.8, this.ctx.currentTime);
     this.filterNode.connect(this.masterGain);
 
     this.ambientGain = this.ctx.createGain();
@@ -47,25 +47,29 @@ class PinnacleAudioEngine {
 
   startAmbient() {
     if (this.isPlayingAmbient) return;
+    this.init();
+    if (this.ctx && this.ctx.state === 'suspended') {
+      this.ctx.resume();
+    }
     this.isPlayingAmbient = true;
 
-    // Rich cinematic chord (D minor 9: D2, A2, F3, C4, E4)
-    const frequencies = [73.42, 110.00, 174.61, 261.63, 329.63];
+    // Powerful, Rich Cinematic Chord (D minor 9: D1 Deep Sub, D2, A2, F3, C4, E4)
+    const frequencies = [36.71, 73.42, 110.00, 174.61, 261.63, 329.63];
     const now = this.ctx.currentTime;
 
     this.oscillators = frequencies.map((freq, i) => {
       const osc = this.ctx.createOscillator();
       const gain = this.ctx.createGain();
 
-      osc.type = i % 2 === 0 ? 'sine' : 'triangle';
+      osc.type = i === 0 ? 'sine' : (i % 2 === 0 ? 'sine' : 'triangle');
       osc.frequency.setValueAtTime(freq, now);
 
-      // Subtle detune for lush chorus warmth
-      osc.detune.setValueAtTime((Math.random() - 0.5) * 12, now);
+      // Warm analog chorus detune
+      osc.detune.setValueAtTime((Math.random() - 0.5) * 14, now);
 
-      const level = 0.18 / (i + 1);
+      const level = i === 0 ? 0.38 : (0.32 / (i * 0.8 + 0.8));
       gain.gain.setValueAtTime(0.0, now);
-      gain.gain.linearRampToValueAtTime(level, now + 3.0);
+      gain.gain.linearRampToValueAtTime(level, now + 1.2);
 
       osc.connect(gain);
       gain.connect(this.ambientGain);
@@ -74,7 +78,10 @@ class PinnacleAudioEngine {
     });
 
     this.ambientGain.gain.setValueAtTime(0.0, now);
-    this.ambientGain.gain.linearRampToValueAtTime(0.45, now + 2.5);
+    this.ambientGain.gain.linearRampToValueAtTime(0.85, now + 1.2);
+
+    const toggle = document.getElementById('audio-hud-toggle');
+    if (toggle) toggle.classList.add('playing');
   }
 
   stopAmbient() {

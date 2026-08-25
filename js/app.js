@@ -49,12 +49,31 @@ class HaikelSpatialArchive {
     this.renderMasonryGrid();
     this.initClock();
     this.startParallaxEngine();
+    this.initAutoAudio();
 
     // Debounced resize
     let resizeTimer;
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => this.renderSpaceCluster(), 150);
+    });
+  }
+
+  initAutoAudio() {
+    const unlockAudio = () => {
+      if (window.CinematicAudio) {
+        window.CinematicAudio.startAmbient();
+      }
+    };
+
+    // Try starting immediately on load
+    try {
+      window.CinematicAudio?.startAmbient();
+    } catch(e) {}
+
+    // Auto-unlock on first interaction anywhere
+    ['click', 'touchstart', 'keydown', 'wheel', 'pointerdown'].forEach(evt => {
+      document.addEventListener(evt, unlockAudio, { once: true, passive: true });
     });
   }
 
