@@ -1,6 +1,4 @@
 {
-  "version": 2,
-  "public": true,
   "cleanUrls": true,
   "headers": [
     {
@@ -11,10 +9,9 @@
       ]
     },
     {
-      "source": "/@media/(.*)",
+      "source": "/thumbs/(.*)",
       "headers": [
-        { "key": "Accept-Ranges", "value": "bytes" },
-        { "key": "Cache-Control", "value": "public, max-age=86400" }
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     }
   ]
