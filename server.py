@@ -75,14 +75,20 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
             range_header = self.headers.get('Range', None)
             content_type = mimetypes.guess_type(path)[0] or 'video/mp4'
 
+            max_chunk = 2 * 1024 * 1024  # 2MB max chunk for zero lag
+
             if not range_header:
-                self.send_response(200)
+                initial_end = min(1572863, file_size - 1)
+                length = initial_end + 1
+                self.send_response(206)
                 self.send_header('Content-Type', content_type)
-                self.send_header('Content-Length', str(file_size))
+                self.send_header('Content-Range', f'bytes 0-{initial_end}/{file_size}')
+                self.send_header('Content-Length', str(length))
                 self.send_header('Accept-Ranges', 'bytes')
+                self.send_header('Cache-Control', 'public, max-age=86400')
                 self.end_headers()
                 with open(path, 'rb') as f:
-                    self.copyfile(f, self.wfile)
+                    self.wfile.write(f.read(length))
                 return
 
             range_match = re.match(r'bytes=(\d+)-(\d*)', range_header)
@@ -91,8 +97,11 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
                 return
 
             start = int(range_match.group(1))
-            end = int(range_match.group(2)) if range_match.group(2) else file_size - 1
-            end = min(end, file_size - 1)
+            end = int(range_match.group(2)) if range_match.group(2) else start + max_chunk - 1
+            if end >= file_size:
+                end = file_size - 1
+            if end - start + 1 > max_chunk:
+                end = start + max_chunk - 1
             length = end - start + 1
 
             self.send_response(206)
@@ -100,19 +109,12 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
             self.send_header('Content-Range', f'bytes {start}-{end}/{file_size}')
             self.send_header('Content-Length', str(length))
             self.send_header('Accept-Ranges', 'bytes')
+            self.send_header('Cache-Control', 'public, max-age=86400')
             self.end_headers()
 
             with open(path, 'rb') as f:
                 f.seek(start)
-                chunk_size = 64 * 1024
-                bytes_left = length
-                while bytes_left > 0:
-                    read_len = min(chunk_size, bytes_left)
-                    data = f.read(read_len)
-                    if not data:
-                        break
-                    self.wfile.write(data)
-                    bytes_left -= len(data)
+                self.wfile.write(f.read(length))
         except Exception:
             pass
 

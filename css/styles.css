@@ -1018,6 +1018,13 @@ a, button, .clickable { cursor: pointer; }
   border-radius: 12px;
   box-shadow: 0 20px 70px rgba(0, 0, 0, 0.98);
   outline: none;
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
 .modal-nav-arrow {

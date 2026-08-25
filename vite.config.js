@@ -37,7 +37,7 @@ function serveDriveMediaPlugin() {
             }
           }
 
-          // 2. Serve Videos with Range Request streaming
+          // 2. Serve Videos with Optimized Range Request Streaming (Zero-Lag 1-2MB Chunks)
           if (urlPath.startsWith('/@media/videos/')) {
             const relPath = urlPath.replace('/@media/videos/', '');
             const filePath = path.join(videoBaseDir, relPath);
@@ -50,7 +50,10 @@ function serveDriveMediaPlugin() {
               if (range) {
                 const parts = range.replace(/bytes=/, "").split("-");
                 const start = parseInt(parts[0], 10);
-                const end = parts[1] ? parseInt(parts[1], 10) : fileSize - 1;
+                const maxChunk = 2 * 1024 * 1024; // 2MB max chunk for instant playback start
+                let end = parts[1] ? parseInt(parts[1], 10) : start + maxChunk - 1;
+                if (end >= fileSize) end = fileSize - 1;
+                if (end - start + 1 > maxChunk) end = start + maxChunk - 1;
                 const chunkSize = (end - start) + 1;
 
                 res.writeHead(206, {
@@ -58,20 +61,27 @@ function serveDriveMediaPlugin() {
                   'Accept-Ranges': 'bytes',
                   'Content-Length': chunkSize,
                   'Content-Type': 'video/mp4',
-                  'Cache-Control': 'no-cache'
+                  'Cache-Control': 'public, max-age=86400',
+                  'Access-Control-Allow-Origin': '*'
                 });
 
                 const stream = fs.createReadStream(filePath, { start, end });
                 stream.pipe(res);
                 return;
               } else {
-                res.writeHead(200, {
-                  'Content-Length': fileSize,
+                // Initial request - Send first 1.5MB for instant preview
+                const initialEnd = Math.min(1.5 * 1024 * 1024 - 1, fileSize - 1);
+                const chunkSize = initialEnd + 1;
+                res.writeHead(206, {
+                  'Content-Range': `bytes 0-${initialEnd}/${fileSize}`,
+                  'Content-Length': chunkSize,
                   'Content-Type': 'video/mp4',
                   'Accept-Ranges': 'bytes',
-                  'Cache-Control': 'public, max-age=86400'
+                  'Cache-Control': 'public, max-age=86400',
+                  'Access-Control-Allow-Origin': '*'
                 });
-                fs.createReadStream(filePath).pipe(res);
+                const stream = fs.createReadStream(filePath, { start: 0, end: initialEnd });
+                stream.pipe(res);
                 return;
               }
             }
@@ -94,6 +104,7 @@ export default defineConfig({
   ],
   server: {
     port: 5173,
-    host: true
+    host: true,
+    allowedHosts: true
   }
 });

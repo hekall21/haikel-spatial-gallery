@@ -485,16 +485,40 @@ class HaikelSpatialArchive {
     }
 
     if (mediaContainer) {
+      // Clean up previous video to free GPU decoder pipeline immediately
+      const oldVid = mediaContainer.querySelector('video');
+      if (oldVid) {
+        try {
+          oldVid.pause();
+          oldVid.removeAttribute('src');
+          oldVid.load();
+        } catch (e) {}
+      }
+
       const fallbackUrl = item.thumb || item.url;
       if (item.type === 'video') {
         window.CinematicAudio?.playSubDrop();
         mediaContainer.innerHTML = `
-          <video src="${item.url}" poster="${fallbackUrl}" controls autoplay loop playsinline preload="auto" onerror="this.outerHTML='<div class=\\'relative w-full h-full flex items-center justify-center\\'><img src=\\'${fallbackUrl}\\' class=\\'max-h-full max-w-full rounded-xl object-contain\\' /><div class=\\'absolute px-4 py-2 bg-black/80 rounded-xl text-sky-400 font-mono text-xs\\'>▶ VIDEO PREVIEW</div></div>'"></video>
+          <div class="video-player-wrapper" style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+            <div class="video-loading-spinner" id="vid-spinner" style="position: absolute; width: 44px; height: 44px; border: 3px solid rgba(56,189,248,0.2); border-top-color: #38bdf8; border-radius: 50%; animation: spin 0.8s linear infinite; pointer-events: none; z-index: 5;"></div>
+            <video id="modal-active-video"
+                   src="${item.url}"
+                   poster="${fallbackUrl}"
+                   controls
+                   autoplay
+                   loop
+                   playsinline
+                   preload="metadata"
+                   style="max-width: 100%; max-height: 100%; border-radius: 12px; transform: translateZ(0); will-change: transform; backface-visibility: hidden;"
+                   oncanplay="const s=document.getElementById('vid-spinner'); if(s) s.style.display='none';"
+                   onloadeddata="const s=document.getElementById('vid-spinner'); if(s) s.style.display='none';"
+                   onerror="this.parentElement.innerHTML='<div style=\\'position: relative; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;\\'><img src=\\'${fallbackUrl}\\' style=\\'max-height: 100%; max-width: 100%; border-radius: 12px; object-fit: contain;\\' /><div style=\\'position: absolute; bottom: 20px; padding: 6px 16px; background: rgba(0,0,0,0.85); border: 1px solid rgba(56,189,248,0.4); border-radius: 20px; color: #38bdf8; font-family: monospace; font-size: 11px; font-weight: bold;\\'>▶ VIDEO PREVIEW MASTER</div></div>'"></video>
+          </div>
         `;
       } else {
         window.CinematicAudio?.playShutter();
         mediaContainer.innerHTML = `
-          <img src="${item.url}" alt="${item.title}" decoding="async" onerror="this.src='${fallbackUrl}'" />
+          <img src="${item.url}" alt="${item.title}" decoding="async" style="transform: translateZ(0); will-change: transform;" onerror="this.src='${fallbackUrl}'" />
         `;
       }
     }
@@ -505,7 +529,17 @@ class HaikelSpatialArchive {
   closeCinemaModal() {
     const modal = document.getElementById('cinema-modal');
     const mediaContainer = document.getElementById('modal-media-container');
-    if (mediaContainer) mediaContainer.innerHTML = '';
+    if (mediaContainer) {
+      const vid = mediaContainer.querySelector('video');
+      if (vid) {
+        try {
+          vid.pause();
+          vid.removeAttribute('src');
+          vid.load();
+        } catch (e) {}
+      }
+      mediaContainer.innerHTML = '';
+    }
     modal?.classList.remove('active');
     window.CinematicAudio?.playUiClick();
   }
