@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>HAIKEL // 3D SPATIAL MEDIA ARCHIVE • PINNACLE EDITION</title>
+  
+  <!-- Favicon / Tab Logo -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=1">
+  <link rel="alternate icon" href="favicon.svg?v=1">
+  <link rel="apple-touch-icon" href="favicon.svg?v=1">
+  
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=JetBrains+Mono:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/styles.css?v=5">
+</head>
+<body>
+
+  <!-- Precision Custom Cursor -->
+  <div class="custom-cursor" id="custom-cursor">
+    <svg class="cursor-hand" viewBox="0 0 24 24">
+      <path d="M9 3v8.59l-2.3-2.3a1 1 0 0 0-1.41 1.41l4.59 4.6a2 2 0 0 0 2.83 0l6.59-6.6a1 1 0 0 0-1.41-1.41L15.5 9.59V3a1 1 0 0 0-2 0v5h-1V3a1 1 0 0 0-2 0v5h-1V3a1 1 0 0 0-2 0z"/>
+    </svg>
+  </div>
+  <div class="custom-cursor-follower" id="custom-cursor-follower"></div>
+
+  <!-- Cosmic Particle & Constellation Canvas -->
+  <canvas id="bg-canvas"></canvas>
+
+  <div id="app">
+
+    <!-- TOP HUD BAR (Sleek Glassmorphic Header) -->
+    <header class="hud-top-bar">
+      <div class="hud-brand">
+        <div class="brand-badge">
+          <span class="live-dot"></span>
+          <span class="brand-tag">3D SPATIAL UNIVERSE • PINNACLE</span>
+        </div>
+        <h1 class="brand-title">HAIKEL <span>ARCHIVE</span></h1>
+      </div>
+
+      <!-- Center Category Filter Pills -->
+      <div class="hud-filters" id="category-filters">
+        <button class="filter-btn active clickable" data-filter="all">
+          <span class="filter-label">ALL</span>
+          <span class="filter-count" id="count-all">235</span>
+        </button>
+        <button class="filter-btn clickable" data-filter="photo">
+          <span class="filter-label">📷 PHOTOS</span>
+          <span class="filter-count" id="count-photo">190</span>
+        </button>
+        <button class="filter-btn clickable" data-filter="video">
+          <span class="filter-label">▶ VIDEOS</span>
+          <span class="filter-count" id="count-video">45</span>
+        </button>
+      </div>
+
+      <!-- Right Mode Switcher & Tools -->
+      <div class="hud-right-actions">
+        <!-- Flythrough Auto Pilot Toggle -->
+        <button class="autopilot-btn clickable" id="btn-autopilot" title="Mode Terbang Otomatis Interaktif">
+          <span class="autopilot-icon">🛸</span>
+          <span class="autopilot-text">AUTO-ORBIT</span>
+        </button>
+
+        <div class="view-switch-group">
+          <button class="view-switch-btn active clickable" id="btn-view-space" title="Mode 3D Melayang">
+            <span>🌌 3D SPACE</span>
+          </button>
+          <button class="view-switch-btn clickable" id="btn-view-grid" title="Mode Galeri Grid">
+            <span>⊞ GRID VIEW</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN INTERACTIVE STAGES -->
+    <main class="main-stage">
+      
+      <!-- STAGE 1: 3D FLOATING SPATIAL UNIVERSE -->
+      <section class="stage-section active" id="stage-space">
+        <!-- 3D Viewport with Inertia Drag, Tilt & Hologram Lighting -->
+        <div class="space-viewport" id="space-viewport">
+          <div class="space-cluster" id="space-cluster"></div>
+        </div>
+
+        <!-- Center Focus Overlay (Dynamic Active Card Details) -->
+        <div class="space-center-hud" id="space-center-hud">
+          <div class="focus-meta">
+            <span class="focus-badge" id="focus-badge">📷 HIGH RESOLUTION PHOTO</span>
+            <h2 class="focus-title" id="focus-title">FOTO EKALL 001</h2>
+            <p class="focus-desc" id="focus-desc">KLIK KARTU ATAU TOMBOL DI BAWAH UNTUK MEMBUKA LAYAR PENUH</p>
+          </div>
+
+          <div class="focus-actions">
+            <button class="glow-action-btn clickable" id="btn-open-active-lightbox">
+              <span class="btn-icon">🔍</span>
+              <span>BUKA LAYAR PENUH</span>
+              <span class="btn-arrow">↗</span>
+            </button>
+            <button class="sub-action-btn clickable" id="btn-shuffle-space">
+              <span>🔄 ACAK 3D CLUSTER</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- View Angle Camera Presets -->
+        <div class="camera-presets-dock">
+          <button class="preset-pill active clickable" data-cam="default">STANDAR</button>
+          <button class="preset-pill clickable" data-cam="wide">WIDE ORBIT</button>
+          <button class="preset-pill clickable" data-cam="top">TOP PERSPECTIVE</button>
+        </div>
+
+        <!-- Navigation Orbit Hint -->
+        <div class="orbit-hint">
+          <span>DRAG MOUSE / SWIPE UNTUK MENJELAJAHI RUANG 3D • KLIK FOTO/VIDEO UNTUK ZOOM</span>
+        </div>
+      </section>
+
+      <!-- STAGE 2: HIGH-PERFORMANCE MASONRY GRID VIEW -->
+      <section class="stage-section" id="stage-grid">
+        <div class="grid-header">
+          <div class="grid-title-wrap">
+            <span class="mono-tag">KATALOG LENGKAP</span>
+            <h2 class="grid-main-heading">SEMUA FOTO & VIDEO (<span id="grid-item-count">235</span>)</h2>
+          </div>
+          <div class="grid-search-wrap">
+            <input type="text" class="hud-search-input" id="grid-search-input" placeholder="🔍 Cari foto atau video..." />
+          </div>
+        </div>
+
+        <div class="masonry-grid" id="masonry-grid"></div>
+      </section>
+
+    </main>
+
+    <!-- BOTTOM HUD DOCK (Clean, Minimalist & Modern) -->
+    <footer class="hud-bottom-dock">
+      <!-- Left: Realtime WIB Clock & Status -->
+      <div class="dock-left">
+        <div class="status-indicator">
+          <span class="pulse-dot"></span>
+          <span class="status-text">PINNACLE EDITION</span>
+        </div>
+        <span class="clock-display" id="studio-clock">--:--:-- WIB</span>
+      </div>
+
+      <!-- Center: Quick Counter Indicator -->
+      <div class="dock-center">
+        <span class="dock-counter-text" id="dock-counter-text">235 KARYA SIAP DITAMPILKAN</span>
+      </div>
+
+      <!-- Right: Synthesizer Ambient Sound Controller -->
+      <div class="dock-right">
+        <div class="audio-hud-toggle clickable" id="audio-hud-toggle" title="Nyalakan / Matikan Suara Ambient Sinematik">
+          <div class="speaker-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="speaker-svg">
+              <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+            </svg>
+          </div>
+          <span class="audio-label">CINEMA SOUND</span>
+          <div class="audio-bars">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ULTRA-CLEAN CINEMA LIGHTBOX (CLICK ANY CARD TO PLAY / VIEW) -->
+    <div class="cinema-modal" id="cinema-modal">
+      <div class="modal-backdrop" id="modal-backdrop"></div>
+      <div class="modal-ambient-glow" id="modal-ambient-glow"></div>
+      
+      <div class="modal-window">
+        <!-- Modal Top Bar -->
+        <div class="modal-top-bar">
+          <div class="modal-info-group">
+            <span class="modal-type-tag" id="modal-type-tag">📷 PHOTO</span>
+            <h3 class="modal-title" id="modal-title">FOTO EKALL 001</h3>
+            <span class="modal-counter-tag" id="modal-counter-tag">1 / 235</span>
+          </div>
+
+          <div class="modal-action-group">
+            <a href="#" class="modal-action-btn download clickable" id="modal-download-btn" download target="_blank">
+              📥 UNDUH ASLI
+            </a>
+            <button class="modal-action-btn close clickable" id="modal-close-btn" title="Tutup (ESC)">✕</button>
+          </div>
+        </div>
+
+        <!-- Modal Media Frame -->
+        <div class="modal-media-stage">
+          <button class="modal-nav-arrow prev clickable" id="modal-prev-btn" title="Sebelumnya (←)">‹</button>
+          
+          <div class="modal-media-container" id="modal-media-container">
+            <!-- Image or Video Player with audio auto-injected -->
+          </div>
+
+          <button class="modal-nav-arrow next clickable" id="modal-next-btn" title="Berikutnya (→)">›</button>
+        </div>
+
+        <!-- Modal Bottom Status -->
+        <div class="modal-bottom-bar">
+          <div class="modal-meta-specs" id="modal-meta-specs">
+            <span>Ukuran: <strong id="modal-size-val">--</strong></span>
+            <span>•</span>
+            <span>Tahun: <strong id="modal-year-val">2026</strong></span>
+            <span>•</span>
+            <span>Format: <strong id="modal-format-val">Master Ultra HD</strong></span>
+          </div>
+          <div class="modal-keys-hint">
+            Gunakan tombol <strong>← / →</strong> pada keyboard atau swipe untuk berpindah media
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/catalog.js?v=5"></script>
+  <script src="js/audio.js?v=5"></script>
+  <script src="js/app.js?v=5"></script>
+</body>
+</html>

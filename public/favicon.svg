@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <rect width="100" height="100" rx="28" fill="#0E0E11"/>
+  <rect x="2" y="2" width="96" height="96" rx="26" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+  <text x="36" y="66" font-family="Georgia, serif" font-size="44" font-weight="bold" fill="#FFFFFF">H</text>
+  <path d="M68 34L71 42L79 45L71 48L68 56L65 48L57 45L65 42Z" fill="#F59E0B"/>
+</svg>
