@@ -1,6 +1,6 @@
 /* ==========================================================================
-   HAIKEL SPATIAL ARCHIVE — PINNACLE CINEMA & SOUNDSCAPE ENGINE
-   Dolby Atmos & THX Deep Sub Acoustics • Dynamic Limiter Compressor
+   HAIKEL SPATIAL ARCHIVE — PINNACLE SOUND & SYNTHESIS ENGINE
+   Dolby Atmos Grade Cinema Acoustics & Dynamic Bass Compressor
    ========================================================================== */
 
 class PinnacleAudioEngine {
@@ -20,10 +20,10 @@ class PinnacleAudioEngine {
     if (!AudioContextClass) return;
     this.ctx = new AudioContextClass();
 
-    // Master Dynamic Compressor for Punchy Cinema Theater Sound
+    // Master Compressor to boost loudness and prevent distortion
     this.compressor = this.ctx.createDynamicsCompressor();
-    this.compressor.threshold.setValueAtTime(-18, this.ctx.currentTime);
-    this.compressor.knee.setValueAtTime(12, this.ctx.currentTime);
+    this.compressor.threshold.setValueAtTime(-16, this.ctx.currentTime);
+    this.compressor.knee.setValueAtTime(10, this.ctx.currentTime);
     this.compressor.ratio.setValueAtTime(4, this.ctx.currentTime);
     this.compressor.attack.setValueAtTime(0.003, this.ctx.currentTime);
     this.compressor.release.setValueAtTime(0.25, this.ctx.currentTime);
@@ -63,78 +63,6 @@ class PinnacleAudioEngine {
     }
   }
 
-  // 1. Dolby / IMAX Style Iconic Cinema Opening Boom ("BWWOOOMMM")
-  playCinemaBoom() {
-    try {
-      this.init();
-      if (this.ctx && this.ctx.state === 'suspended') this.ctx.resume();
-      const now = this.ctx.currentTime;
-      const dest = this.getDestination();
-
-      // Deep Sub Drop (32Hz -> 75Hz -> 38Hz)
-      const subOsc = this.ctx.createOscillator();
-      const subGain = this.ctx.createGain();
-      subOsc.type = 'sine';
-      subOsc.frequency.setValueAtTime(32, now);
-      subOsc.frequency.exponentialRampToValueAtTime(75, now + 0.6);
-      subOsc.frequency.exponentialRampToValueAtTime(38, now + 2.8);
-
-      subGain.gain.setValueAtTime(0.001, now);
-      subGain.gain.linearRampToValueAtTime(0.75, now + 0.4);
-      subGain.gain.exponentialRampToValueAtTime(0.0001, now + 3.2);
-
-      subOsc.connect(subGain);
-      subGain.connect(dest);
-      subOsc.start(now);
-      subOsc.stop(now + 3.3);
-
-      // Low-Mid Harmonic Swell
-      const midOsc = this.ctx.createOscillator();
-      const midGain = this.ctx.createGain();
-      const midFilter = this.ctx.createBiquadFilter();
-
-      midOsc.type = 'triangle';
-      midOsc.frequency.setValueAtTime(65, now);
-      midOsc.frequency.exponentialRampToValueAtTime(130, now + 0.8);
-      midOsc.frequency.exponentialRampToValueAtTime(82, now + 2.6);
-
-      midFilter.type = 'lowpass';
-      midFilter.frequency.setValueAtTime(180, now);
-      midFilter.frequency.exponentialRampToValueAtTime(600, now + 0.7);
-      midFilter.frequency.exponentialRampToValueAtTime(120, now + 2.8);
-
-      midGain.gain.setValueAtTime(0.001, now);
-      midGain.gain.linearRampToValueAtTime(0.5, now + 0.5);
-      midGain.gain.exponentialRampToValueAtTime(0.0001, now + 2.9);
-
-      midOsc.connect(midFilter);
-      midFilter.connect(midGain);
-      midGain.connect(dest);
-      midOsc.start(now);
-      midOsc.stop(now + 3.0);
-
-      // Shimmering High Harmonic Chime
-      [440, 659.25, 880, 1318.5].forEach((freq, i) => {
-        const chimeOsc = this.ctx.createOscillator();
-        const chimeGain = this.ctx.createGain();
-        chimeOsc.type = 'sine';
-        chimeOsc.frequency.setValueAtTime(freq, now + 0.2 + i * 0.08);
-
-        chimeGain.gain.setValueAtTime(0.0001, now + 0.2 + i * 0.08);
-        chimeGain.gain.linearRampToValueAtTime(0.16, now + 0.35 + i * 0.08);
-        chimeGain.gain.exponentialRampToValueAtTime(0.0001, now + 2.4 + i * 0.08);
-
-        chimeOsc.connect(chimeGain);
-        chimeGain.connect(dest);
-        chimeOsc.start(now + 0.2 + i * 0.08);
-        chimeOsc.stop(now + 2.5 + i * 0.08);
-      });
-    } catch (e) {
-      console.warn('[Audio] playCinemaBoom error', e);
-    }
-  }
-
-  // 2. Continuous Cinema Ambience Drone
   startAmbient() {
     if (this.isPlayingAmbient) return;
     this.init();
@@ -143,8 +71,8 @@ class PinnacleAudioEngine {
     }
     this.isPlayingAmbient = true;
 
-    // Powerful, Rich D-Minor Triad & Sub (Hans Zimmer Style)
-    const frequencies = [36.71, 73.42, 110.00, 146.83, 174.61, 220.00];
+    // Powerful, Rich Cinematic Drone (Hans Zimmer D-Minor Chord with Warm Analog Detune)
+    const frequencies = [36.71, 73.42, 110.00, 146.83, 174.61, 261.63, 329.63];
     const now = this.ctx.currentTime;
 
     this.oscillators = frequencies.map((freq, i) => {
@@ -153,11 +81,13 @@ class PinnacleAudioEngine {
 
       osc.type = i === 0 ? 'sine' : (i % 2 === 0 ? 'sine' : 'triangle');
       osc.frequency.setValueAtTime(freq, now);
-      osc.detune.setValueAtTime((Math.random() - 0.5) * 12, now);
+
+      // Warm analog chorus detune
+      osc.detune.setValueAtTime((Math.random() - 0.5) * 14, now);
 
       const level = i === 0 ? 0.45 : (0.35 / (i * 0.7 + 0.8));
       gain.gain.setValueAtTime(0.0, now);
-      gain.gain.linearRampToValueAtTime(level, now + 1.5);
+      gain.gain.linearRampToValueAtTime(level, now + 1.2);
 
       osc.connect(gain);
       gain.connect(this.ambientGain);
@@ -166,7 +96,7 @@ class PinnacleAudioEngine {
     });
 
     this.ambientGain.gain.setValueAtTime(0.0, now);
-    this.ambientGain.gain.linearRampToValueAtTime(0.9, now + 1.5);
+    this.ambientGain.gain.linearRampToValueAtTime(0.95, now + 1.2);
 
     const toggle = document.getElementById('audio-hud-toggle');
     if (toggle) toggle.classList.add('playing');
@@ -184,8 +114,12 @@ class PinnacleAudioEngine {
       this.oscillators = [];
       this.isPlayingAmbient = false;
     }, 1200);
+
+    const toggle = document.getElementById('audio-hud-toggle');
+    if (toggle) toggle.classList.remove('playing');
   }
 
+  // Modulate filter cutoff on mouse/touch motion
   modulateFilter(normY) {
     if (!this.ctx || !this.filterNode) return;
     const targetFreq = 400 + (1.0 - normY) * 1600;
@@ -196,7 +130,7 @@ class PinnacleAudioEngine {
   playUiClick() {
     try {
       this.init();
-      if (this.ctx.state === 'suspended') this.ctx.resume();
+      if (this.ctx && this.ctx.state === 'suspended') this.ctx.resume();
 
       const now = this.ctx.currentTime;
       const osc = this.ctx.createOscillator();
@@ -206,7 +140,7 @@ class PinnacleAudioEngine {
       osc.frequency.setValueAtTime(1400, now);
       osc.frequency.exponentialRampToValueAtTime(400, now + 0.06);
 
-      gain.gain.setValueAtTime(0.2, now);
+      gain.gain.setValueAtTime(0.18, now);
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
 
       osc.connect(gain);
@@ -220,7 +154,7 @@ class PinnacleAudioEngine {
   playWarp() {
     try {
       this.init();
-      if (this.ctx.state === 'suspended') this.ctx.resume();
+      if (this.ctx && this.ctx.state === 'suspended') this.ctx.resume();
 
       const now = this.ctx.currentTime;
       const osc = this.ctx.createOscillator();
@@ -246,7 +180,7 @@ class PinnacleAudioEngine {
   playShutter() {
     try {
       this.init();
-      if (this.ctx.state === 'suspended') this.ctx.resume();
+      if (this.ctx && this.ctx.state === 'suspended') this.ctx.resume();
 
       const now = this.ctx.currentTime;
       const osc = this.ctx.createOscillator();
@@ -256,7 +190,7 @@ class PinnacleAudioEngine {
       osc.frequency.setValueAtTime(2200, now);
       osc.frequency.exponentialRampToValueAtTime(300, now + 0.04);
 
-      gain.gain.setValueAtTime(0.28, now);
+      gain.gain.setValueAtTime(0.25, now);
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
 
       osc.connect(gain);
@@ -270,7 +204,7 @@ class PinnacleAudioEngine {
   playSubDrop() {
     try {
       this.init();
-      if (this.ctx.state === 'suspended') this.ctx.resume();
+      if (this.ctx && this.ctx.state === 'suspended') this.ctx.resume();
 
       const now = this.ctx.currentTime;
       const osc = this.ctx.createOscillator();
@@ -278,9 +212,9 @@ class PinnacleAudioEngine {
 
       osc.type = 'sine';
       osc.frequency.setValueAtTime(160, now);
-      osc.frequency.exponentialRampToValueAtTime(38, now + 0.6);
+      osc.frequency.exponentialRampToValueAtTime(35, now + 0.6);
 
-      gain.gain.setValueAtTime(0.45, now);
+      gain.gain.setValueAtTime(0.42, now);
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.7);
 
       osc.connect(gain);

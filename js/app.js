@@ -66,11 +66,6 @@ class HaikelSpatialArchive {
       }
     };
 
-    // Try starting immediately on load
-    try {
-      window.CinematicAudio?.startAmbient();
-    } catch(e) {}
-
     // Auto-unlock on first interaction anywhere
     ['click', 'touchstart', 'keydown', 'wheel', 'pointerdown'].forEach(evt => {
       document.addEventListener(evt, unlockAudio, { once: true, passive: true });
@@ -95,53 +90,6 @@ class HaikelSpatialArchive {
   }
 
   initEvents() {
-    // Theater Intro Opening (Foolproof: Click button, click anywhere, or press Enter/Space)
-    const theaterOverlay = document.getElementById('intro-theater-overlay');
-    const btnEnterTheater = document.getElementById('btn-enter-theater');
-    const btnEnterSilent = document.getElementById('btn-enter-silent');
-
-    let hasEnteredTheater = false;
-    const enterTheater = (withSound = true) => {
-      if (hasEnteredTheater) return;
-      hasEnteredTheater = true;
-
-      if (withSound) {
-        try { window.CinematicAudio?.playCinemaBoom(); } catch(e) {}
-        theaterOverlay?.classList.add('curtains-open');
-        setTimeout(() => {
-          try { window.CinematicAudio?.startAmbient(); } catch(e) {}
-        }, 1000);
-      } else {
-        try { window.CinematicAudio?.playUiClick(); } catch(e) {}
-        theaterOverlay?.classList.add('curtains-open');
-      }
-
-      setTimeout(() => {
-        theaterOverlay?.classList.add('fade-out');
-        setTimeout(() => theaterOverlay?.remove(), 600);
-      }, withSound ? 1200 : 800);
-    };
-
-    btnEnterTheater?.addEventListener('click', (e) => {
-      e.stopPropagation();
-      enterTheater(true);
-    });
-
-    btnEnterSilent?.addEventListener('click', (e) => {
-      e.stopPropagation();
-      enterTheater(false);
-    });
-
-    theaterOverlay?.addEventListener('click', () => {
-      enterTheater(true);
-    });
-
-    window.addEventListener('keydown', (e) => {
-      if (theaterOverlay && !hasEnteredTheater && (e.key === ' ' || e.key === 'Enter')) {
-        enterTheater(true);
-      }
-    });
-
     // Stage Mode Switcher (3D SPACE vs GRID VIEW)
     const btnSpace = document.getElementById('btn-view-space');
     const btnGrid = document.getElementById('btn-view-grid');
@@ -376,7 +324,6 @@ class HaikelSpatialArchive {
       const scaledZ = Math.round(c.z * scale);
       const isActive = idx === 0;
 
-      // Use WebP thumbnail for ultra-speed
       const thumbUrl = item.thumb || item.url;
 
       return `
@@ -494,7 +441,6 @@ class HaikelSpatialArchive {
     const countEl = document.getElementById('grid-item-count');
     if (countEl) countEl.textContent = items.length;
 
-    // Use WebP thumbnail for all 235 cards (super lightweight 25KB each)
     this.masonryGrid.innerHTML = items.map((item) => {
       const thumbUrl = item.thumb || item.url;
 
@@ -521,7 +467,7 @@ class HaikelSpatialArchive {
     });
   }
 
-  // 3. ULTRA CINEMA LIGHTBOX (Streams Original Master High-Res Video / Photo)
+  // 3. ULTRA CINEMA LIGHTBOX (Streams Video / Photo with Bulletproof Playback)
   openCinemaModal(item) {
     if (!item) return;
     this.currentModalItem = item;
@@ -551,7 +497,7 @@ class HaikelSpatialArchive {
     }
 
     if (mediaContainer) {
-      // Clean up previous video to free GPU decoder pipeline immediately
+      // Clean up previous video immediately
       const oldVid = mediaContainer.querySelector('video');
       if (oldVid) {
         try {
@@ -567,38 +513,20 @@ class HaikelSpatialArchive {
         mediaContainer.innerHTML = `
           <div class="video-player-wrapper" style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
             <div class="video-loading-spinner" id="vid-spinner" style="position: absolute; width: 44px; height: 44px; border: 3px solid rgba(56,189,248,0.2); border-top-color: #38bdf8; border-radius: 50%; animation: spin 0.8s linear infinite; pointer-events: none; z-index: 5;"></div>
-            
-            <div class="video-play-center-btn" id="modal-vid-play-btn">
-              <div class="play-circle-glow">
-                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-              </div>
-              <span class="play-btn-hint">KLIK UNTUK MEMUTAR 4K REEL</span>
-            </div>
-
             <video id="modal-active-video"
                    src="${item.url}"
                    poster="${fallbackUrl}"
                    controls
                    autoplay
-                   loop
                    playsinline
-                   preload="metadata"
-                   style="max-width: 100%; max-height: 100%; border-radius: 12px; transform: translateZ(0); will-change: transform; backface-visibility: hidden; cursor: pointer;"
+                   preload="auto"
+                   style="max-width: 100%; max-height: 100%; border-radius: 12px; transform: translateZ(0); will-change: transform; cursor: pointer;"
             ></video>
           </div>
         `;
 
         const vid = mediaContainer.querySelector('video');
         const spinner = document.getElementById('vid-spinner');
-        const playBtn = document.getElementById('modal-vid-play-btn');
-
-        const hidePlayOverlay = () => {
-          playBtn?.classList.add('hidden');
-        };
-
-        const showPlayOverlay = () => {
-          playBtn?.classList.remove('hidden');
-        };
 
         if (vid) {
           vid.addEventListener('canplay', () => {
@@ -606,40 +534,21 @@ class HaikelSpatialArchive {
           });
           vid.addEventListener('playing', () => {
             if (spinner) spinner.style.display = 'none';
-            hidePlayOverlay();
           });
-          vid.addEventListener('pause', showPlayOverlay);
-          vid.addEventListener('ended', showPlayOverlay);
 
-          // Attempt safe play
-          const promise = vid.play();
-          if (promise !== undefined) {
-            promise.then(() => {
-              hidePlayOverlay();
-            }).catch(() => {
-              // Autoplay with sound blocked -> fallback to muted autoplay
+          // Bulletproof safe play
+          const playPromise = vid.play();
+          if (playPromise !== undefined) {
+            playPromise.catch(() => {
+              // If browser blocked unmuted sound on autoplay -> fallback to muted
               vid.muted = true;
-              vid.play().then(() => {
-                hidePlayOverlay();
-              }).catch(() => {
-                showPlayOverlay();
-              });
+              vid.play().catch(() => {});
             });
           }
 
-          // User Click / Tap to Play
-          playBtn?.addEventListener('click', (e) => {
-            e.stopPropagation();
-            vid.muted = false;
-            vid.play().then(hidePlayOverlay).catch(() => {
-              vid.muted = true;
-              vid.play().then(hidePlayOverlay);
-            });
-          });
-
           vid.addEventListener('click', () => {
             if (vid.paused) {
-              vid.play().then(hidePlayOverlay);
+              vid.play();
             } else {
               vid.pause();
             }
