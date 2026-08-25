@@ -95,30 +95,51 @@ class HaikelSpatialArchive {
   }
 
   initEvents() {
-    // Theater Intro Opening
+    // Theater Intro Opening (Foolproof: Click button, click anywhere, or press Enter/Space)
     const theaterOverlay = document.getElementById('intro-theater-overlay');
     const btnEnterTheater = document.getElementById('btn-enter-theater');
     const btnEnterSilent = document.getElementById('btn-enter-silent');
 
-    btnEnterTheater?.addEventListener('click', () => {
-      window.CinematicAudio?.playCinemaBoom();
-      theaterOverlay?.classList.add('curtains-open');
-      setTimeout(() => {
-        window.CinematicAudio?.startAmbient();
-      }, 1200);
+    let hasEnteredTheater = false;
+    const enterTheater = (withSound = true) => {
+      if (hasEnteredTheater) return;
+      hasEnteredTheater = true;
+
+      if (withSound) {
+        try { window.CinematicAudio?.playCinemaBoom(); } catch(e) {}
+        theaterOverlay?.classList.add('curtains-open');
+        setTimeout(() => {
+          try { window.CinematicAudio?.startAmbient(); } catch(e) {}
+        }, 1000);
+      } else {
+        try { window.CinematicAudio?.playUiClick(); } catch(e) {}
+        theaterOverlay?.classList.add('curtains-open');
+      }
+
       setTimeout(() => {
         theaterOverlay?.classList.add('fade-out');
-        setTimeout(() => theaterOverlay?.remove(), 800);
-      }, 1600);
+        setTimeout(() => theaterOverlay?.remove(), 600);
+      }, withSound ? 1200 : 800);
+    };
+
+    btnEnterTheater?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      enterTheater(true);
     });
 
-    btnEnterSilent?.addEventListener('click', () => {
-      window.CinematicAudio?.playUiClick();
-      theaterOverlay?.classList.add('curtains-open');
-      setTimeout(() => {
-        theaterOverlay?.classList.add('fade-out');
-        setTimeout(() => theaterOverlay?.remove(), 800);
-      }, 1200);
+    btnEnterSilent?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      enterTheater(false);
+    });
+
+    theaterOverlay?.addEventListener('click', () => {
+      enterTheater(true);
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (theaterOverlay && !hasEnteredTheater && (e.key === ' ' || e.key === 'Enter')) {
+        enterTheater(true);
+      }
     });
 
     // Stage Mode Switcher (3D SPACE vs GRID VIEW)
