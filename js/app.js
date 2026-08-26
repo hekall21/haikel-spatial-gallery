@@ -473,12 +473,11 @@ class HaikelSpatialArchive {
     const titleEl = document.getElementById('focus-title');
     const descEl = document.getElementById('focus-desc');
 
-    const durationText = item.duration ? ` • ${Math.round(item.duration)}s` : '';
     const likesText = item.likes ? ` • ❤️ ${item.likes}` : '';
 
-    if (badgeEl) badgeEl.textContent = `${item.type === 'video' ? `▶ ${item.aspectRatio || '4K'} VIDEO` : '📷 PHOTO'}${durationText}${likesText}`;
+    if (badgeEl) badgeEl.textContent = `📷 4K MASTER PHOTO${likesText}`;
     if (titleEl) titleEl.textContent = item.title;
-    if (descEl) descEl.textContent = `DATABASE MASTER // ${item.category.toUpperCase()} // RESOLUSI: ${item.resolution || item.size} // KLIK UNTUK MEMUTAR.`;
+    if (descEl) descEl.textContent = `KLIK KARTU UNTUK MEMBUKA FOTO RESOLUSI PENUH`;
   }
 
   shuffleSpaceCluster() {
@@ -551,25 +550,22 @@ class HaikelSpatialArchive {
 
     this.masonryGrid.innerHTML = items.map((item) => {
       const thumbUrl = item.thumb || item.url;
-      const isVideo = item.type === 'video';
-      const durationBadge = isVideo ? `<span class="card-duration-badge">▶ ${Math.round(item.duration || 15)}s • ${item.aspectRatio || '9:16'}</span>` : '';
 
       return `
         <div class="grid-item-card clickable ${item.isLiked ? 'is-liked' : ''}" data-id="${item.id}">
-          <span class="card-badge-type">${isVideo ? `▶ ${item.aspectRatio || '4K'}` : '📷 PHOTO'}</span>
-          ${durationBadge}
+          <span class="card-badge-type">📷 PHOTO</span>
           <img src="${thumbUrl}" alt="${item.title}" loading="lazy" decoding="async" />
           
           <div class="grid-item-overlay">
             <div class="grid-overlay-top">
-              <button class="card-like-btn ${item.isLiked ? 'liked' : ''} clickable" data-like-id="${item.id}" title="Sukai Media">
+              <button class="card-like-btn ${item.isLiked ? 'liked' : ''} clickable" data-like-id="${item.id}" title="Sukai Foto">
                 <span class="heart-icon">${item.isLiked ? '❤️' : '🤍'}</span>
                 <span class="like-num">${item.likes || 0}</span>
               </button>
             </div>
             <div class="grid-overlay-bottom">
               <h4 class="grid-item-title">${item.title}</h4>
-              <span class="grid-item-meta">${item.category} • ${item.resolution || item.size}</span>
+              <span class="grid-item-meta">4K Master Ultra HD</span>
             </div>
           </div>
         </div>
