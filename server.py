@@ -40,13 +40,13 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
         
         if path.startswith('/@media/photos/'):
             rel = path[len('/@media/photos/'):].lstrip('/')
-            return os.path.join(PHOTO_DIR, rel)
+            return os.path.join(PHOTO_DIR, rel.replace('/', os.sep))
         elif path.startswith('/@media/videos/'):
             rel = path[len('/@media/videos/'):].lstrip('/')
-            return os.path.join(VIDEO_DIR, rel)
+            return os.path.join(VIDEO_DIR, rel.replace('/', os.sep))
         elif path.startswith('/thumbs/'):
             rel = path[len('/thumbs/'):].lstrip('/')
-            return os.path.join(PROJECT_DIR, 'thumbs', rel)
+            return os.path.join(PROJECT_DIR, 'thumbs', rel.replace('/', os.sep))
         
         return super().translate_path(path)
 

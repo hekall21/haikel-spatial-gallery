@@ -669,8 +669,12 @@ class HaikelSpatialArchive {
       };
     }
 
-    const isLocal = ['localhost', '127.0.0.1', '0.0.0.0'].includes(window.location.hostname);
-    const primaryVideoUrl = isLocal ? item.url : (item.gdriveStream || item.url);
+    const isLocal = ['localhost', '127.0.0.1', '0.0.0.0'].includes(window.location.hostname) ||
+                    window.location.hostname.startsWith('192.168.') ||
+                    window.location.protocol === 'file:';
+    
+    // Direct stream: local stream url takes priority, fallback to API proxy or direct usercontent stream
+    const primaryVideoUrl = isLocal ? item.url : (item.gdriveId ? `/api/video?id=${item.gdriveId}` : (item.gdriveStream || item.url));
     const downloadUrl = item.gdriveStream || item.url;
 
     if (downloadBtn) {
@@ -689,6 +693,10 @@ class HaikelSpatialArchive {
           oldVid.load();
         } catch (e) {}
       }
+      const oldIframe = mediaContainer.querySelector('iframe');
+      if (oldIframe) {
+        oldIframe.src = 'about:blank';
+      }
       mediaContainer.innerHTML = '';
 
       const fallbackUrl = item.thumb || item.url;
@@ -703,6 +711,7 @@ class HaikelSpatialArchive {
             <div class="video-ambient-glow"></div>
             
             <div class="video-cinema-frame" id="video-cinema-frame">
+              <!-- Direct High-Performance HTML5 Video Player -->
               <video id="modal-active-video"
                      src="${primaryVideoUrl}"
                      poster="${fallbackUrl}"
@@ -711,8 +720,19 @@ class HaikelSpatialArchive {
                      loop
                      preload="auto"
               >
+                <source src="${primaryVideoUrl}" type="video/mp4">
+                ${item.url !== primaryVideoUrl ? `<source src="${item.url}" type="video/mp4">` : ''}
                 Browser Anda tidak mendukung pemutar video HTML5.
               </video>
+
+              <!-- In-Modal Direct Embed Player Fallback (Plays 100% directly inside modal without opening Drive) -->
+              <div class="modal-embed-player" id="modal-embed-player" style="display: none; position: absolute; inset: 0; width: 100%; height: 100%; z-index: 18; background: #000; border-radius: inherit; overflow: hidden;">
+                <iframe id="modal-active-iframe"
+                        style="width: 100%; height: 100%; border: none;"
+                        allow="autoplay; fullscreen"
+                        allowfullscreen
+                ></iframe>
+              </div>
 
               <!-- Center Play/Pause Ripple Overlay -->
               <div class="video-center-overlay" id="video-center-overlay">
@@ -789,32 +809,20 @@ class HaikelSpatialArchive {
                 </div>
               </div>
 
-              <!-- Error Fallback Card -->
-              <div class="video-error-card" id="video-error-card" style="display: none;">
-                <div class="error-icon">🎬</div>
-                <h4>Pemutaran Video HD</h4>
-                <p>Silakan putar dengan pemutar cadangan atau unduh file langsung.</p>
-                <div class="error-actions">
-                  <button class="modal-action-btn" id="btn-retry-video">🔄 COBA LAGI</button>
-                  ${item.gdrivePreview ? `<a href="${item.gdrivePreview}" target="_blank" class="modal-action-btn">▶ BUKA PLAYER GDRIVE</a>` : ''}
-                  <a href="${downloadUrl}" target="_blank" class="modal-action-btn highlight">📥 UNDUH MP4 ASLI</a>
-                </div>
-              </div>
-
             </div>
           </div>
         `;
 
         const vid = mediaContainer.querySelector('video');
         const frame = mediaContainer.querySelector('#video-cinema-frame');
+        const embedPlayer = mediaContainer.querySelector('#modal-embed-player');
+        const iframe = mediaContainer.querySelector('#modal-active-iframe');
         const centerOverlay = mediaContainer.querySelector('#video-center-overlay');
         const centerPlayIcon = mediaContainer.querySelector('.play-icon');
         const centerPauseIcon = mediaContainer.querySelector('.pause-icon');
         const centerPlayHint = mediaContainer.querySelector('#center-play-hint');
         const unmuteBtn = mediaContainer.querySelector('#btn-unmute-video');
         const spinner = mediaContainer.querySelector('#video-loading-spinner');
-        const errorCard = mediaContainer.querySelector('#video-error-card');
-        const retryBtn = mediaContainer.querySelector('#btn-retry-video');
         const resumeToast = mediaContainer.querySelector('#cinema-resume-toast');
 
         const hudPlayBtn = mediaContainer.querySelector('#hud-play-btn');
@@ -827,12 +835,26 @@ class HaikelSpatialArchive {
         const hudTimestamp = mediaContainer.querySelector('#hud-timestamp');
         const hudLoopBtn = mediaContainer.querySelector('#hud-loop-btn');
         const hudFullscreenBtn = mediaContainer.querySelector('#hud-fullscreen-btn');
+        const hudBar = mediaContainer.querySelector('#video-hud-bar');
 
         const timelineTrack = mediaContainer.querySelector('#hud-timeline-track');
         const timelineProgress = mediaContainer.querySelector('#hud-timeline-progress');
         const timelineBuffer = mediaContainer.querySelector('#hud-timeline-buffer');
         const timelineHandle = mediaContainer.querySelector('#hud-timeline-handle');
         const timelineTooltip = mediaContainer.querySelector('#hud-timeline-tooltip');
+
+        const switchToSeamlessEmbed = () => {
+          if (spinner) spinner.style.display = 'none';
+          if (embedPlayer && iframe && item.gdrivePreview) {
+            if (vid) vid.style.display = 'none';
+            if (centerOverlay) centerOverlay.style.display = 'none';
+            if (hudBar) hudBar.style.display = 'none';
+            embedPlayer.style.display = 'block';
+            if (!iframe.src || iframe.src === 'about:blank' || iframe.src === window.location.href) {
+              iframe.src = item.gdrivePreview;
+            }
+          }
+        };
 
         const formatTime = (secs) => {
           if (isNaN(secs) || secs < 0) return '0:00';
@@ -851,7 +873,7 @@ class HaikelSpatialArchive {
         };
 
         const togglePlay = () => {
-          if (!vid) return;
+          if (!vid || vid.style.display === 'none') return;
           window.CinematicAudio?.playUiClick();
           if (vid.paused) {
             vid.play().then(() => updatePlayState(true)).catch(() => {
@@ -1010,7 +1032,6 @@ class HaikelSpatialArchive {
 
         vid.addEventListener('playing', () => {
           if (spinner) spinner.style.display = 'none';
-          if (errorCard) errorCard.style.display = 'none';
           updatePlayState(true);
           if (vid.muted && unmuteBtn) unmuteBtn.style.display = 'flex';
         });
@@ -1024,19 +1045,8 @@ class HaikelSpatialArchive {
         });
 
         vid.addEventListener('error', () => {
-          if (spinner) spinner.style.display = 'none';
-          if (errorCard) errorCard.style.display = 'flex';
-        });
-
-        retryBtn?.addEventListener('click', (e) => {
-          e.preventDefault();
-          if (errorCard) errorCard.style.display = 'none';
-          if (spinner) spinner.style.display = 'flex';
-          vid.load();
-          vid.play().catch(() => {
-            vid.muted = true;
-            vid.play();
-          });
+          // If primary local/proxy fails, seamlessly switch to in-modal embedded player
+          switchToSeamlessEmbed();
         });
 
         // Autoplay attempt
@@ -1052,7 +1062,8 @@ class HaikelSpatialArchive {
               updatePlayState(true);
               if (unmuteBtn) unmuteBtn.style.display = 'flex';
             }).catch(() => {
-              updatePlayState(false);
+              // Fallback to seamless in-modal embed player
+              switchToSeamlessEmbed();
             });
           });
         }
