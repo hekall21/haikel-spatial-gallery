@@ -1,15 +1,19 @@
 /* ==========================================================================
-   HAIKEL 3D SPATIAL MEDIA ARCHIVE — LIGHTNING ZERO-LAG ENGINE
-   WebP Thumbnail Acceleration • 99.8% Bandwidth Reduction • 120 FPS Mobile
+   HAIKEL 3D SPATIAL MEDIA ARCHIVE — ENTERPRISE DATABASE-DRIVEN ENGINE
+   IndexedDB Fast Querying • Video Duration HUD • Like/Favorite Sync • Resume Watch
    ========================================================================== */
 
 class HaikelSpatialArchive {
   constructor() {
-    this.catalog = window.MEDIA_CATALOG || [];
-    this.currentFilter = 'all'; // 'all' | 'photo' | 'video'
-    this.filteredCatalog = this.catalog;
+    this.catalog = [];
+    this.filteredCatalog = [];
     this.activeClusterItemId = null;
     this.currentStage = 'space'; // 'space' | 'grid'
+
+    // Multi-Facet Database Filters
+    this.currentFilter = 'all'; // 'all' | 'photo' | 'video'
+    this.currentVideoSubFilter = 'all'; // 'all' | 'reels' | 'cinema' | 'edits' | 'favorites' | 'history'
+    this.currentSort = 'default';
     this.searchTerm = '';
 
     // Camera & Orbit State
@@ -22,6 +26,7 @@ class HaikelSpatialArchive {
     this.stageGrid = document.getElementById('stage-grid');
     this.spaceCluster = document.getElementById('space-cluster');
     this.masonryGrid = document.getElementById('masonry-grid');
+    this.videoSubDock = document.getElementById('video-sub-dock');
 
     // 3D Parallax & Touch Tracking
     this.mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
@@ -35,21 +40,26 @@ class HaikelSpatialArchive {
 
     // Active Modal Item
     this.currentModalItem = null;
+    this.progressSaveThrottleTimer = null;
 
     this.init();
   }
 
-  init() {
-    this.updateCounters();
+  async init() {
+    // Wait for Database Engine to be ready
+    if (window.HaikelMediaDB) {
+      await window.HaikelMediaDB.readyPromise;
+    }
+
     this.initCursor();
     this.initCosmicUniverseCanvas();
     this.initEvents();
     this.initTouchGestures();
-    this.renderSpaceCluster();
-    this.renderMasonryGrid();
     this.initClock();
     this.startParallaxEngine();
     this.initAutoAudio();
+
+    await this.refreshFromDatabase();
 
     // Debounced resize
     let resizeTimer;
@@ -66,13 +76,55 @@ class HaikelSpatialArchive {
       }
     };
 
-    // Auto-unlock on first interaction anywhere
     ['click', 'touchstart', 'keydown', 'wheel', 'pointerdown'].forEach(evt => {
       document.addEventListener(evt, unlockAudio, { once: true, passive: true });
     });
   }
 
+  // =========================================================================
+  // DATABASE QUERY & FILTER ENGINE
+  // =========================================================================
+
+  async refreshFromDatabase() {
+    if (!window.HaikelMediaDB) {
+      this.catalog = window.MEDIA_CATALOG || [];
+      this.filteredCatalog = this.catalog;
+      this.updateCounters();
+      this.renderSpaceCluster();
+      this.renderMasonryGrid();
+      return;
+    }
+
+    // Determine query parameters based on active filters
+    const isVideo = this.currentFilter === 'video';
+    const subF = isVideo ? this.currentVideoSubFilter : 'all';
+
+    const queryOpts = {
+      type: this.currentFilter,
+      search: this.searchTerm,
+      sortBy: this.currentSort
+    };
+
+    if (isVideo && subF !== 'all') {
+      if (subF === 'favorites') {
+        queryOpts.isFavorite = true;
+      } else if (subF === 'history') {
+        queryOpts.onlyWatched = true;
+      } else {
+        queryOpts.category = subF;
+      }
+    }
+
+    this.filteredCatalog = await window.HaikelMediaDB.queryMedia(queryOpts);
+    this.catalog = window.HaikelMediaDB.memoryCatalog || this.filteredCatalog;
+
+    this.updateCounters();
+    this.renderSpaceCluster();
+    this.renderMasonryGrid();
+  }
+
   updateCounters() {
+    const totalCount = this.catalog.length;
     const photosCount = this.catalog.filter(it => it.type === 'photo').length;
     const videosCount = this.catalog.filter(it => it.type === 'video').length;
 
@@ -82,12 +134,16 @@ class HaikelSpatialArchive {
     const dockCount = document.getElementById('dock-counter-text');
     const gridCount = document.getElementById('grid-item-count');
 
-    if (countAll) countAll.textContent = this.catalog.length;
+    if (countAll) countAll.textContent = totalCount;
     if (countPhoto) countPhoto.textContent = photosCount;
     if (countVideo) countVideo.textContent = videosCount;
-    if (dockCount) dockCount.textContent = `${this.catalog.length} KARYA SIAP DITAMPILKAN`;
-    if (gridCount) gridCount.textContent = this.catalog.length;
+    if (dockCount) dockCount.textContent = `${this.filteredCatalog.length} KARYA SIAP DITAMPILKAN`;
+    if (gridCount) gridCount.textContent = this.filteredCatalog.length;
   }
+
+  // =========================================================================
+  // EVENTS & UI CONTROLLERS
+  // =========================================================================
 
   initEvents() {
     // Stage Mode Switcher (3D SPACE vs GRID VIEW)
@@ -115,18 +171,47 @@ class HaikelSpatialArchive {
       });
     });
 
-    // Filter Buttons (ALL / PHOTOS / VIDEOS)
+    // Master Filter Buttons (ALL / PHOTOS / VIDEOS)
     document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
+      btn.addEventListener('click', async () => {
         window.CinematicAudio?.playUiClick();
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         this.currentFilter = btn.getAttribute('data-filter');
-        this.applyFilter();
+
+        // Toggle Video Sub-Filter Dock with smooth transition
+        if (this.videoSubDock) {
+          if (this.currentFilter === 'video') {
+            this.videoSubDock.style.display = 'flex';
+          } else {
+            this.videoSubDock.style.display = 'none';
+          }
+        }
+
+        await this.refreshFromDatabase();
       });
     });
 
-    // 3D Space Actions
+    // Video Sub-Filter Pills (REELS / 16:9 CINEMA / EDITS / FAVORITES / HISTORY)
+    document.querySelectorAll('.sub-filter-pill').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        window.CinematicAudio?.playUiClick();
+        document.querySelectorAll('.sub-filter-pill').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        this.currentVideoSubFilter = btn.getAttribute('data-vfilter');
+        await this.refreshFromDatabase();
+      });
+    });
+
+    // Grid Sort Dropdown
+    const sortSelect = document.getElementById('grid-sort-select');
+    sortSelect?.addEventListener('change', async (e) => {
+      window.CinematicAudio?.playUiClick();
+      this.currentSort = e.target.value;
+      await this.refreshFromDatabase();
+    });
+
+    // 3D Space Focus Lightbox Action
     document.getElementById('btn-open-active-lightbox')?.addEventListener('click', () => {
       const activeItem = this.catalog.find(it => it.id === this.activeClusterItemId) || this.filteredCatalog[0];
       if (activeItem) this.openCinemaModal(activeItem);
@@ -142,10 +227,10 @@ class HaikelSpatialArchive {
     let searchDebounce;
     searchInput?.addEventListener('input', (e) => {
       clearTimeout(searchDebounce);
-      searchDebounce = setTimeout(() => {
+      searchDebounce = setTimeout(async () => {
         this.searchTerm = e.target.value.toLowerCase().trim();
-        this.renderMasonryGrid();
-      }, 100);
+        await this.refreshFromDatabase();
+      }, 120);
     });
 
     // Cinema Lightbox Modal Controls
@@ -181,6 +266,9 @@ class HaikelSpatialArchive {
         } else if (e.key.toLowerCase() === 'f') {
           const fsBtn = document.getElementById('hud-fullscreen-btn');
           if (fsBtn) fsBtn.click();
+        } else if (e.key.toLowerCase() === 'l' && this.currentModalItem) {
+          const likeBtn = document.getElementById('modal-like-btn');
+          if (likeBtn) likeBtn.click();
         }
       }
     });
@@ -193,14 +281,13 @@ class HaikelSpatialArchive {
     });
 
     // Mouse Tracking in 3D Space
-    const stageSpace = document.getElementById('stage-space');
     window.addEventListener('mousemove', (e) => {
       this.mouse.targetX = (e.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
       this.mouse.targetY = (e.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
     }, { passive: true });
 
-    stageSpace?.addEventListener('mousedown', (e) => {
-      if (e.target.closest('.space-center-hud, .hud-top-bar, .hud-bottom-dock, .camera-presets-dock, button')) return;
+    this.stageSpace?.addEventListener('mousedown', (e) => {
+      if (e.target.closest('.space-center-hud, .hud-top-bar, .hud-bottom-dock, .camera-presets-dock, button, select, input')) return;
       this.isDragging = true;
       this.isAutopilot = false;
       document.getElementById('btn-autopilot')?.classList.remove('active');
@@ -225,7 +312,7 @@ class HaikelSpatialArchive {
 
     // Touch drag on 3D Space Viewport
     stageSpace?.addEventListener('touchstart', (e) => {
-      if (e.target.closest('.space-center-hud, .hud-top-bar, .hud-bottom-dock, .camera-presets-dock, button')) return;
+      if (e.target.closest('.space-center-hud, .hud-top-bar, .hud-bottom-dock, .camera-presets-dock, button, select, input')) return;
       const touch = e.touches[0];
       this.isDragging = true;
       this.isAutopilot = false;
@@ -248,13 +335,13 @@ class HaikelSpatialArchive {
 
     // Touch swipe on Cinema Lightbox
     modalStage?.addEventListener('touchstart', (e) => {
-      if (e.target.closest('video, audio, button, a, input, select, .video-player-wrapper')) return;
+      if (e.target.closest('video, audio, button, a, input, select, .video-hud-bar, .video-center-overlay')) return;
       this.touchStartX = e.changedTouches[0].screenX;
       this.touchStartY = e.changedTouches[0].screenY;
     }, { passive: true });
 
     modalStage?.addEventListener('touchend', (e) => {
-      if (e.target.closest('video, audio, button, a, input, select, .video-player-wrapper')) return;
+      if (e.target.closest('video, audio, button, a, input, select, .video-hud-bar, .video-center-overlay')) return;
       const touchEndX = e.changedTouches[0].screenX;
       const touchEndY = e.changedTouches[0].screenY;
       const dx = touchEndX - this.touchStartX;
@@ -291,17 +378,10 @@ class HaikelSpatialArchive {
     }
   }
 
-  applyFilter() {
-    if (this.currentFilter === 'all') {
-      this.filteredCatalog = this.catalog;
-    } else {
-      this.filteredCatalog = this.catalog.filter(it => it.type === this.currentFilter);
-    }
-    this.renderSpaceCluster();
-    this.renderMasonryGrid();
-  }
+  // =========================================================================
+  // 1. RENDER 3D SPATIAL GALAXY CLUSTER
+  // =========================================================================
 
-  // 1. RENDER 3D SPATIAL GALAXY CLUSTER (WEBP THUMBNAIL ACCELERATED)
   renderSpaceCluster() {
     if (!this.spaceCluster) return;
 
@@ -310,7 +390,6 @@ class HaikelSpatialArchive {
     const cardW = isMobile ? 145 : 230;
     const cardH = isMobile ? 95 : 145;
 
-    // Show 9 cards on mobile (ultra-fast) or 15 on desktop
     const maxCards = isMobile ? 9 : 15;
     const clusterItems = this.filteredCatalog.slice(0, maxCards);
 
@@ -343,6 +422,7 @@ class HaikelSpatialArchive {
       const isActive = idx === 0;
 
       const thumbUrl = item.thumb || item.url;
+      const durationBadge = item.type === 'video' ? `<span class="card-duration-badge">▶ ${Math.round(item.duration || 15)}s</span>` : '';
 
       return `
         <div class="floating-card ${isActive ? 'active-card' : ''} clickable"
@@ -350,9 +430,11 @@ class HaikelSpatialArchive {
              data-id="${item.id}"
              style="width: ${cardW}px; height: ${cardH}px; transform: translate3d(calc(-50% + ${scaledX}px), calc(-50% + ${scaledY}px), ${scaledZ}px) rotate(${c.r}deg); z-index: ${20 + idx};">
           <div class="card-inner">
-            <span class="card-badge-type">${item.type === 'video' ? '▶ 4K VIDEO' : '📷 PHOTO'}</span>
+            <span class="card-badge-type">${item.type === 'video' ? `▶ ${item.aspectRatio || '4K'}` : '📷 PHOTO'}</span>
+            ${durationBadge}
             <img src="${thumbUrl}" alt="${item.title}" loading="lazy" decoding="async" />
             ${item.type === 'video' ? '<div class="card-center-play">▶</div>' : ''}
+            ${item.watchProgress > 0 ? `<div class="card-progress-bar"><div class="card-progress-fill" style="width: ${item.watchProgress}%"></div></div>` : ''}
           </div>
         </div>
       `;
@@ -392,9 +474,12 @@ class HaikelSpatialArchive {
     const titleEl = document.getElementById('focus-title');
     const descEl = document.getElementById('focus-desc');
 
-    if (badgeEl) badgeEl.textContent = `${item.type === 'video' ? '▶ 4K VIDEO' : '📷 PHOTO'} • ${item.size}`;
+    const durationText = item.duration ? ` • ${Math.round(item.duration)}s` : '';
+    const likesText = item.likes ? ` • ❤️ ${item.likes}` : '';
+
+    if (badgeEl) badgeEl.textContent = `${item.type === 'video' ? `▶ ${item.aspectRatio || '4K'} VIDEO` : '📷 PHOTO'}${durationText}${likesText}`;
     if (titleEl) titleEl.textContent = item.title;
-    if (descEl) descEl.textContent = `ARSIP MASTER // ${item.category.toUpperCase()} // KLIK UNTUK MEMBUKA LAYAR PENUH.`;
+    if (descEl) descEl.textContent = `DATABASE MASTER // ${item.category.toUpperCase()} // RESOLUSI: ${item.resolution || item.size} // KLIK UNTUK MEMUTAR.`;
   }
 
   shuffleSpaceCluster() {
@@ -443,52 +528,101 @@ class HaikelSpatialArchive {
     animate();
   }
 
-  // 2. RENDER HIGH PERFORMANCE MASONRY GRID VIEW
+  // =========================================================================
+  // 2. RENDER DATABASE-POWERED MASONRY GRID VIEW
+  // =========================================================================
+
   renderMasonryGrid() {
     if (!this.masonryGrid) return;
-
-    let items = this.filteredCatalog;
-    if (this.searchTerm) {
-      items = items.filter(it => 
-        it.title.toLowerCase().includes(this.searchTerm) ||
-        it.id.includes(this.searchTerm) ||
-        it.type.toLowerCase().includes(this.searchTerm)
-      );
-    }
+    const items = this.filteredCatalog;
 
     const countEl = document.getElementById('grid-item-count');
     if (countEl) countEl.textContent = items.length;
 
+    if (items.length === 0) {
+      this.masonryGrid.innerHTML = `
+        <div class="grid-empty-state" style="grid-column: 1 / -1; padding: 60px 20px; text-align: center; color: var(--text-muted); font-family: var(--font-mono);">
+          <div style="font-size: 2.5rem; margin-bottom: 12px;">🔍</div>
+          <h3 style="color: #fff; font-size: 1.2rem; margin-bottom: 6px;">Tidak ada media ditemukan</h3>
+          <p style="font-size: 0.85rem;">Coba sesuaikan kata kunci pencarian atau filter database Anda.</p>
+        </div>
+      `;
+      return;
+    }
+
     this.masonryGrid.innerHTML = items.map((item) => {
       const thumbUrl = item.thumb || item.url;
+      const isVideo = item.type === 'video';
+      const durationBadge = isVideo ? `<span class="card-duration-badge">▶ ${Math.round(item.duration || 15)}s • ${item.aspectRatio || '9:16'}</span>` : '';
+      const progressBar = item.watchProgress > 0 ? `<div class="card-progress-bar"><div class="card-progress-fill" style="width: ${item.watchProgress}%"></div></div>` : '';
 
       return `
-        <div class="grid-item-card clickable" data-id="${item.id}">
-          <span class="card-badge-type">${item.type === 'video' ? '▶ VIDEO' : '📷 PHOTO'}</span>
+        <div class="grid-item-card clickable ${item.isLiked ? 'is-liked' : ''}" data-id="${item.id}">
+          <span class="card-badge-type">${isVideo ? `▶ ${item.aspectRatio || '4K'}` : '📷 PHOTO'}</span>
+          ${durationBadge}
           <img src="${thumbUrl}" alt="${item.title}" loading="lazy" decoding="async" />
+          ${progressBar}
+          
           <div class="grid-item-overlay">
-            <h4 class="grid-item-title">${item.title}</h4>
-            <span class="grid-item-meta">${item.category} • ${item.size}</span>
+            <div class="grid-overlay-top">
+              <button class="card-like-btn ${item.isLiked ? 'liked' : ''} clickable" data-like-id="${item.id}" title="Sukai Media">
+                <span class="heart-icon">${item.isLiked ? '❤️' : '🤍'}</span>
+                <span class="like-num">${item.likes || 0}</span>
+              </button>
+            </div>
+            <div class="grid-overlay-bottom">
+              <h4 class="grid-item-title">${item.title}</h4>
+              <span class="grid-item-meta">${item.category} • ${item.resolution || item.size}</span>
+            </div>
           </div>
         </div>
       `;
     }).join('');
 
+    // Attach click events
     this.masonryGrid.querySelectorAll('.grid-item-card').forEach(card => {
       const id = card.getAttribute('data-id');
       const item = this.catalog.find(it => it.id === id);
       if (!item) return;
 
-      card.addEventListener('click', () => {
+      // Card click opens cinema lightbox
+      card.addEventListener('click', (e) => {
+        if (e.target.closest('.card-like-btn')) return;
         this.openCinemaModal(item);
+      });
+
+      // Like button click toggles Database like
+      const likeBtn = card.querySelector('.card-like-btn');
+      likeBtn?.addEventListener('click', async (e) => {
+        e.stopPropagation();
+        window.CinematicAudio?.playUiClick();
+        if (window.HaikelMediaDB) {
+          const res = await window.HaikelMediaDB.toggleLike(item.id);
+          if (res) {
+            likeBtn.classList.toggle('liked', res.isLiked);
+            card.classList.toggle('is-liked', res.isLiked);
+            const heartIcon = likeBtn.querySelector('.heart-icon');
+            const likeNum = likeBtn.querySelector('.like-num');
+            if (heartIcon) heartIcon.textContent = res.isLiked ? '❤️' : '🤍';
+            if (likeNum) likeNum.textContent = res.likes;
+          }
+        }
       });
     });
   }
 
-  // 3. ULTRA CINEMA LIGHTBOX (Streams Video / Photo with Bulletproof Adaptive Playback)
-  openCinemaModal(item) {
+  // =========================================================================
+  // 3. ULTRA CINEMA LIGHTBOX (Adaptive Playback + Database Stats & Resume)
+  // =========================================================================
+
+  async openCinemaModal(item) {
     if (!item) return;
     this.currentModalItem = item;
+
+    // Increment Database View Count
+    if (window.HaikelMediaDB) {
+      window.HaikelMediaDB.incrementViewCount(item.id);
+    }
 
     const modal = document.getElementById('cinema-modal');
     const tag = document.getElementById('modal-type-tag');
@@ -499,6 +633,9 @@ class HaikelSpatialArchive {
     const formatVal = document.getElementById('modal-format-val');
     const downloadBtn = document.getElementById('modal-download-btn');
     const mediaContainer = document.getElementById('modal-media-container');
+    const likeBtn = document.getElementById('modal-like-btn');
+    const likeIcon = document.getElementById('modal-like-icon');
+    const likeCounter = document.getElementById('modal-like-counter');
 
     const globalIdx = this.filteredCatalog.findIndex(it => it.id === item.id);
     const currentIndex = globalIdx >= 0 ? globalIdx : 0;
@@ -509,6 +646,28 @@ class HaikelSpatialArchive {
     if (sizeVal) sizeVal.textContent = item.size;
     if (yearVal) yearVal.textContent = item.date;
     if (formatVal) formatVal.textContent = item.type === 'video' ? `Master 4K MP4 (${item.resolution || item.aspectRatio || 'Ultra HD'})` : 'Full-Frame Master JPG';
+
+    // Update Modal Like Button
+    if (likeBtn && likeIcon && likeCounter) {
+      likeBtn.classList.toggle('liked', !!item.isLiked);
+      likeIcon.textContent = item.isLiked ? '❤️' : '🤍';
+      likeCounter.textContent = item.likes || 0;
+
+      // Unbind previous onclick
+      likeBtn.onclick = async (e) => {
+        e.stopPropagation();
+        window.CinematicAudio?.playUiClick();
+        if (window.HaikelMediaDB) {
+          const res = await window.HaikelMediaDB.toggleLike(item.id);
+          if (res) {
+            likeBtn.classList.toggle('liked', res.isLiked);
+            likeIcon.textContent = res.isLiked ? '❤️' : '🤍';
+            likeCounter.textContent = res.likes;
+            this.renderMasonryGrid();
+          }
+        }
+      };
+    }
 
     const isLocal = ['localhost', '127.0.0.1', '0.0.0.0'].includes(window.location.hostname);
     const primaryVideoUrl = isLocal ? item.url : (item.gdriveStream || item.url);
@@ -577,6 +736,11 @@ class HaikelSpatialArchive {
                 </div>
               </button>
 
+              <!-- Resume Playback Toast Notification -->
+              <div class="cinema-resume-toast" id="cinema-resume-toast" style="display: none;">
+                <span>▶ Melanjutkan dari posisi terakhir</span>
+              </div>
+
               <!-- Loading Spinner -->
               <div class="video-loading-spinner" id="video-loading-spinner" style="display: none;">
                 <div class="spinner-ring"></div>
@@ -601,7 +765,7 @@ class HaikelSpatialArchive {
 
                     <div class="hud-volume-group">
                       <button class="hud-ctrl-btn" id="hud-mute-btn" title="Suara (M)">
-                        <svg class="ctrl-icon-vol" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+                        <svg class="ctrl-icon-vol" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
                         <svg class="ctrl-icon-mute" viewBox="0 0 24 24" fill="currentColor" style="display: none;"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
                       </button>
                       <input type="range" class="hud-volume-slider" id="hud-volume-slider" min="0" max="1" step="0.05" value="0.9" title="Volume">
@@ -651,6 +815,7 @@ class HaikelSpatialArchive {
         const spinner = mediaContainer.querySelector('#video-loading-spinner');
         const errorCard = mediaContainer.querySelector('#video-error-card');
         const retryBtn = mediaContainer.querySelector('#btn-retry-video');
+        const resumeToast = mediaContainer.querySelector('#cinema-resume-toast');
 
         const hudPlayBtn = mediaContainer.querySelector('#hud-play-btn');
         const hudPlayIcon = mediaContainer.querySelector('.ctrl-icon-play');
@@ -782,12 +947,27 @@ class HaikelSpatialArchive {
           if (timelineTooltip) timelineTooltip.style.opacity = '0';
         });
 
+        // Resume Playback Check from Database
+        if (window.HaikelMediaDB) {
+          window.HaikelMediaDB.getWatchProgress(item.id).then((prog) => {
+            if (prog && prog.currentTime > 2 && prog.currentTime < (item.duration || 100) - 2) {
+              vid.currentTime = prog.currentTime;
+              if (resumeToast) {
+                resumeToast.style.display = 'block';
+                resumeToast.querySelector('span').textContent = `▶ Melanjutkan dari ${formatTime(prog.currentTime)}`;
+                setTimeout(() => {
+                  resumeToast.style.display = 'none';
+                }, 3200);
+              }
+            }
+          });
+        }
+
         // Video Events
         vid.addEventListener('loadedmetadata', () => {
           if (spinner) spinner.style.display = 'none';
           if (hudTimestamp) hudTimestamp.textContent = `0:00 / ${formatTime(vid.duration)}`;
           
-          // Adaptive aspect ratio check
           if (vid.videoWidth && vid.videoHeight) {
             const ratio = vid.videoWidth / vid.videoHeight;
             const wrapper = mediaContainer.querySelector('#video-cinema-wrapper');
@@ -814,6 +994,14 @@ class HaikelSpatialArchive {
             const bufPct = (bufferedEnd / vid.duration) * 100;
             timelineBuffer.style.width = `${bufPct}%`;
           }
+
+          // Throttle save watch progress to Database every 3 seconds
+          if (!this.progressSaveThrottleTimer && window.HaikelMediaDB) {
+            this.progressSaveThrottleTimer = setTimeout(() => {
+              window.HaikelMediaDB.saveWatchProgress(item.id, vid.currentTime, vid.duration);
+              this.progressSaveThrottleTimer = null;
+            }, 2500);
+          }
         });
 
         vid.addEventListener('waiting', () => {
@@ -829,6 +1017,10 @@ class HaikelSpatialArchive {
 
         vid.addEventListener('pause', () => {
           updatePlayState(false);
+          // Immediate progress save on pause
+          if (window.HaikelMediaDB) {
+            window.HaikelMediaDB.saveWatchProgress(item.id, vid.currentTime, vid.duration);
+          }
         });
 
         vid.addEventListener('error', () => {
@@ -881,7 +1073,8 @@ class HaikelSpatialArchive {
     const mediaContainer = document.getElementById('modal-media-container');
     if (mediaContainer) {
       const vid = mediaContainer.querySelector('video');
-      if (vid) {
+      if (vid && this.currentModalItem && window.HaikelMediaDB) {
+        window.HaikelMediaDB.saveWatchProgress(this.currentModalItem.id, vid.currentTime, vid.duration);
         try {
           vid.pause();
           vid.removeAttribute('src');
@@ -893,6 +1086,7 @@ class HaikelSpatialArchive {
     window.CinematicAudio?.duckAmbient(false);
     modal?.classList.remove('active');
     window.CinematicAudio?.playUiClick();
+    this.renderMasonryGrid();
   }
 
   navigateCinemaModal(direction) {
@@ -902,7 +1096,10 @@ class HaikelSpatialArchive {
     this.openCinemaModal(this.filteredCatalog[nextIdx]);
   }
 
-  // 4. CURSOR & CLOCK
+  // =========================================================================
+  // 4. CURSOR & CANVAS
+  // =========================================================================
+
   initCursor() {
     const cursor = document.getElementById('custom-cursor');
     const follower = document.getElementById('custom-cursor-follower');
@@ -923,12 +1120,11 @@ class HaikelSpatialArchive {
     loop();
 
     document.addEventListener('mouseover', e => {
-      const isInteractive = !!e.target.closest('a, button, .clickable, .floating-card, .grid-item-card');
+      const isInteractive = !!e.target.closest('a, button, select, input, .clickable, .floating-card, .grid-item-card');
       follower.classList.toggle('active', isInteractive);
     });
   }
 
-  // 5. HIGH-PERFORMANCE COSMIC UNIVERSE CANVAS
   initCosmicUniverseCanvas() {
     const canvas = document.getElementById('bg-canvas');
     if (!canvas) return;
