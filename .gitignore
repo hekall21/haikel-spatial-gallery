@@ -24,3 +24,8 @@ dist-ssr
 *.sw?
 __pycache__/
 *.pyc
+
+# Local Large Media Cache
+media/
+scratch/
+

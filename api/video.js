@@ -1,4 +1,4 @@
-﻿export default async function handler(req, res) {
+export default async function handler(req, res) {
   const { id } = req.query;
   if (!id) {
     return res.status(400).send('Missing video ID');
@@ -28,6 +28,11 @@
       headers: fetchHeaders,
       redirect: 'follow'
     });
+
+    const contentType = response.headers.get('content-type') || '';
+    if (contentType.includes('text/html') || contentType.includes('application/json')) {
+      return res.redirect(302, `https://drive.google.com/file/d/${id}/preview`);
+    }
 
     res.status(response.status);
 

@@ -34,7 +34,10 @@ function serveDriveMediaPlugin() {
           // 0. Serve Thumbs
           if (urlPath.startsWith('/thumbs/')) {
             const relPath = urlPath.replace('/thumbs/', '');
-            const filePath = path.join(process.cwd(), 'thumbs', relPath);
+            let filePath = path.join(process.cwd(), 'thumbs', relPath);
+            if (!fs.existsSync(filePath)) {
+              filePath = path.join(process.cwd(), 'public', 'thumbs', relPath);
+            }
 
             if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
               const stat = fs.statSync(filePath);
@@ -53,7 +56,13 @@ function serveDriveMediaPlugin() {
           // 1. Serve Photos
           if (urlPath.startsWith('/@media/photos/')) {
             const relPath = urlPath.replace('/@media/photos/', '');
-            const filePath = path.join(photoBaseDir, relPath);
+            let filePath = path.join(process.cwd(), 'media', 'photos', relPath);
+            if (!fs.existsSync(filePath)) {
+              filePath = path.join(process.cwd(), 'public', 'photos', relPath);
+            }
+            if (!fs.existsSync(filePath)) {
+              filePath = path.join(photoBaseDir, relPath);
+            }
 
             if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
               const ext = path.extname(filePath).toLowerCase();
@@ -80,9 +89,15 @@ function serveDriveMediaPlugin() {
           // 2. Serve Videos with RFC 7233 Range Request streaming
           if (urlPath.startsWith('/@media/videos/')) {
             const relPath = urlPath.replace('/@media/videos/', '');
-            const filePath = path.join(videoBaseDir, relPath);
+            let filePath = path.join(process.cwd(), 'media', 'videos', relPath);
+            if (!fs.existsSync(filePath) || fs.statSync(filePath).size < 10000) {
+              filePath = path.join(process.cwd(), 'public', 'videos', relPath);
+            }
+            if (!fs.existsSync(filePath) || fs.statSync(filePath).size < 10000) {
+              filePath = path.join(videoBaseDir, relPath);
+            }
 
-            if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
+            if (fs.existsSync(filePath) && fs.statSync(filePath).isFile() && fs.statSync(filePath).size > 10000) {
               const stat = fs.statSync(filePath);
               const fileSize = stat.size;
               const range = req.headers.range;

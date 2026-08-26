@@ -836,13 +836,17 @@ class HaikelSpatialArchive {
 
         const switchToSeamlessEmbed = () => {
           if (spinner) spinner.style.display = 'none';
-          if (embedPlayer && iframe && item.gdrivePreview) {
-            if (vid) vid.style.display = 'none';
+          const embedUrl = item.gdrivePreview || (item.gdriveId ? `https://drive.google.com/file/d/${item.gdriveId}/preview` : '');
+          if (embedPlayer && iframe && embedUrl) {
+            if (vid) {
+              try { vid.pause(); } catch(e) {}
+              vid.style.display = 'none';
+            }
             if (centerOverlay) centerOverlay.style.display = 'none';
             if (hudBar) hudBar.style.display = 'none';
             embedPlayer.style.display = 'block';
             if (!iframe.src || iframe.src === 'about:blank' || iframe.src === window.location.href) {
-              iframe.src = item.gdrivePreview;
+              iframe.src = embedUrl;
             }
           }
         };
@@ -1012,23 +1016,40 @@ class HaikelSpatialArchive {
           switchToSeamlessEmbed();
         });
 
-        // Autoplay attempt
-        vid.load();
-        const playProm = vid.play();
-        if (playProm !== undefined) {
-          playProm.then(() => {
-            updatePlayState(true);
-            if (!vid.muted && unmuteBtn) unmuteBtn.style.display = 'none';
-          }).catch(() => {
-            vid.muted = true;
-            vid.play().then(() => {
-              updatePlayState(true);
-              if (unmuteBtn) unmuteBtn.style.display = 'flex';
-            }).catch(() => {
-              // Fallback to seamless in-modal embed player
+        const isEmbedOnly = !isLocal || ['vid-018', 'vid-040', 'vid-043'].includes(item.id) || (item.size && (item.size.startsWith('0.0') || item.size.startsWith('0 MB')));
+        if (isEmbedOnly) {
+          switchToSeamlessEmbed();
+        } else {
+          // Watchdog timer for local HTML5 video loading
+          let loadTimeout = setTimeout(() => {
+            if (vid.readyState < 2) {
               switchToSeamlessEmbed();
+            }
+          }, 3500);
+
+          vid.addEventListener('canplay', () => {
+            clearTimeout(loadTimeout);
+          }, { once: true });
+
+          vid.load();
+          const playProm = vid.play();
+          if (playProm !== undefined) {
+            playProm.then(() => {
+              clearTimeout(loadTimeout);
+              updatePlayState(true);
+              if (!vid.muted && unmuteBtn) unmuteBtn.style.display = 'none';
+            }).catch(() => {
+              vid.muted = true;
+              vid.play().then(() => {
+                clearTimeout(loadTimeout);
+                updatePlayState(true);
+                if (unmuteBtn) unmuteBtn.style.display = 'flex';
+              }).catch(() => {
+                clearTimeout(loadTimeout);
+                switchToSeamlessEmbed();
+              });
             });
-          });
+          }
         }
       } else {
         window.CinematicAudio?.duckAmbient(false);
@@ -1053,6 +1074,10 @@ class HaikelSpatialArchive {
           vid.removeAttribute('src');
           vid.load();
         } catch (e) {}
+      }
+      const iframe = mediaContainer.querySelector('iframe');
+      if (iframe) {
+        iframe.src = 'about:blank';
       }
       mediaContainer.innerHTML = '';
     }

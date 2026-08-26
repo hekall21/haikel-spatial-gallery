@@ -43,16 +43,25 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
             local_p = os.path.join(PROJECT_DIR, 'media', 'photos', rel.replace('/', os.sep))
             if os.path.exists(local_p):
                 return local_p
+            pub_p = os.path.join(PROJECT_DIR, 'public', 'photos', rel.replace('/', os.sep))
+            if os.path.exists(pub_p):
+                return pub_p
             return os.path.join(PHOTO_DIR, rel.replace('/', os.sep))
         elif path.startswith('/@media/videos/'):
             rel = path[len('/@media/videos/'):].lstrip('/')
             local_v = os.path.join(PROJECT_DIR, 'media', 'videos', rel.replace('/', os.sep))
-            if os.path.exists(local_v) and os.path.getsize(local_v) > 100000:
+            if os.path.exists(local_v) and os.path.getsize(local_v) > 10000:
                 return local_v
+            pub_v = os.path.join(PROJECT_DIR, 'public', 'videos', rel.replace('/', os.sep))
+            if os.path.exists(pub_v) and os.path.getsize(pub_v) > 10000:
+                return pub_v
             return os.path.join(VIDEO_DIR, rel.replace('/', os.sep))
         elif path.startswith('/thumbs/'):
             rel = path[len('/thumbs/'):].lstrip('/')
-            return os.path.join(PROJECT_DIR, 'thumbs', rel.replace('/', os.sep))
+            local_t = os.path.join(PROJECT_DIR, 'thumbs', rel.replace('/', os.sep))
+            if os.path.exists(local_t):
+                return local_t
+            return os.path.join(PROJECT_DIR, 'public', 'thumbs', rel.replace('/', os.sep))
         
         return super().translate_path(path)
 

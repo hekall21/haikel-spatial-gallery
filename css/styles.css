@@ -1236,30 +1236,60 @@ a, button, .clickable { cursor: pointer; }
 /* Orientation Modifiers for Perfect Framing */
 .video-cinema-wrapper.orientation-vertical .video-cinema-frame {
   aspect-ratio: 9/16;
-  max-height: calc(88vh - 120px);
-  max-width: min(calc((88vh - 120px) * 9 / 16), 88vw);
-  border-radius: 22px;
+  width: min(calc((84vh - 100px) * 9 / 16), 88vw, 420px);
+  height: min(calc(84vh - 100px), 740px);
+  max-height: calc(86vh - 100px);
+  max-width: 88vw;
+  border-radius: 20px;
 }
 
 .video-cinema-wrapper.orientation-horizontal .video-cinema-frame {
   aspect-ratio: 16/9;
-  max-height: calc(82vh - 120px);
-  max-width: min(1180px, 92vw);
+  width: min(1080px, 92vw);
+  height: min(calc(92vw * 9 / 16), calc(80vh - 100px), 608px);
+  max-height: calc(80vh - 100px);
+  max-width: 92vw;
   border-radius: 18px;
 }
 
 .video-cinema-wrapper.orientation-square .video-cinema-frame {
   aspect-ratio: 1/1;
-  max-height: calc(84vh - 120px);
-  max-width: min(calc(84vh - 120px), 88vw);
+  width: min(calc(82vh - 100px), 88vw, 620px);
+  height: min(calc(82vh - 100px), 88vw, 620px);
+  max-height: calc(82vh - 100px);
+  max-width: 88vw;
   border-radius: 18px;
 }
 
 .video-cinema-wrapper.orientation-portrait .video-cinema-frame {
   aspect-ratio: 4/5;
-  max-height: calc(85vh - 120px);
-  max-width: min(calc((85vh - 120px) * 4 / 5), 88vw);
+  width: min(calc((84vh - 100px) * 4 / 5), 88vw, 500px);
+  height: min(calc(84vh - 100px), 625px);
+  max-height: calc(84vh - 100px);
+  max-width: 88vw;
   border-radius: 18px;
+}
+
+/* Seamless Embed Player */
+.modal-embed-player {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 18;
+  background: #000000;
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+.modal-embed-player iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  border: none;
+  border-radius: inherit;
+  background: #000000;
+  display: block;
 }
 
 /* Primary Video Element */
