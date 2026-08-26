@@ -241,7 +241,7 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
             with open(path, 'rb') as f:
                 f.seek(start)
                 bytes_left = length
-                chunk_size = 64 * 1024
+                chunk_size = 256 * 1024
                 while bytes_left > 0:
                     read_len = min(chunk_size, bytes_left)
                     buf = f.read(read_len)
