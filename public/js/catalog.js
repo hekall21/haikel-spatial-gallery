@@ -10,7 +10,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "51.0 MB",
     "gdriveId": "1-8SMSrk30fN9jDKONFU6Vuiu6EHwAgN7",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1-8SMSrk30fN9jDKONFU6Vuiu6EHwAgN7",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1-8SMSrk30fN9jDKONFU6Vuiu6EHwAgN7&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1-8SMSrk30fN9jDKONFU6Vuiu6EHwAgN7/preview"
   },
   {
@@ -24,7 +24,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "81.9 MB",
     "gdriveId": "141Mcrk_C1Ys21DTElY0GBxYa5zhInmPF",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=141Mcrk_C1Ys21DTElY0GBxYa5zhInmPF",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=141Mcrk_C1Ys21DTElY0GBxYa5zhInmPF&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/141Mcrk_C1Ys21DTElY0GBxYa5zhInmPF/preview"
   },
   {
@@ -38,7 +38,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "5.8 MB",
     "gdriveId": "1BSydKfKPJhy5f8Lx9j9mT_0ayykOjf6e",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1BSydKfKPJhy5f8Lx9j9mT_0ayykOjf6e",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1BSydKfKPJhy5f8Lx9j9mT_0ayykOjf6e&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1BSydKfKPJhy5f8Lx9j9mT_0ayykOjf6e/preview"
   },
   {
@@ -52,7 +52,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "64.0 MB",
     "gdriveId": "1G3KCLVs7Py7-4KkEbsKgii1qbKKJZt3E",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1G3KCLVs7Py7-4KkEbsKgii1qbKKJZt3E",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1G3KCLVs7Py7-4KkEbsKgii1qbKKJZt3E&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1G3KCLVs7Py7-4KkEbsKgii1qbKKJZt3E/preview"
   },
   {
@@ -66,7 +66,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "33.1 MB",
     "gdriveId": "1xo-vNUBeKV9HnnKlP09cIJUjMnMNyRN1",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1xo-vNUBeKV9HnnKlP09cIJUjMnMNyRN1",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1xo-vNUBeKV9HnnKlP09cIJUjMnMNyRN1&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1xo-vNUBeKV9HnnKlP09cIJUjMnMNyRN1/preview"
   },
   {
@@ -80,7 +80,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "83.2 MB",
     "gdriveId": "17RH19_vWU0ZgG-gdeJVv1PV1oO3K1ulo",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=17RH19_vWU0ZgG-gdeJVv1PV1oO3K1ulo",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=17RH19_vWU0ZgG-gdeJVv1PV1oO3K1ulo&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/17RH19_vWU0ZgG-gdeJVv1PV1oO3K1ulo/preview"
   },
   {
@@ -94,7 +94,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "15.8 MB",
     "gdriveId": "1ocLTqCqhPKZmp0a12sVro8QxfLKrDtCs",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1ocLTqCqhPKZmp0a12sVro8QxfLKrDtCs",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1ocLTqCqhPKZmp0a12sVro8QxfLKrDtCs&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1ocLTqCqhPKZmp0a12sVro8QxfLKrDtCs/preview"
   },
   {
@@ -108,7 +108,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "94.5 MB",
     "gdriveId": "18o5zqzXY7KwRUxzOr1ULHA-mu5CwTFST",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=18o5zqzXY7KwRUxzOr1ULHA-mu5CwTFST",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=18o5zqzXY7KwRUxzOr1ULHA-mu5CwTFST&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/18o5zqzXY7KwRUxzOr1ULHA-mu5CwTFST/preview"
   },
   {
@@ -122,7 +122,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "70.2 MB",
     "gdriveId": "1UpjyM9v0GAWu4tjMua2gO2aCtJcs_bcs",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1UpjyM9v0GAWu4tjMua2gO2aCtJcs_bcs",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1UpjyM9v0GAWu4tjMua2gO2aCtJcs_bcs&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1UpjyM9v0GAWu4tjMua2gO2aCtJcs_bcs/preview"
   },
   {
@@ -136,7 +136,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "58.1 MB",
     "gdriveId": "1P32DhVTR__Z1gFV62FizU9-hVushQpKd",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1P32DhVTR__Z1gFV62FizU9-hVushQpKd",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1P32DhVTR__Z1gFV62FizU9-hVushQpKd&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1P32DhVTR__Z1gFV62FizU9-hVushQpKd/preview"
   },
   {
@@ -150,7 +150,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "13.5 MB",
     "gdriveId": "1lBYpj9gPva00TXf25L_ZgcAptIc31aMI",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1lBYpj9gPva00TXf25L_ZgcAptIc31aMI",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1lBYpj9gPva00TXf25L_ZgcAptIc31aMI&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1lBYpj9gPva00TXf25L_ZgcAptIc31aMI/preview"
   },
   {
@@ -164,7 +164,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "26.1 MB",
     "gdriveId": "1Sjr031xaFlQScqqyLgc-IJm7iq5MDm9O",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1Sjr031xaFlQScqqyLgc-IJm7iq5MDm9O",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1Sjr031xaFlQScqqyLgc-IJm7iq5MDm9O&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1Sjr031xaFlQScqqyLgc-IJm7iq5MDm9O/preview"
   },
   {
@@ -178,7 +178,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "12.2 MB",
     "gdriveId": "1MtEjN-e_TQ3qLeJehqhM4bN1JG9o-SOB",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1MtEjN-e_TQ3qLeJehqhM4bN1JG9o-SOB",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1MtEjN-e_TQ3qLeJehqhM4bN1JG9o-SOB&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1MtEjN-e_TQ3qLeJehqhM4bN1JG9o-SOB/preview"
   },
   {
@@ -192,7 +192,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "7.0 MB",
     "gdriveId": "14gMFyZvB2qQjO_-89PPLPZIgnVxRfJp0",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=14gMFyZvB2qQjO_-89PPLPZIgnVxRfJp0",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=14gMFyZvB2qQjO_-89PPLPZIgnVxRfJp0&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/14gMFyZvB2qQjO_-89PPLPZIgnVxRfJp0/preview"
   },
   {
@@ -206,7 +206,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "57.4 MB",
     "gdriveId": "1T2GUAH57cvGiu5ZjWSS8tEBo2JtZ-rN-",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1T2GUAH57cvGiu5ZjWSS8tEBo2JtZ-rN-",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1T2GUAH57cvGiu5ZjWSS8tEBo2JtZ-rN-&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1T2GUAH57cvGiu5ZjWSS8tEBo2JtZ-rN-/preview"
   },
   {
@@ -220,7 +220,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "26.1 MB",
     "gdriveId": "1HAaQzyiKCt4LAp3CDYfDdZfTZ59neNH_",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1HAaQzyiKCt4LAp3CDYfDdZfTZ59neNH_",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1HAaQzyiKCt4LAp3CDYfDdZfTZ59neNH_&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1HAaQzyiKCt4LAp3CDYfDdZfTZ59neNH_/preview"
   },
   {
@@ -234,7 +234,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "7.0 MB",
     "gdriveId": "1yoOt3RdtOfA8Q1mJI-tBI7nUIBvfjLo_",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1yoOt3RdtOfA8Q1mJI-tBI7nUIBvfjLo_",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1yoOt3RdtOfA8Q1mJI-tBI7nUIBvfjLo_&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1yoOt3RdtOfA8Q1mJI-tBI7nUIBvfjLo_/preview"
   },
   {
@@ -248,7 +248,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "122.8 MB",
     "gdriveId": "1F9Pscz05WRGbbFKxN87Qhq8sUZpaUqUs",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1F9Pscz05WRGbbFKxN87Qhq8sUZpaUqUs",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1F9Pscz05WRGbbFKxN87Qhq8sUZpaUqUs&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1F9Pscz05WRGbbFKxN87Qhq8sUZpaUqUs/preview"
   },
   {
@@ -262,7 +262,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "13.5 MB",
     "gdriveId": "1sejBx0go7TqHtPmahymiNg1ezdmhnWCi",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1sejBx0go7TqHtPmahymiNg1ezdmhnWCi",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1sejBx0go7TqHtPmahymiNg1ezdmhnWCi&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1sejBx0go7TqHtPmahymiNg1ezdmhnWCi/preview"
   },
   {
@@ -276,7 +276,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "2.8 MB",
     "gdriveId": "1MkFQJiw8QhT7VI1yQHqb_TIRzjI7PtTj",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1MkFQJiw8QhT7VI1yQHqb_TIRzjI7PtTj",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1MkFQJiw8QhT7VI1yQHqb_TIRzjI7PtTj&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1MkFQJiw8QhT7VI1yQHqb_TIRzjI7PtTj/preview"
   },
   {
@@ -290,7 +290,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "8.7 MB",
     "gdriveId": "1l34LmdLL_y8581QzPe7kZTVCAmWFdfxJ",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1l34LmdLL_y8581QzPe7kZTVCAmWFdfxJ",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1l34LmdLL_y8581QzPe7kZTVCAmWFdfxJ&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1l34LmdLL_y8581QzPe7kZTVCAmWFdfxJ/preview"
   },
   {
@@ -304,7 +304,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "2.1 MB",
     "gdriveId": "1raH3BRq4baS8gYbRmlypk82w4XTtJhDY",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1raH3BRq4baS8gYbRmlypk82w4XTtJhDY",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1raH3BRq4baS8gYbRmlypk82w4XTtJhDY&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1raH3BRq4baS8gYbRmlypk82w4XTtJhDY/preview"
   },
   {
@@ -318,7 +318,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "2.8 MB",
     "gdriveId": "1awWCo2AOFG3L-Pg4HSQwnJOmUfDGjhnY",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1awWCo2AOFG3L-Pg4HSQwnJOmUfDGjhnY",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1awWCo2AOFG3L-Pg4HSQwnJOmUfDGjhnY&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1awWCo2AOFG3L-Pg4HSQwnJOmUfDGjhnY/preview"
   },
   {
@@ -332,7 +332,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "8.8 MB",
     "gdriveId": "12QkdIas9gxMNgoc1te7AYwr8iuy_Fpla",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=12QkdIas9gxMNgoc1te7AYwr8iuy_Fpla",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=12QkdIas9gxMNgoc1te7AYwr8iuy_Fpla&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/12QkdIas9gxMNgoc1te7AYwr8iuy_Fpla/preview"
   },
   {
@@ -346,7 +346,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "3.6 MB",
     "gdriveId": "1YVSc7Spy5d5L-gBxNDttRxjOPPKd6QUk",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1YVSc7Spy5d5L-gBxNDttRxjOPPKd6QUk",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1YVSc7Spy5d5L-gBxNDttRxjOPPKd6QUk&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1YVSc7Spy5d5L-gBxNDttRxjOPPKd6QUk/preview"
   },
   {
@@ -360,7 +360,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "8.7 MB",
     "gdriveId": "1CEGyMQuwPmJN5YSexlRosPXP1vPK6rcM",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1CEGyMQuwPmJN5YSexlRosPXP1vPK6rcM",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1CEGyMQuwPmJN5YSexlRosPXP1vPK6rcM&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1CEGyMQuwPmJN5YSexlRosPXP1vPK6rcM/preview"
   },
   {
@@ -374,7 +374,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "79.6 MB",
     "gdriveId": "1PoyEYUcpngvqHKP2w_2cMqPmSuIIL_uB",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1PoyEYUcpngvqHKP2w_2cMqPmSuIIL_uB",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1PoyEYUcpngvqHKP2w_2cMqPmSuIIL_uB&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1PoyEYUcpngvqHKP2w_2cMqPmSuIIL_uB/preview"
   },
   {
@@ -388,7 +388,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "45.5 MB",
     "gdriveId": "1SA0aj8mt4PxJTzIZW0RcnJjixc4s3Ic-",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1SA0aj8mt4PxJTzIZW0RcnJjixc4s3Ic-",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1SA0aj8mt4PxJTzIZW0RcnJjixc4s3Ic-&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1SA0aj8mt4PxJTzIZW0RcnJjixc4s3Ic-/preview"
   },
   {
@@ -402,7 +402,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "7.1 MB",
     "gdriveId": "1Hd1vAFDFZhYlBuf67j_c7DuRc4S12AJX",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1Hd1vAFDFZhYlBuf67j_c7DuRc4S12AJX",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1Hd1vAFDFZhYlBuf67j_c7DuRc4S12AJX&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1Hd1vAFDFZhYlBuf67j_c7DuRc4S12AJX/preview"
   },
   {
@@ -416,7 +416,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "39.4 MB",
     "gdriveId": "1XoV8HP73O1YZ3WGMZDuXDig_qa3EJ_Tk",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1XoV8HP73O1YZ3WGMZDuXDig_qa3EJ_Tk",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1XoV8HP73O1YZ3WGMZDuXDig_qa3EJ_Tk&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1XoV8HP73O1YZ3WGMZDuXDig_qa3EJ_Tk/preview"
   },
   {
@@ -430,7 +430,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "22.4 MB",
     "gdriveId": "1ZpKN5HGoNc5ZMra48IiaIeGeq62WaIxO",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1ZpKN5HGoNc5ZMra48IiaIeGeq62WaIxO",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1ZpKN5HGoNc5ZMra48IiaIeGeq62WaIxO&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1ZpKN5HGoNc5ZMra48IiaIeGeq62WaIxO/preview"
   },
   {
@@ -444,7 +444,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "12.0 MB",
     "gdriveId": "16TfAHe6R8r5i6kEdFdNbKjTXpJOJP-a6",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=16TfAHe6R8r5i6kEdFdNbKjTXpJOJP-a6",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=16TfAHe6R8r5i6kEdFdNbKjTXpJOJP-a6&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/16TfAHe6R8r5i6kEdFdNbKjTXpJOJP-a6/preview"
   },
   {
@@ -458,7 +458,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "4.4 MB",
     "gdriveId": "15xOhTQ5WdMh8pBdsek3_Q-r-s2QbESqk",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=15xOhTQ5WdMh8pBdsek3_Q-r-s2QbESqk",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=15xOhTQ5WdMh8pBdsek3_Q-r-s2QbESqk&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/15xOhTQ5WdMh8pBdsek3_Q-r-s2QbESqk/preview"
   },
   {
@@ -472,7 +472,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "3.1 MB",
     "gdriveId": "13Iq4WFY0ZDIWuoKD_vmfjTvokQKbjvEt",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=13Iq4WFY0ZDIWuoKD_vmfjTvokQKbjvEt",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=13Iq4WFY0ZDIWuoKD_vmfjTvokQKbjvEt&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/13Iq4WFY0ZDIWuoKD_vmfjTvokQKbjvEt/preview"
   },
   {
@@ -486,7 +486,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "3.8 MB",
     "gdriveId": "1Fg8EX_upwuDuCwPVUx_VzBSwbpcQ2YHX",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1Fg8EX_upwuDuCwPVUx_VzBSwbpcQ2YHX",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1Fg8EX_upwuDuCwPVUx_VzBSwbpcQ2YHX&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1Fg8EX_upwuDuCwPVUx_VzBSwbpcQ2YHX/preview"
   },
   {
@@ -500,7 +500,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "3.6 MB",
     "gdriveId": "1i2208xWsEZiqhMPBPlxhfMFaFxKslxhp",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1i2208xWsEZiqhMPBPlxhfMFaFxKslxhp",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1i2208xWsEZiqhMPBPlxhfMFaFxKslxhp&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1i2208xWsEZiqhMPBPlxhfMFaFxKslxhp/preview"
   },
   {
@@ -514,7 +514,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "29.0 MB",
     "gdriveId": "176AUdDEedfK1TZiw9XSe3K6fT6c1OzY7",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=176AUdDEedfK1TZiw9XSe3K6fT6c1OzY7",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=176AUdDEedfK1TZiw9XSe3K6fT6c1OzY7&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/176AUdDEedfK1TZiw9XSe3K6fT6c1OzY7/preview"
   },
   {
@@ -528,7 +528,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "17.5 MB",
     "gdriveId": "1Ti3C1aBpR97e6hO0tQicR0lIWr_B8tm0",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1Ti3C1aBpR97e6hO0tQicR0lIWr_B8tm0",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1Ti3C1aBpR97e6hO0tQicR0lIWr_B8tm0&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1Ti3C1aBpR97e6hO0tQicR0lIWr_B8tm0/preview"
   },
   {
@@ -542,7 +542,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "29.0 MB",
     "gdriveId": "1GgHDNieimv-58YgZ175X-2c65KaFiavW",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1GgHDNieimv-58YgZ175X-2c65KaFiavW",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1GgHDNieimv-58YgZ175X-2c65KaFiavW&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1GgHDNieimv-58YgZ175X-2c65KaFiavW/preview"
   },
   {
@@ -556,7 +556,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "213.9 MB",
     "gdriveId": "1u4Iao8myl7b88xPFKBNLGybpWd_PhUR7",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1u4Iao8myl7b88xPFKBNLGybpWd_PhUR7",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1u4Iao8myl7b88xPFKBNLGybpWd_PhUR7&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1u4Iao8myl7b88xPFKBNLGybpWd_PhUR7/preview"
   },
   {
@@ -570,7 +570,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "21.9 MB",
     "gdriveId": "18hI-K_Ymz-MQCSlI63xIqIVlPGWO9g06",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=18hI-K_Ymz-MQCSlI63xIqIVlPGWO9g06",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=18hI-K_Ymz-MQCSlI63xIqIVlPGWO9g06&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/18hI-K_Ymz-MQCSlI63xIqIVlPGWO9g06/preview"
   },
   {
@@ -584,7 +584,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "8.8 MB",
     "gdriveId": "1WSpZSqADUJmx2XnLMqDhfnd_Ho18aF91",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1WSpZSqADUJmx2XnLMqDhfnd_Ho18aF91",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1WSpZSqADUJmx2XnLMqDhfnd_Ho18aF91&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1WSpZSqADUJmx2XnLMqDhfnd_Ho18aF91/preview"
   },
   {
@@ -598,7 +598,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "586.4 MB",
     "gdriveId": "1qkEoXSrvzZWNcHkyBczx2dPrZzTGd6Rt",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1qkEoXSrvzZWNcHkyBczx2dPrZzTGd6Rt",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1qkEoXSrvzZWNcHkyBczx2dPrZzTGd6Rt&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1qkEoXSrvzZWNcHkyBczx2dPrZzTGd6Rt/preview"
   },
   {
@@ -612,7 +612,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "14.2 MB",
     "gdriveId": "1DL55zk4sym849h3FnBLAhEmWUhCcRMQL",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1DL55zk4sym849h3FnBLAhEmWUhCcRMQL",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1DL55zk4sym849h3FnBLAhEmWUhCcRMQL&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1DL55zk4sym849h3FnBLAhEmWUhCcRMQL/preview"
   },
   {
@@ -626,7 +626,7 @@ window.MEDIA_CATALOG = [
     "date": "2026",
     "size": "6.3 MB",
     "gdriveId": "1UM4yahbRwBx3aLQ30lKaLnJ0WTQjmBdz",
-    "gdriveStream": "https://drive.google.com/uc?export=download&id=1UM4yahbRwBx3aLQ30lKaLnJ0WTQjmBdz",
+    "gdriveStream": "https://drive.usercontent.google.com/download?id=1UM4yahbRwBx3aLQ30lKaLnJ0WTQjmBdz&export=download&authuser=0",
     "gdrivePreview": "https://drive.google.com/file/d/1UM4yahbRwBx3aLQ30lKaLnJ0WTQjmBdz/preview"
   },
   {

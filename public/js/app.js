@@ -494,6 +494,7 @@ class HaikelSpatialArchive {
     if (yearVal) yearVal.textContent = item.date;
     if (formatVal) formatVal.textContent = item.type === 'video' ? '4K Ultra HD MP4' : 'Full-Frame Master JPG';
     const isLocal = ['localhost', '127.0.0.1', '0.0.0.0'].includes(window.location.hostname);
+    // On Vercel: use Google Drive usercontent CDN or proxy
     const primaryVideoUrl = isLocal ? item.url : (item.gdriveStream || item.url);
     const downloadUrl = item.gdriveStream || item.url;
 
@@ -526,46 +527,53 @@ class HaikelSpatialArchive {
         const gdriveEmbedUrl = item.gdrivePreview || '';
 
         mediaContainer.innerHTML = `
-          <div class="video-player-wrapper" style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-            <video id="modal-active-video"
-                   src="${primaryVideoUrl}"
-                   poster="${fallbackUrl}"
-                   controls
-                   autoplay
-                   loop
-                   playsinline
-                   preload="auto"
-                   crossorigin="anonymous"
-                   style="max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 12px; background: #000; box-shadow: 0 20px 70px rgba(0, 0, 0, 0.98);"
-            >
-              <source src="${primaryVideoUrl}" type="video/mp4">
-              ${item.gdriveStream ? `<source src="${item.gdriveStream}" type="video/mp4">` : ''}
-              Browser Anda tidak mendukung pemutaran video HTML5.
-            </video>
+          <div class="video-player-wrapper">
+            <div class="video-cinema-frame" id="video-cinema-frame">
+              <video id="modal-active-video"
+                     src="${primaryVideoUrl}"
+                     poster="${fallbackUrl}"
+                     controls
+                     autoplay
+                     loop
+                     playsinline
+                     webkit-playsinline
+                     preload="auto"
+                     crossorigin="anonymous"
+              >
+                <source src="${primaryVideoUrl}" type="video/mp4">
+                ${item.gdriveStream && item.gdriveStream !== primaryVideoUrl ? `<source src="${item.gdriveStream}" type="video/mp4">` : ''}
+                Browser Anda tidak mendukung video HTML5.
+              </video>
 
-            <div class="video-loading-indicator" id="video-loading" style="display: none; position: absolute; pointer-events: none; color: var(--accent-cyan); font-family: var(--font-mono); font-size: 0.85rem; background: rgba(0,0,0,0.75); padding: 8px 18px; border-radius: 20px; border: 1px solid var(--glass-border); backdrop-filter: blur(8px);">
-              ⏳ MEMUAT VIDEO...
+              <!-- Floating Unmute Audio Pill -->
+              <button class="unmute-floating-pill clickable" id="btn-unmute-video" style="display: none;">
+                <span>🔊 KLIK UNTUK SUARA</span>
+              </button>
+
+              <div class="video-loading-indicator" id="video-loading" style="display: none; position: absolute; pointer-events: none; color: var(--accent-cyan); font-family: var(--font-mono); font-size: 0.82rem; background: rgba(0,0,0,0.8); padding: 8px 18px; border-radius: 20px; border: 1px solid var(--glass-border); backdrop-filter: blur(8px);">
+                ⏳ MEMUAT VIDEO...
+              </div>
             </div>
 
-            <!-- Google Drive Cinema Embed Player (Ultra HD Stream for Vercel) -->
-            <div class="gdrive-embed-container" id="gdrive-embed-container" style="display: none; width: 100%; height: 100%; max-width: 1100px; max-height: 75vh;">
+            <!-- GDrive Embed Cinema Player -->
+            <div class="gdrive-embed-container" id="gdrive-embed-container" style="display: none;">
               ${gdriveEmbedUrl ? `
                 <iframe id="gdrive-iframe"
                         src=""
                         data-src="${gdriveEmbedUrl}"
                         allow="autoplay; fullscreen"
                         allowfullscreen
-                        style="width: 100%; height: 100%; min-height: 520px; border: none; border-radius: 12px; box-shadow: 0 20px 70px rgba(0, 0, 0, 0.98);"
                 ></iframe>
               ` : ''}
             </div>
 
-            <div class="video-error-fallback" id="video-error-box" style="display: none; position: absolute; flex-direction: column; align-items: center; gap: 10px; background: rgba(14, 15, 20, 0.96); padding: 24px 32px; border-radius: 16px; border: 1px solid rgba(56, 189, 248, 0.4); text-align: center; max-width: 90%; z-index: 30; backdrop-filter: blur(16px);">
-              <span style="font-size: 2.2rem;">🎬</span>
-              <h4 style="font-family: var(--font-heading); color: #fff; font-weight: 700; font-size: 1.1rem;">Beralih ke Google Drive Player HD</h4>
-              <p style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted);">Memutar video langsung dengan streaming Google Drive HD.</p>
-              <div style="display: flex; gap: 10px; margin-top: 6px; flex-wrap: wrap; justify-content: center;">
-                <button class="modal-action-btn clickable" id="btn-switch-gdrive" style="background: var(--accent-cyan); color: #000; font-weight: 800; border: none; padding: 0.6rem 1.4rem;">▶ PUTAR DI GDRIVE PLAYER</button>
+            <!-- Error fallback with 1-click switch to GDrive Player -->
+            <div class="video-error-fallback" id="video-error-box" style="display: none; position: absolute; flex-direction: column; align-items: center; gap: 10px; background: rgba(14, 15, 20, 0.96); padding: 22px 28px; border-radius: 16px; border: 1px solid rgba(56, 189, 248, 0.4); text-align: center; max-width: 90%; z-index: 30; backdrop-filter: blur(16px);">
+              <span style="font-size: 2rem;">🎬</span>
+              <h4 style="font-family: var(--font-heading); color: #fff; font-weight: 700; font-size: 1.05rem;">Beralih ke Google Drive Player HD</h4>
+              <p style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-muted);">Memutar video langsung dengan streaming Google Drive HD.</p>
+              <div style="display: flex; gap: 10px; margin-top: 4px; flex-wrap: wrap; justify-content: center;">
+                <button class="modal-action-btn clickable" id="btn-switch-gdrive" style="background: var(--accent-cyan); color: #000; font-weight: 800; border: none; padding: 0.6rem 1.4rem;">▶ PUTAR DENGAN GDRIVE PLAYER</button>
                 <a href="${downloadUrl}" target="_blank" class="modal-action-btn clickable" style="background: var(--glass-bg); color: #fff; text-decoration: none; padding: 0.6rem 1.4rem;">📥 BUKA FILE ASLI</a>
               </div>
             </div>
@@ -578,13 +586,15 @@ class HaikelSpatialArchive {
         const embedContainer = mediaContainer.querySelector('#gdrive-embed-container');
         const iframe = mediaContainer.querySelector('#gdrive-iframe');
         const switchBtn = mediaContainer.querySelector('#btn-switch-gdrive');
+        const unmuteBtn = mediaContainer.querySelector('#btn-unmute-video');
+        const cinemaFrame = mediaContainer.querySelector('#video-cinema-frame');
 
         const switchToEmbed = () => {
-          if (vid) vid.style.display = 'none';
+          if (cinemaFrame) cinemaFrame.style.display = 'none';
           if (loadIndicator) loadIndicator.style.display = 'none';
           if (errorBox) errorBox.style.display = 'none';
           if (embedContainer && iframe) {
-            embedContainer.style.display = 'block';
+            embedContainer.style.display = 'flex';
             if (!iframe.src || iframe.src === 'about:blank' || iframe.src === window.location.href) {
               iframe.src = iframe.getAttribute('data-src');
             }
@@ -598,6 +608,14 @@ class HaikelSpatialArchive {
           });
         }
 
+        if (unmuteBtn && vid) {
+          unmuteBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            vid.muted = false;
+            unmuteBtn.style.display = 'none';
+          });
+        }
+
         if (vid) {
           vid.addEventListener('waiting', () => {
             if (loadIndicator) loadIndicator.style.display = 'block';
@@ -608,10 +626,17 @@ class HaikelSpatialArchive {
           vid.addEventListener('playing', () => {
             if (loadIndicator) loadIndicator.style.display = 'none';
             if (errorBox) errorBox.style.display = 'none';
+            if (vid.muted && unmuteBtn) {
+              unmuteBtn.style.display = 'flex';
+            }
+          });
+          vid.addEventListener('volumechange', () => {
+            if (!vid.muted && unmuteBtn) {
+              unmuteBtn.style.display = 'none';
+            }
           });
           vid.addEventListener('error', () => {
             if (loadIndicator) loadIndicator.style.display = 'none';
-            // Auto switch to Google Drive player on error (e.g. 404 on Vercel)
             if (gdriveEmbedUrl) {
               switchToEmbed();
             } else if (errorBox) {
@@ -619,13 +644,19 @@ class HaikelSpatialArchive {
             }
           });
 
+          // Trigger instant 1-click playback immediately
           vid.load();
           const playPromise = vid.play();
           if (playPromise !== undefined) {
-            playPromise.catch(() => {
+            playPromise.then(() => {
+              if (!vid.muted && unmuteBtn) {
+                unmuteBtn.style.display = 'none';
+              }
+            }).catch(() => {
               vid.muted = true;
-              vid.play().catch(() => {
-                // If blocked on non-local domain, auto-switch to embed
+              vid.play().then(() => {
+                if (unmuteBtn) unmuteBtn.style.display = 'flex';
+              }).catch(() => {
                 if (!isLocal && gdriveEmbedUrl) {
                   switchToEmbed();
                 }
