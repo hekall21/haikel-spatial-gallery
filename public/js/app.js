@@ -493,13 +493,18 @@ class HaikelSpatialArchive {
     if (sizeVal) sizeVal.textContent = item.size;
     if (yearVal) yearVal.textContent = item.date;
     if (formatVal) formatVal.textContent = item.type === 'video' ? '4K Ultra HD MP4' : 'Full-Frame Master JPG';
+    const isLocal = ['localhost', '127.0.0.1', '0.0.0.0'].includes(window.location.hostname);
+    const primaryVideoUrl = isLocal ? item.url : (item.gdriveStream || item.url);
+    const downloadUrl = item.gdriveStream || item.url;
+
     if (downloadBtn) {
-      downloadBtn.href = item.url;
+      downloadBtn.href = downloadUrl;
       downloadBtn.download = item.title + (item.type === 'video' ? '.mp4' : '.jpg');
+      downloadBtn.target = '_blank';
     }
 
     if (mediaContainer) {
-      // Clean up previous video immediately
+      // Clean up previous video and iframes immediately
       const oldVid = mediaContainer.querySelector('video');
       if (oldVid) {
         try {
@@ -508,16 +513,22 @@ class HaikelSpatialArchive {
           oldVid.load();
         } catch (e) {}
       }
+      const oldIframe = mediaContainer.querySelector('iframe');
+      if (oldIframe) {
+        oldIframe.src = 'about:blank';
+      }
 
       const fallbackUrl = item.thumb || item.url;
       if (item.type === 'video') {
         window.CinematicAudio?.playSubDrop();
         window.CinematicAudio?.duckAmbient(true);
 
+        const gdriveEmbedUrl = item.gdrivePreview || '';
+
         mediaContainer.innerHTML = `
           <div class="video-player-wrapper" style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
             <video id="modal-active-video"
-                   src="${item.url}"
+                   src="${primaryVideoUrl}"
                    poster="${fallbackUrl}"
                    controls
                    autoplay
@@ -527,17 +538,36 @@ class HaikelSpatialArchive {
                    crossorigin="anonymous"
                    style="max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 12px; background: #000; box-shadow: 0 20px 70px rgba(0, 0, 0, 0.98);"
             >
-              <source src="${item.url}" type="video/mp4">
+              <source src="${primaryVideoUrl}" type="video/mp4">
+              ${item.gdriveStream ? `<source src="${item.gdriveStream}" type="video/mp4">` : ''}
               Browser Anda tidak mendukung pemutaran video HTML5.
             </video>
+
             <div class="video-loading-indicator" id="video-loading" style="display: none; position: absolute; pointer-events: none; color: var(--accent-cyan); font-family: var(--font-mono); font-size: 0.85rem; background: rgba(0,0,0,0.75); padding: 8px 18px; border-radius: 20px; border: 1px solid var(--glass-border); backdrop-filter: blur(8px);">
               ⏳ MEMUAT VIDEO...
             </div>
-            <div class="video-error-fallback" id="video-error-box" style="display: none; position: absolute; flex-direction: column; align-items: center; gap: 10px; background: rgba(14, 15, 20, 0.96); padding: 24px 32px; border-radius: 16px; border: 1px solid rgba(239, 68, 68, 0.5); text-align: center; max-width: 90%; z-index: 30; backdrop-filter: blur(16px);">
-              <span style="font-size: 2.2rem;">⚠️</span>
-              <h4 style="font-family: var(--font-heading); color: #fff; font-weight: 700; font-size: 1.1rem;">Video Tidak Dapat Diputar Langsung</h4>
-              <p style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted);" id="video-error-msg">Pastikan server lokal sedang berjalan (<code>python server.py</code> atau <code>npm run dev</code>).</p>
-              <a href="${item.url}" download="${item.title}.mp4" class="modal-action-btn clickable" style="margin-top: 8px; background: var(--accent-cyan); color: #000; font-weight: 800; text-decoration: none; padding: 0.6rem 1.4rem;">📥 UNDUH VIDEO ASLI</a>
+
+            <!-- Google Drive Cinema Embed Player (Ultra HD Stream for Vercel) -->
+            <div class="gdrive-embed-container" id="gdrive-embed-container" style="display: none; width: 100%; height: 100%; max-width: 1100px; max-height: 75vh;">
+              ${gdriveEmbedUrl ? `
+                <iframe id="gdrive-iframe"
+                        src=""
+                        data-src="${gdriveEmbedUrl}"
+                        allow="autoplay; fullscreen"
+                        allowfullscreen
+                        style="width: 100%; height: 100%; min-height: 520px; border: none; border-radius: 12px; box-shadow: 0 20px 70px rgba(0, 0, 0, 0.98);"
+                ></iframe>
+              ` : ''}
+            </div>
+
+            <div class="video-error-fallback" id="video-error-box" style="display: none; position: absolute; flex-direction: column; align-items: center; gap: 10px; background: rgba(14, 15, 20, 0.96); padding: 24px 32px; border-radius: 16px; border: 1px solid rgba(56, 189, 248, 0.4); text-align: center; max-width: 90%; z-index: 30; backdrop-filter: blur(16px);">
+              <span style="font-size: 2.2rem;">🎬</span>
+              <h4 style="font-family: var(--font-heading); color: #fff; font-weight: 700; font-size: 1.1rem;">Beralih ke Google Drive Player HD</h4>
+              <p style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted);">Memutar video langsung dengan streaming Google Drive HD.</p>
+              <div style="display: flex; gap: 10px; margin-top: 6px; flex-wrap: wrap; justify-content: center;">
+                <button class="modal-action-btn clickable" id="btn-switch-gdrive" style="background: var(--accent-cyan); color: #000; font-weight: 800; border: none; padding: 0.6rem 1.4rem;">▶ PUTAR DI GDRIVE PLAYER</button>
+                <a href="${downloadUrl}" target="_blank" class="modal-action-btn clickable" style="background: var(--glass-bg); color: #fff; text-decoration: none; padding: 0.6rem 1.4rem;">📥 BUKA FILE ASLI</a>
+              </div>
             </div>
           </div>
         `;
@@ -545,6 +575,28 @@ class HaikelSpatialArchive {
         const vid = mediaContainer.querySelector('video');
         const loadIndicator = mediaContainer.querySelector('#video-loading');
         const errorBox = mediaContainer.querySelector('#video-error-box');
+        const embedContainer = mediaContainer.querySelector('#gdrive-embed-container');
+        const iframe = mediaContainer.querySelector('#gdrive-iframe');
+        const switchBtn = mediaContainer.querySelector('#btn-switch-gdrive');
+
+        const switchToEmbed = () => {
+          if (vid) vid.style.display = 'none';
+          if (loadIndicator) loadIndicator.style.display = 'none';
+          if (errorBox) errorBox.style.display = 'none';
+          if (embedContainer && iframe) {
+            embedContainer.style.display = 'block';
+            if (!iframe.src || iframe.src === 'about:blank' || iframe.src === window.location.href) {
+              iframe.src = iframe.getAttribute('data-src');
+            }
+          }
+        };
+
+        if (switchBtn) {
+          switchBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            switchToEmbed();
+          });
+        }
 
         if (vid) {
           vid.addEventListener('waiting', () => {
@@ -559,12 +611,11 @@ class HaikelSpatialArchive {
           });
           vid.addEventListener('error', () => {
             if (loadIndicator) loadIndicator.style.display = 'none';
-            if (errorBox) {
+            // Auto switch to Google Drive player on error (e.g. 404 on Vercel)
+            if (gdriveEmbedUrl) {
+              switchToEmbed();
+            } else if (errorBox) {
               errorBox.style.display = 'flex';
-              const errMsg = mediaContainer.querySelector('#video-error-msg');
-              if (errMsg && vid.error) {
-                errMsg.textContent = `Error Code ${vid.error.code}: File video belum dapat diakses melalui server ini.`;
-              }
             }
           });
 
@@ -572,9 +623,13 @@ class HaikelSpatialArchive {
           const playPromise = vid.play();
           if (playPromise !== undefined) {
             playPromise.catch(() => {
-              // If browser blocked unmuted sound on autoplay -> fallback to muted
               vid.muted = true;
-              vid.play().catch(() => {});
+              vid.play().catch(() => {
+                // If blocked on non-local domain, auto-switch to embed
+                if (!isLocal && gdriveEmbedUrl) {
+                  switchToEmbed();
+                }
+              });
             });
           }
         }
@@ -601,6 +656,10 @@ class HaikelSpatialArchive {
           vid.removeAttribute('src');
           vid.load();
         } catch (e) {}
+      }
+      const iframe = mediaContainer.querySelector('iframe');
+      if (iframe) {
+        iframe.src = 'about:blank';
       }
       mediaContainer.innerHTML = '';
     }

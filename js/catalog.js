@@ -8,7 +8,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_001.mp4",
     "thumb": "/thumbs/thumb_vid_001.webp",
     "date": "2026",
-    "size": "51.0 MB"
+    "size": "51.0 MB",
+    "gdriveId": "1-8SMSrk30fN9jDKONFU6Vuiu6EHwAgN7",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1-8SMSrk30fN9jDKONFU6Vuiu6EHwAgN7",
+    "gdrivePreview": "https://drive.google.com/file/d/1-8SMSrk30fN9jDKONFU6Vuiu6EHwAgN7/preview"
   },
   {
     "id": "vid-002",
@@ -19,7 +22,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_002.mp4",
     "thumb": "/thumbs/thumb_vid_002.webp",
     "date": "2026",
-    "size": "81.9 MB"
+    "size": "81.9 MB",
+    "gdriveId": "141Mcrk_C1Ys21DTElY0GBxYa5zhInmPF",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=141Mcrk_C1Ys21DTElY0GBxYa5zhInmPF",
+    "gdrivePreview": "https://drive.google.com/file/d/141Mcrk_C1Ys21DTElY0GBxYa5zhInmPF/preview"
   },
   {
     "id": "vid-003",
@@ -30,7 +36,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_003.mp4",
     "thumb": "/thumbs/thumb_vid_003.webp",
     "date": "2026",
-    "size": "5.8 MB"
+    "size": "5.8 MB",
+    "gdriveId": "1BSydKfKPJhy5f8Lx9j9mT_0ayykOjf6e",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1BSydKfKPJhy5f8Lx9j9mT_0ayykOjf6e",
+    "gdrivePreview": "https://drive.google.com/file/d/1BSydKfKPJhy5f8Lx9j9mT_0ayykOjf6e/preview"
   },
   {
     "id": "vid-004",
@@ -41,7 +50,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_004.mp4",
     "thumb": "/thumbs/thumb_vid_004.webp",
     "date": "2026",
-    "size": "64.0 MB"
+    "size": "64.0 MB",
+    "gdriveId": "1G3KCLVs7Py7-4KkEbsKgii1qbKKJZt3E",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1G3KCLVs7Py7-4KkEbsKgii1qbKKJZt3E",
+    "gdrivePreview": "https://drive.google.com/file/d/1G3KCLVs7Py7-4KkEbsKgii1qbKKJZt3E/preview"
   },
   {
     "id": "vid-005",
@@ -52,7 +64,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_005.mp4",
     "thumb": "/thumbs/thumb_vid_005.webp",
     "date": "2026",
-    "size": "33.1 MB"
+    "size": "33.1 MB",
+    "gdriveId": "1xo-vNUBeKV9HnnKlP09cIJUjMnMNyRN1",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1xo-vNUBeKV9HnnKlP09cIJUjMnMNyRN1",
+    "gdrivePreview": "https://drive.google.com/file/d/1xo-vNUBeKV9HnnKlP09cIJUjMnMNyRN1/preview"
   },
   {
     "id": "vid-006",
@@ -63,7 +78,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_006.mp4",
     "thumb": "/thumbs/thumb_vid_006.webp",
     "date": "2026",
-    "size": "83.2 MB"
+    "size": "83.2 MB",
+    "gdriveId": "17RH19_vWU0ZgG-gdeJVv1PV1oO3K1ulo",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=17RH19_vWU0ZgG-gdeJVv1PV1oO3K1ulo",
+    "gdrivePreview": "https://drive.google.com/file/d/17RH19_vWU0ZgG-gdeJVv1PV1oO3K1ulo/preview"
   },
   {
     "id": "vid-007",
@@ -74,7 +92,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_007.mp4",
     "thumb": "/thumbs/thumb_vid_007.webp",
     "date": "2026",
-    "size": "15.8 MB"
+    "size": "15.8 MB",
+    "gdriveId": "1ocLTqCqhPKZmp0a12sVro8QxfLKrDtCs",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1ocLTqCqhPKZmp0a12sVro8QxfLKrDtCs",
+    "gdrivePreview": "https://drive.google.com/file/d/1ocLTqCqhPKZmp0a12sVro8QxfLKrDtCs/preview"
   },
   {
     "id": "vid-008",
@@ -85,7 +106,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_008.mp4",
     "thumb": "/thumbs/thumb_vid_008.webp",
     "date": "2026",
-    "size": "94.5 MB"
+    "size": "94.5 MB",
+    "gdriveId": "18o5zqzXY7KwRUxzOr1ULHA-mu5CwTFST",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=18o5zqzXY7KwRUxzOr1ULHA-mu5CwTFST",
+    "gdrivePreview": "https://drive.google.com/file/d/18o5zqzXY7KwRUxzOr1ULHA-mu5CwTFST/preview"
   },
   {
     "id": "vid-009",
@@ -96,7 +120,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_009.mp4",
     "thumb": "/thumbs/thumb_vid_009.webp",
     "date": "2026",
-    "size": "70.2 MB"
+    "size": "70.2 MB",
+    "gdriveId": "1UpjyM9v0GAWu4tjMua2gO2aCtJcs_bcs",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1UpjyM9v0GAWu4tjMua2gO2aCtJcs_bcs",
+    "gdrivePreview": "https://drive.google.com/file/d/1UpjyM9v0GAWu4tjMua2gO2aCtJcs_bcs/preview"
   },
   {
     "id": "vid-010",
@@ -107,7 +134,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_010.mp4",
     "thumb": "/thumbs/thumb_vid_010.webp",
     "date": "2026",
-    "size": "58.1 MB"
+    "size": "58.1 MB",
+    "gdriveId": "1P32DhVTR__Z1gFV62FizU9-hVushQpKd",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1P32DhVTR__Z1gFV62FizU9-hVushQpKd",
+    "gdrivePreview": "https://drive.google.com/file/d/1P32DhVTR__Z1gFV62FizU9-hVushQpKd/preview"
   },
   {
     "id": "vid-011",
@@ -118,7 +148,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_011.mp4",
     "thumb": "/thumbs/thumb_vid_011.webp",
     "date": "2026",
-    "size": "13.5 MB"
+    "size": "13.5 MB",
+    "gdriveId": "1lBYpj9gPva00TXf25L_ZgcAptIc31aMI",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1lBYpj9gPva00TXf25L_ZgcAptIc31aMI",
+    "gdrivePreview": "https://drive.google.com/file/d/1lBYpj9gPva00TXf25L_ZgcAptIc31aMI/preview"
   },
   {
     "id": "vid-012",
@@ -129,7 +162,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_012.mp4",
     "thumb": "/thumbs/thumb_vid_012.webp",
     "date": "2026",
-    "size": "26.1 MB"
+    "size": "26.1 MB",
+    "gdriveId": "1Sjr031xaFlQScqqyLgc-IJm7iq5MDm9O",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1Sjr031xaFlQScqqyLgc-IJm7iq5MDm9O",
+    "gdrivePreview": "https://drive.google.com/file/d/1Sjr031xaFlQScqqyLgc-IJm7iq5MDm9O/preview"
   },
   {
     "id": "vid-013",
@@ -140,7 +176,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_013.mp4",
     "thumb": "/thumbs/thumb_vid_013.webp",
     "date": "2026",
-    "size": "12.2 MB"
+    "size": "12.2 MB",
+    "gdriveId": "1MtEjN-e_TQ3qLeJehqhM4bN1JG9o-SOB",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1MtEjN-e_TQ3qLeJehqhM4bN1JG9o-SOB",
+    "gdrivePreview": "https://drive.google.com/file/d/1MtEjN-e_TQ3qLeJehqhM4bN1JG9o-SOB/preview"
   },
   {
     "id": "vid-014",
@@ -151,7 +190,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_014.mp4",
     "thumb": "/thumbs/thumb_vid_014.webp",
     "date": "2026",
-    "size": "7.0 MB"
+    "size": "7.0 MB",
+    "gdriveId": "14gMFyZvB2qQjO_-89PPLPZIgnVxRfJp0",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=14gMFyZvB2qQjO_-89PPLPZIgnVxRfJp0",
+    "gdrivePreview": "https://drive.google.com/file/d/14gMFyZvB2qQjO_-89PPLPZIgnVxRfJp0/preview"
   },
   {
     "id": "vid-015",
@@ -162,7 +204,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_015.mp4",
     "thumb": "/thumbs/thumb_vid_015.webp",
     "date": "2026",
-    "size": "57.4 MB"
+    "size": "57.4 MB",
+    "gdriveId": "1T2GUAH57cvGiu5ZjWSS8tEBo2JtZ-rN-",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1T2GUAH57cvGiu5ZjWSS8tEBo2JtZ-rN-",
+    "gdrivePreview": "https://drive.google.com/file/d/1T2GUAH57cvGiu5ZjWSS8tEBo2JtZ-rN-/preview"
   },
   {
     "id": "vid-016",
@@ -173,7 +218,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_016.mp4",
     "thumb": "/thumbs/thumb_vid_016.webp",
     "date": "2026",
-    "size": "26.1 MB"
+    "size": "26.1 MB",
+    "gdriveId": "1HAaQzyiKCt4LAp3CDYfDdZfTZ59neNH_",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1HAaQzyiKCt4LAp3CDYfDdZfTZ59neNH_",
+    "gdrivePreview": "https://drive.google.com/file/d/1HAaQzyiKCt4LAp3CDYfDdZfTZ59neNH_/preview"
   },
   {
     "id": "vid-017",
@@ -184,7 +232,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_017.mp4",
     "thumb": "/thumbs/thumb_vid_017.webp",
     "date": "2026",
-    "size": "7.0 MB"
+    "size": "7.0 MB",
+    "gdriveId": "1yoOt3RdtOfA8Q1mJI-tBI7nUIBvfjLo_",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1yoOt3RdtOfA8Q1mJI-tBI7nUIBvfjLo_",
+    "gdrivePreview": "https://drive.google.com/file/d/1yoOt3RdtOfA8Q1mJI-tBI7nUIBvfjLo_/preview"
   },
   {
     "id": "vid-018",
@@ -195,7 +246,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_018.mp4",
     "thumb": "/thumbs/thumb_vid_018.webp",
     "date": "2026",
-    "size": "122.8 MB"
+    "size": "122.8 MB",
+    "gdriveId": "1F9Pscz05WRGbbFKxN87Qhq8sUZpaUqUs",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1F9Pscz05WRGbbFKxN87Qhq8sUZpaUqUs",
+    "gdrivePreview": "https://drive.google.com/file/d/1F9Pscz05WRGbbFKxN87Qhq8sUZpaUqUs/preview"
   },
   {
     "id": "vid-019",
@@ -206,7 +260,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_019.mp4",
     "thumb": "/thumbs/thumb_vid_019.webp",
     "date": "2026",
-    "size": "13.5 MB"
+    "size": "13.5 MB",
+    "gdriveId": "1sejBx0go7TqHtPmahymiNg1ezdmhnWCi",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1sejBx0go7TqHtPmahymiNg1ezdmhnWCi",
+    "gdrivePreview": "https://drive.google.com/file/d/1sejBx0go7TqHtPmahymiNg1ezdmhnWCi/preview"
   },
   {
     "id": "vid-020",
@@ -217,7 +274,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/TEMPLATE_DAN_EDITAN/VIDEO_TEMPLATE_020.mp4",
     "thumb": "/thumbs/thumb_vid_020.webp",
     "date": "2026",
-    "size": "2.8 MB"
+    "size": "2.8 MB",
+    "gdriveId": "1MkFQJiw8QhT7VI1yQHqb_TIRzjI7PtTj",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1MkFQJiw8QhT7VI1yQHqb_TIRzjI7PtTj",
+    "gdrivePreview": "https://drive.google.com/file/d/1MkFQJiw8QhT7VI1yQHqb_TIRzjI7PtTj/preview"
   },
   {
     "id": "vid-021",
@@ -228,7 +288,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/VIDEO_EKALL_001.mp4",
     "thumb": "/thumbs/thumb_vid_021.webp",
     "date": "2026",
-    "size": "8.7 MB"
+    "size": "8.7 MB",
+    "gdriveId": "1l34LmdLL_y8581QzPe7kZTVCAmWFdfxJ",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1l34LmdLL_y8581QzPe7kZTVCAmWFdfxJ",
+    "gdrivePreview": "https://drive.google.com/file/d/1l34LmdLL_y8581QzPe7kZTVCAmWFdfxJ/preview"
   },
   {
     "id": "vid-022",
@@ -239,7 +302,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/VIDEO_EKALL_002.mp4",
     "thumb": "/thumbs/thumb_vid_022.webp",
     "date": "2026",
-    "size": "2.1 MB"
+    "size": "2.1 MB",
+    "gdriveId": "1raH3BRq4baS8gYbRmlypk82w4XTtJhDY",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1raH3BRq4baS8gYbRmlypk82w4XTtJhDY",
+    "gdrivePreview": "https://drive.google.com/file/d/1raH3BRq4baS8gYbRmlypk82w4XTtJhDY/preview"
   },
   {
     "id": "vid-023",
@@ -250,7 +316,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/VIDEO_EKALL_003.mp4",
     "thumb": "/thumbs/thumb_vid_023.webp",
     "date": "2026",
-    "size": "2.8 MB"
+    "size": "2.8 MB",
+    "gdriveId": "1awWCo2AOFG3L-Pg4HSQwnJOmUfDGjhnY",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1awWCo2AOFG3L-Pg4HSQwnJOmUfDGjhnY",
+    "gdrivePreview": "https://drive.google.com/file/d/1awWCo2AOFG3L-Pg4HSQwnJOmUfDGjhnY/preview"
   },
   {
     "id": "vid-024",
@@ -261,7 +330,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/VIDEO_EKALL_004.mp4",
     "thumb": "/thumbs/thumb_vid_024.webp",
     "date": "2026",
-    "size": "8.8 MB"
+    "size": "8.8 MB",
+    "gdriveId": "12QkdIas9gxMNgoc1te7AYwr8iuy_Fpla",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=12QkdIas9gxMNgoc1te7AYwr8iuy_Fpla",
+    "gdrivePreview": "https://drive.google.com/file/d/12QkdIas9gxMNgoc1te7AYwr8iuy_Fpla/preview"
   },
   {
     "id": "vid-025",
@@ -272,7 +344,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/VIDEO_EKALL_005.mp4",
     "thumb": "/thumbs/thumb_vid_025.webp",
     "date": "2026",
-    "size": "3.6 MB"
+    "size": "3.6 MB",
+    "gdriveId": "1YVSc7Spy5d5L-gBxNDttRxjOPPKd6QUk",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1YVSc7Spy5d5L-gBxNDttRxjOPPKd6QUk",
+    "gdrivePreview": "https://drive.google.com/file/d/1YVSc7Spy5d5L-gBxNDttRxjOPPKd6QUk/preview"
   },
   {
     "id": "vid-026",
@@ -283,7 +358,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/VIDEO_EKALL_006.mp4",
     "thumb": "/thumbs/thumb_vid_026.webp",
     "date": "2026",
-    "size": "8.7 MB"
+    "size": "8.7 MB",
+    "gdriveId": "1CEGyMQuwPmJN5YSexlRosPXP1vPK6rcM",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1CEGyMQuwPmJN5YSexlRosPXP1vPK6rcM",
+    "gdrivePreview": "https://drive.google.com/file/d/1CEGyMQuwPmJN5YSexlRosPXP1vPK6rcM/preview"
   },
   {
     "id": "vid-027",
@@ -294,7 +372,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/VIDEO_EKALL_007.mp4",
     "thumb": "/thumbs/thumb_vid_027.webp",
     "date": "2026",
-    "size": "79.6 MB"
+    "size": "79.6 MB",
+    "gdriveId": "1PoyEYUcpngvqHKP2w_2cMqPmSuIIL_uB",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1PoyEYUcpngvqHKP2w_2cMqPmSuIIL_uB",
+    "gdrivePreview": "https://drive.google.com/file/d/1PoyEYUcpngvqHKP2w_2cMqPmSuIIL_uB/preview"
   },
   {
     "id": "vid-028",
@@ -305,7 +386,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/VIDEO_EKALL_008.mp4",
     "thumb": "/thumbs/thumb_vid_028.webp",
     "date": "2026",
-    "size": "45.5 MB"
+    "size": "45.5 MB",
+    "gdriveId": "1SA0aj8mt4PxJTzIZW0RcnJjixc4s3Ic-",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1SA0aj8mt4PxJTzIZW0RcnJjixc4s3Ic-",
+    "gdrivePreview": "https://drive.google.com/file/d/1SA0aj8mt4PxJTzIZW0RcnJjixc4s3Ic-/preview"
   },
   {
     "id": "vid-029",
@@ -316,7 +400,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/VIDEO_EKALL_009.mp4",
     "thumb": "/thumbs/thumb_vid_029.webp",
     "date": "2026",
-    "size": "7.1 MB"
+    "size": "7.1 MB",
+    "gdriveId": "1Hd1vAFDFZhYlBuf67j_c7DuRc4S12AJX",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1Hd1vAFDFZhYlBuf67j_c7DuRc4S12AJX",
+    "gdrivePreview": "https://drive.google.com/file/d/1Hd1vAFDFZhYlBuf67j_c7DuRc4S12AJX/preview"
   },
   {
     "id": "vid-030",
@@ -327,7 +414,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/VIDEO_EKALL_010.mp4",
     "thumb": "/thumbs/thumb_vid_030.webp",
     "date": "2026",
-    "size": "39.4 MB"
+    "size": "39.4 MB",
+    "gdriveId": "1XoV8HP73O1YZ3WGMZDuXDig_qa3EJ_Tk",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1XoV8HP73O1YZ3WGMZDuXDig_qa3EJ_Tk",
+    "gdrivePreview": "https://drive.google.com/file/d/1XoV8HP73O1YZ3WGMZDuXDig_qa3EJ_Tk/preview"
   },
   {
     "id": "vid-031",
@@ -338,7 +428,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/VIDEO_EKALL_011.mp4",
     "thumb": "/thumbs/thumb_vid_031.webp",
     "date": "2026",
-    "size": "22.4 MB"
+    "size": "22.4 MB",
+    "gdriveId": "1ZpKN5HGoNc5ZMra48IiaIeGeq62WaIxO",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1ZpKN5HGoNc5ZMra48IiaIeGeq62WaIxO",
+    "gdrivePreview": "https://drive.google.com/file/d/1ZpKN5HGoNc5ZMra48IiaIeGeq62WaIxO/preview"
   },
   {
     "id": "vid-032",
@@ -349,7 +442,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/VIDEO_EKALL_012.mp4",
     "thumb": "/thumbs/thumb_vid_032.webp",
     "date": "2026",
-    "size": "12.0 MB"
+    "size": "12.0 MB",
+    "gdriveId": "16TfAHe6R8r5i6kEdFdNbKjTXpJOJP-a6",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=16TfAHe6R8r5i6kEdFdNbKjTXpJOJP-a6",
+    "gdrivePreview": "https://drive.google.com/file/d/16TfAHe6R8r5i6kEdFdNbKjTXpJOJP-a6/preview"
   },
   {
     "id": "vid-033",
@@ -360,7 +456,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/VIDEO_EKALL_013.mp4",
     "thumb": "/thumbs/thumb_vid_033.webp",
     "date": "2026",
-    "size": "4.4 MB"
+    "size": "4.4 MB",
+    "gdriveId": "15xOhTQ5WdMh8pBdsek3_Q-r-s2QbESqk",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=15xOhTQ5WdMh8pBdsek3_Q-r-s2QbESqk",
+    "gdrivePreview": "https://drive.google.com/file/d/15xOhTQ5WdMh8pBdsek3_Q-r-s2QbESqk/preview"
   },
   {
     "id": "vid-034",
@@ -371,7 +470,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/VIDEO_EKALL_014.mp4",
     "thumb": "/thumbs/thumb_vid_034.webp",
     "date": "2026",
-    "size": "3.1 MB"
+    "size": "3.1 MB",
+    "gdriveId": "13Iq4WFY0ZDIWuoKD_vmfjTvokQKbjvEt",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=13Iq4WFY0ZDIWuoKD_vmfjTvokQKbjvEt",
+    "gdrivePreview": "https://drive.google.com/file/d/13Iq4WFY0ZDIWuoKD_vmfjTvokQKbjvEt/preview"
   },
   {
     "id": "vid-035",
@@ -382,7 +484,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/VIDEO_EKALL_015.mp4",
     "thumb": "/thumbs/thumb_vid_035.webp",
     "date": "2026",
-    "size": "3.8 MB"
+    "size": "3.8 MB",
+    "gdriveId": "1Fg8EX_upwuDuCwPVUx_VzBSwbpcQ2YHX",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1Fg8EX_upwuDuCwPVUx_VzBSwbpcQ2YHX",
+    "gdrivePreview": "https://drive.google.com/file/d/1Fg8EX_upwuDuCwPVUx_VzBSwbpcQ2YHX/preview"
   },
   {
     "id": "vid-036",
@@ -393,7 +498,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/VIDEO_EKALL_016.mp4",
     "thumb": "/thumbs/thumb_vid_036.webp",
     "date": "2026",
-    "size": "3.6 MB"
+    "size": "3.6 MB",
+    "gdriveId": "1i2208xWsEZiqhMPBPlxhfMFaFxKslxhp",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1i2208xWsEZiqhMPBPlxhfMFaFxKslxhp",
+    "gdrivePreview": "https://drive.google.com/file/d/1i2208xWsEZiqhMPBPlxhfMFaFxKslxhp/preview"
   },
   {
     "id": "vid-037",
@@ -404,7 +512,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/VIDEO_EKALL_017.mp4",
     "thumb": "/thumbs/thumb_vid_037.webp",
     "date": "2026",
-    "size": "29.0 MB"
+    "size": "29.0 MB",
+    "gdriveId": "176AUdDEedfK1TZiw9XSe3K6fT6c1OzY7",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=176AUdDEedfK1TZiw9XSe3K6fT6c1OzY7",
+    "gdrivePreview": "https://drive.google.com/file/d/176AUdDEedfK1TZiw9XSe3K6fT6c1OzY7/preview"
   },
   {
     "id": "vid-038",
@@ -415,7 +526,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/VIDEO_EKALL_018.mp4",
     "thumb": "/thumbs/thumb_vid_038.webp",
     "date": "2026",
-    "size": "17.5 MB"
+    "size": "17.5 MB",
+    "gdriveId": "1Ti3C1aBpR97e6hO0tQicR0lIWr_B8tm0",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1Ti3C1aBpR97e6hO0tQicR0lIWr_B8tm0",
+    "gdrivePreview": "https://drive.google.com/file/d/1Ti3C1aBpR97e6hO0tQicR0lIWr_B8tm0/preview"
   },
   {
     "id": "vid-039",
@@ -426,7 +540,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/VIDEO_EKALL_019.mp4",
     "thumb": "/thumbs/thumb_vid_039.webp",
     "date": "2026",
-    "size": "29.0 MB"
+    "size": "29.0 MB",
+    "gdriveId": "1GgHDNieimv-58YgZ175X-2c65KaFiavW",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1GgHDNieimv-58YgZ175X-2c65KaFiavW",
+    "gdrivePreview": "https://drive.google.com/file/d/1GgHDNieimv-58YgZ175X-2c65KaFiavW/preview"
   },
   {
     "id": "vid-040",
@@ -437,7 +554,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/VIDEO_EKALL_020.mp4",
     "thumb": "/thumbs/thumb_vid_040.webp",
     "date": "2026",
-    "size": "213.9 MB"
+    "size": "213.9 MB",
+    "gdriveId": "1u4Iao8myl7b88xPFKBNLGybpWd_PhUR7",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1u4Iao8myl7b88xPFKBNLGybpWd_PhUR7",
+    "gdrivePreview": "https://drive.google.com/file/d/1u4Iao8myl7b88xPFKBNLGybpWd_PhUR7/preview"
   },
   {
     "id": "vid-041",
@@ -448,7 +568,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/VIDEO_EKALL_021.mp4",
     "thumb": "/thumbs/thumb_vid_041.webp",
     "date": "2026",
-    "size": "21.9 MB"
+    "size": "21.9 MB",
+    "gdriveId": "18hI-K_Ymz-MQCSlI63xIqIVlPGWO9g06",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=18hI-K_Ymz-MQCSlI63xIqIVlPGWO9g06",
+    "gdrivePreview": "https://drive.google.com/file/d/18hI-K_Ymz-MQCSlI63xIqIVlPGWO9g06/preview"
   },
   {
     "id": "vid-042",
@@ -459,7 +582,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/VIDEO_EKALL_022.mp4",
     "thumb": "/thumbs/thumb_vid_042.webp",
     "date": "2026",
-    "size": "8.8 MB"
+    "size": "8.8 MB",
+    "gdriveId": "1WSpZSqADUJmx2XnLMqDhfnd_Ho18aF91",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1WSpZSqADUJmx2XnLMqDhfnd_Ho18aF91",
+    "gdrivePreview": "https://drive.google.com/file/d/1WSpZSqADUJmx2XnLMqDhfnd_Ho18aF91/preview"
   },
   {
     "id": "vid-043",
@@ -470,7 +596,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/VIDEO_EKALL_023.mp4",
     "thumb": "/thumbs/thumb_vid_043.webp",
     "date": "2026",
-    "size": "586.4 MB"
+    "size": "586.4 MB",
+    "gdriveId": "1qkEoXSrvzZWNcHkyBczx2dPrZzTGd6Rt",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1qkEoXSrvzZWNcHkyBczx2dPrZzTGd6Rt",
+    "gdrivePreview": "https://drive.google.com/file/d/1qkEoXSrvzZWNcHkyBczx2dPrZzTGd6Rt/preview"
   },
   {
     "id": "vid-044",
@@ -481,7 +610,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/VIDEO_EKALL_024.mp4",
     "thumb": "/thumbs/thumb_vid_044.webp",
     "date": "2026",
-    "size": "14.2 MB"
+    "size": "14.2 MB",
+    "gdriveId": "1DL55zk4sym849h3FnBLAhEmWUhCcRMQL",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1DL55zk4sym849h3FnBLAhEmWUhCcRMQL",
+    "gdrivePreview": "https://drive.google.com/file/d/1DL55zk4sym849h3FnBLAhEmWUhCcRMQL/preview"
   },
   {
     "id": "vid-045",
@@ -492,7 +624,10 @@ window.MEDIA_CATALOG = [
     "url": "/@media/videos/VIDEO_EKALL_025.mp4",
     "thumb": "/thumbs/thumb_vid_045.webp",
     "date": "2026",
-    "size": "6.3 MB"
+    "size": "6.3 MB",
+    "gdriveId": "1UM4yahbRwBx3aLQ30lKaLnJ0WTQjmBdz",
+    "gdriveStream": "https://drive.google.com/uc?export=download&id=1UM4yahbRwBx3aLQ30lKaLnJ0WTQjmBdz",
+    "gdrivePreview": "https://drive.google.com/file/d/1UM4yahbRwBx3aLQ30lKaLnJ0WTQjmBdz/preview"
   },
   {
     "id": "img-001",
