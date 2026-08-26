@@ -40,9 +40,15 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
         
         if path.startswith('/@media/photos/'):
             rel = path[len('/@media/photos/'):].lstrip('/')
+            local_p = os.path.join(PROJECT_DIR, 'media', 'photos', rel.replace('/', os.sep))
+            if os.path.exists(local_p):
+                return local_p
             return os.path.join(PHOTO_DIR, rel.replace('/', os.sep))
         elif path.startswith('/@media/videos/'):
             rel = path[len('/@media/videos/'):].lstrip('/')
+            local_v = os.path.join(PROJECT_DIR, 'media', 'videos', rel.replace('/', os.sep))
+            if os.path.exists(local_v) and os.path.getsize(local_v) > 100000:
+                return local_v
             return os.path.join(VIDEO_DIR, rel.replace('/', os.sep))
         elif path.startswith('/thumbs/'):
             rel = path[len('/thumbs/'):].lstrip('/')

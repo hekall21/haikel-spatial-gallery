@@ -434,7 +434,6 @@ class HaikelSpatialArchive {
             ${durationBadge}
             <img src="${thumbUrl}" alt="${item.title}" loading="lazy" decoding="async" />
             ${item.type === 'video' ? '<div class="card-center-play">▶</div>' : ''}
-            ${item.watchProgress > 0 ? `<div class="card-progress-bar"><div class="card-progress-fill" style="width: ${item.watchProgress}%"></div></div>` : ''}
           </div>
         </div>
       `;
@@ -554,14 +553,12 @@ class HaikelSpatialArchive {
       const thumbUrl = item.thumb || item.url;
       const isVideo = item.type === 'video';
       const durationBadge = isVideo ? `<span class="card-duration-badge">▶ ${Math.round(item.duration || 15)}s • ${item.aspectRatio || '9:16'}</span>` : '';
-      const progressBar = item.watchProgress > 0 ? `<div class="card-progress-bar"><div class="card-progress-fill" style="width: ${item.watchProgress}%"></div></div>` : '';
 
       return `
         <div class="grid-item-card clickable ${item.isLiked ? 'is-liked' : ''}" data-id="${item.id}">
           <span class="card-badge-type">${isVideo ? `▶ ${item.aspectRatio || '4K'}` : '📷 PHOTO'}</span>
           ${durationBadge}
           <img src="${thumbUrl}" alt="${item.title}" loading="lazy" decoding="async" />
-          ${progressBar}
           
           <div class="grid-item-overlay">
             <div class="grid-overlay-top">
@@ -756,11 +753,6 @@ class HaikelSpatialArchive {
                 </div>
               </button>
 
-              <!-- Resume Playback Toast Notification -->
-              <div class="cinema-resume-toast" id="cinema-resume-toast" style="display: none;">
-                <span>▶ Melanjutkan dari posisi terakhir</span>
-              </div>
-
               <!-- Loading Spinner -->
               <div class="video-loading-spinner" id="video-loading-spinner" style="display: none;">
                 <div class="spinner-ring"></div>
@@ -823,7 +815,6 @@ class HaikelSpatialArchive {
         const centerPlayHint = mediaContainer.querySelector('#center-play-hint');
         const unmuteBtn = mediaContainer.querySelector('#btn-unmute-video');
         const spinner = mediaContainer.querySelector('#video-loading-spinner');
-        const resumeToast = mediaContainer.querySelector('#cinema-resume-toast');
 
         const hudPlayBtn = mediaContainer.querySelector('#hud-play-btn');
         const hudPlayIcon = mediaContainer.querySelector('.ctrl-icon-play');
@@ -969,22 +960,6 @@ class HaikelSpatialArchive {
           if (timelineTooltip) timelineTooltip.style.opacity = '0';
         });
 
-        // Resume Playback Check from Database
-        if (window.HaikelMediaDB) {
-          window.HaikelMediaDB.getWatchProgress(item.id).then((prog) => {
-            if (prog && prog.currentTime > 2 && prog.currentTime < (item.duration || 100) - 2) {
-              vid.currentTime = prog.currentTime;
-              if (resumeToast) {
-                resumeToast.style.display = 'block';
-                resumeToast.querySelector('span').textContent = `▶ Melanjutkan dari ${formatTime(prog.currentTime)}`;
-                setTimeout(() => {
-                  resumeToast.style.display = 'none';
-                }, 3200);
-              }
-            }
-          });
-        }
-
         // Video Events
         vid.addEventListener('loadedmetadata', () => {
           if (spinner) spinner.style.display = 'none';
@@ -1016,14 +991,6 @@ class HaikelSpatialArchive {
             const bufPct = (bufferedEnd / vid.duration) * 100;
             timelineBuffer.style.width = `${bufPct}%`;
           }
-
-          // Throttle save watch progress to Database every 3 seconds
-          if (!this.progressSaveThrottleTimer && window.HaikelMediaDB) {
-            this.progressSaveThrottleTimer = setTimeout(() => {
-              window.HaikelMediaDB.saveWatchProgress(item.id, vid.currentTime, vid.duration);
-              this.progressSaveThrottleTimer = null;
-            }, 2500);
-          }
         });
 
         vid.addEventListener('waiting', () => {
@@ -1038,10 +1005,6 @@ class HaikelSpatialArchive {
 
         vid.addEventListener('pause', () => {
           updatePlayState(false);
-          // Immediate progress save on pause
-          if (window.HaikelMediaDB) {
-            window.HaikelMediaDB.saveWatchProgress(item.id, vid.currentTime, vid.duration);
-          }
         });
 
         vid.addEventListener('error', () => {
@@ -1084,8 +1047,7 @@ class HaikelSpatialArchive {
     const mediaContainer = document.getElementById('modal-media-container');
     if (mediaContainer) {
       const vid = mediaContainer.querySelector('video');
-      if (vid && this.currentModalItem && window.HaikelMediaDB) {
-        window.HaikelMediaDB.saveWatchProgress(this.currentModalItem.id, vid.currentTime, vid.duration);
+      if (vid) {
         try {
           vid.pause();
           vid.removeAttribute('src');
