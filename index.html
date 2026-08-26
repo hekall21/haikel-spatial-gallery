@@ -37,7 +37,7 @@
       <div class="hud-brand">
         <div class="brand-badge">
           <span class="live-dot"></span>
-          <span class="brand-tag">3D SPATIAL UNIVERSE • PINNACLE</span>
+          <span class="brand-tag">3D SPATIAL PHOTOGRAPHY ARCHIVE • PINNACLE</span>
         </div>
         <h1 class="brand-title">HAIKEL <span>ARCHIVE</span></h1>
       </div>
@@ -46,27 +46,22 @@
       <div class="hud-center-wrap">
         <div class="hud-filters" id="category-filters">
           <button class="filter-btn active clickable" data-filter="all">
-            <span class="filter-label">ALL</span>
-            <span class="filter-count" id="count-all">235</span>
+            <span class="filter-label">✦ ALL</span>
+            <span class="filter-count" id="count-all">190</span>
           </button>
-          <button class="filter-btn clickable" data-filter="photo">
-            <span class="filter-label">📷 PHOTOS</span>
-            <span class="filter-count" id="count-photo">190</span>
+          <button class="filter-btn clickable" data-filter="street">
+            <span class="filter-label">🏙️ STREET & URBAN</span>
           </button>
-          <button class="filter-btn clickable" data-filter="video">
-            <span class="filter-label">▶ VIDEOS</span>
-            <span class="filter-count" id="count-video">45</span>
+          <button class="filter-btn clickable" data-filter="noir">
+            <span class="filter-label">🎬 CINEMATIC NOIR</span>
           </button>
-        </div>
-
-        <!-- Video Multi-Facet Database Sub-Filter Dock -->
-        <div class="video-sub-dock" id="video-sub-dock" style="display: none;">
-          <button class="sub-filter-pill active clickable" data-vfilter="all">SEMUA VIDEO (45)</button>
-          <button class="sub-filter-pill clickable" data-vfilter="reels">📱 9:16 REELS (35)</button>
-          <button class="sub-filter-pill clickable" data-vfilter="cinema">🎬 16:9 CINEMA (5)</button>
-          <button class="sub-filter-pill clickable" data-vfilter="edits">✨ 1:1 EDITS (3)</button>
-          <button class="sub-filter-pill clickable" data-vfilter="favorites">⭐ FAVORIT SAYA</button>
-          <button class="sub-filter-pill clickable" data-vfilter="history">🕒 RIWAYAT NONTON</button>
+          <button class="filter-btn clickable" data-filter="portrait">
+            <span class="filter-label">👤 PORTRAIT</span>
+          </button>
+          <button class="filter-btn clickable" data-filter="favorites">
+            <span class="filter-label">⭐ FAVORIT</span>
+            <span class="filter-count" id="count-fav">0</span>
+          </button>
         </div>
       </div>
 
@@ -128,28 +123,63 @@
 
         <!-- Navigation Orbit Hint -->
         <div class="orbit-hint">
-          <span>DRAG MOUSE / SWIPE UNTUK MENJELAJAHI RUANG 3D • KLIK FOTO/VIDEO UNTUK ZOOM</span>
+          <span>DRAG MOUSE / SWIPE UNTUK MENJELAJAHI RUANG 3D • KLIK FOTO UNTUK MEMBUKA HD VIEWER</span>
         </div>
       </section>
 
       <!-- STAGE 2: HIGH-PERFORMANCE MASONRY GRID VIEW -->
       <section class="stage-section" id="stage-grid">
+        <!-- Hero Introduction Banner -->
+        <div class="grid-hero-banner">
+          <div class="hero-backdrop-glow"></div>
+          <div class="hero-content">
+            <div class="hero-tag-row">
+              <span class="hero-pill-tag">✦ VISUAL ARCHIVE • CURATED COLLECTION</span>
+              <span class="hero-meta-chip">190 HIGH-RES MASTERS</span>
+              <span class="hero-meta-chip live-chip"><span class="chip-dot"></span> REALTIME INDEXEDDB</span>
+            </div>
+            
+            <h2 class="hero-title">HAIKEL <span class="hero-gradient-text">VISUAL ARCHIVE</span></h2>
+            
+            <p class="hero-subtitle">
+              Koleksi 190 karya fotografi sinematik resolusi tinggi. Eksplorasi komposisi visual mendalam, ekspresi otentik jalanan, dan estetika urban noir dengan tone kontras khas kurasi Haikel.
+            </p>
+
+            <div class="hero-metrics-grid">
+              <div class="metric-card">
+                <span class="metric-value">190</span>
+                <span class="metric-label">Master Karya Foto</span>
+              </div>
+              <div class="metric-card">
+                <span class="metric-value" id="hero-total-likes">--</span>
+                <span class="metric-label">Total Apresiasi</span>
+              </div>
+              <div class="metric-card">
+                <span class="metric-value" id="hero-total-views">--</span>
+                <span class="metric-label">Kunjungan Kurasi</span>
+              </div>
+              <div class="metric-card highlight">
+                <span class="metric-value">4K UHD</span>
+                <span class="metric-label">Fidelity Resolusi</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="grid-header">
           <div class="grid-title-wrap">
             <span class="mono-tag">KATALOG DATABASE REALTIME</span>
-            <h2 class="grid-main-heading">SEMUA FOTO & VIDEO (<span id="grid-item-count">235</span>)</h2>
+            <h3 class="grid-main-heading">SEMUA FOTO (<span id="grid-item-count">190</span>)</h3>
           </div>
           <div class="grid-tools-wrap">
             <div class="grid-search-wrap">
-              <input type="text" class="hud-search-input" id="grid-search-input" placeholder="🔍 Cari judul, 9:16, 4K, reel, street..." />
+              <input type="text" class="hud-search-input" id="grid-search-input" placeholder="🔍 Cari judul foto, street, portrait, noir..." />
             </div>
             <div class="grid-sort-wrap">
               <select class="hud-sort-select clickable" id="grid-sort-select" title="Urutkan Koleksi Media">
                 <option value="default">✨ Default Arsitektur</option>
                 <option value="popular">🔥 Paling Disukai (Likes)</option>
-                <option value="views">👁 Paling Banyak Ditonton</option>
-                <option value="duration_desc">⏱ Durasi Terlama</option>
-                <option value="duration_asc">⚡ Reels Singkat</option>
+                <option value="views">👁 Paling Banyak Dilihat</option>
                 <option value="newest">📅 Terbaru (2026)</option>
               </select>
             </div>
@@ -174,7 +204,7 @@
 
       <!-- Center: Quick Counter Indicator -->
       <div class="dock-center">
-        <span class="dock-counter-text" id="dock-counter-text">235 KARYA SIAP DITAMPILKAN</span>
+        <span class="dock-counter-text" id="dock-counter-text">190 KARYA FOTOGRAFI SIAP DITAMPILKAN</span>
       </div>
 
       <!-- Right: Synthesizer Ambient Sound Controller -->

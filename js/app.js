@@ -609,7 +609,7 @@ class HaikelSpatialArchive {
   }
 
   // =========================================================================
-  // 3. ULTRA CINEMA LIGHTBOX (Adaptive Playback + Database Stats & Resume)
+  // 3. ULTRA LIGHTBOX MODAL (Instant Photo Viewer)
   // =========================================================================
 
   async openCinemaModal(item) {
@@ -637,12 +637,12 @@ class HaikelSpatialArchive {
     const globalIdx = this.filteredCatalog.findIndex(it => it.id === item.id);
     const currentIndex = globalIdx >= 0 ? globalIdx : 0;
 
-    if (tag) tag.textContent = item.type === 'video' ? `▶ ${item.aspectRatio || '4K'} CINEMATIC VIDEO` : '📷 HIGH-RES PHOTO';
+    if (tag) tag.textContent = '📷 HIGH-RES MASTER PHOTO';
     if (title) title.textContent = item.title;
     if (counter) counter.textContent = `${currentIndex + 1} / ${this.filteredCatalog.length}`;
-    if (sizeVal) sizeVal.textContent = item.size;
-    if (yearVal) yearVal.textContent = item.date;
-    if (formatVal) formatVal.textContent = item.type === 'video' ? `Master 4K MP4 (${item.resolution || item.aspectRatio || 'Ultra HD'})` : 'Full-Frame Master JPG';
+    if (sizeVal) sizeVal.textContent = item.size || '2.4 MB';
+    if (yearVal) yearVal.textContent = item.date || '2026';
+    if (formatVal) formatVal.textContent = '4K Master Ultra HD';
 
     // Update Modal Like Button
     if (likeBtn && likeIcon && likeCounter) {
@@ -650,7 +650,6 @@ class HaikelSpatialArchive {
       likeIcon.textContent = item.isLiked ? '❤️' : '🤍';
       likeCounter.textContent = item.likes || 0;
 
-      // Unbind previous onclick
       likeBtn.onclick = async (e) => {
         e.stopPropagation();
         window.CinematicAudio?.playUiClick();
@@ -661,403 +660,34 @@ class HaikelSpatialArchive {
             likeIcon.textContent = res.isLiked ? '❤️' : '🤍';
             likeCounter.textContent = res.likes;
             this.renderMasonryGrid();
+            this.updateHeroStats();
+            this.updateCounters();
           }
         }
       };
     }
 
-    const isLocal = ['localhost', '127.0.0.1', '0.0.0.0'].includes(window.location.hostname) ||
-                    window.location.hostname.startsWith('192.168.') ||
-                    window.location.protocol === 'file:';
-    
-    // Direct stream: local stream url takes priority, fallback to API proxy or direct usercontent stream
-    const primaryVideoUrl = isLocal ? item.url : (item.gdriveId ? `/api/video?id=${item.gdriveId}` : (item.gdriveStream || item.url));
-    const downloadUrl = item.gdriveStream || item.url;
-
     if (downloadBtn) {
-      downloadBtn.href = downloadUrl;
-      downloadBtn.download = item.title + (item.type === 'video' ? '.mp4' : '.jpg');
+      downloadBtn.href = item.url;
+      downloadBtn.download = item.title + '.jpg';
       downloadBtn.target = '_blank';
     }
 
     if (mediaContainer) {
-      // Clean up previous video immediately
-      const oldVid = mediaContainer.querySelector('video');
-      if (oldVid) {
-        try {
-          oldVid.pause();
-          oldVid.removeAttribute('src');
-          oldVid.load();
-        } catch (e) {}
-      }
-      const oldIframe = mediaContainer.querySelector('iframe');
-      if (oldIframe) {
-        oldIframe.src = 'about:blank';
-      }
       mediaContainer.innerHTML = '';
+      window.CinematicAudio?.playShutter();
 
       const fallbackUrl = item.thumb || item.url;
-      const orientationClass = `orientation-${item.orientation || 'vertical'}`;
-
-      if (item.type === 'video') {
-        window.CinematicAudio?.playSubDrop();
-        window.CinematicAudio?.duckAmbient(true);
-
-        mediaContainer.innerHTML = `
-          <div class="video-cinema-wrapper ${orientationClass}" id="video-cinema-wrapper">
-            <div class="video-ambient-glow"></div>
-            
-            <div class="video-cinema-frame" id="video-cinema-frame">
-              <!-- Direct High-Performance HTML5 Video Player -->
-              <video id="modal-active-video"
-                     src="${primaryVideoUrl}"
-                     poster="${fallbackUrl}"
-                     playsinline
-                     webkit-playsinline
-                     loop
-                     preload="auto"
-              >
-                <source src="${primaryVideoUrl}" type="video/mp4">
-                ${item.url !== primaryVideoUrl ? `<source src="${item.url}" type="video/mp4">` : ''}
-                Browser Anda tidak mendukung pemutar video HTML5.
-              </video>
-
-              <!-- In-Modal Direct Embed Player Fallback (Plays 100% directly inside modal without opening Drive) -->
-              <div class="modal-embed-player" id="modal-embed-player" style="display: none; position: absolute; inset: 0; width: 100%; height: 100%; z-index: 18; background: #000; border-radius: inherit; overflow: hidden;">
-                <iframe id="modal-active-iframe"
-                        style="width: 100%; height: 100%; border: none;"
-                        allow="autoplay; fullscreen"
-                        allowfullscreen
-                ></iframe>
-              </div>
-
-              <!-- Center Play/Pause Ripple Overlay -->
-              <div class="video-center-overlay" id="video-center-overlay">
-                <div class="center-play-button" id="center-play-btn">
-                  <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M8 5v14l11-7z"/>
-                  </svg>
-                  <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
-                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-                  </svg>
-                </div>
-                <span class="center-play-hint" id="center-play-hint">KLIK UNTUK MEMUTAR</span>
-              </div>
-
-              <!-- Floating Pulsing Unmute Pill -->
-              <button class="unmute-floating-pill" id="btn-unmute-video" style="display: none;">
-                <span>🔊</span>
-                <span>AKTIFKAN SUARA</span>
-                <div class="unmute-soundwaves">
-                  <span></span><span></span><span></span>
-                </div>
-              </button>
-
-              <!-- Loading Spinner -->
-              <div class="video-loading-spinner" id="video-loading-spinner" style="display: none;">
-                <div class="spinner-ring"></div>
-                <span class="spinner-text">MEMUAT VIDEO 4K...</span>
-              </div>
-
-              <!-- Sleek Cinema Controls Bar HUD -->
-              <div class="video-hud-bar" id="video-hud-bar">
-                <div class="hud-timeline-track" id="hud-timeline-track">
-                  <div class="hud-timeline-buffer" id="hud-timeline-buffer"></div>
-                  <div class="hud-timeline-progress" id="hud-timeline-progress"></div>
-                  <div class="hud-timeline-handle" id="hud-timeline-handle"></div>
-                  <div class="hud-timeline-tooltip" id="hud-timeline-tooltip">0:00</div>
-                </div>
-
-                <div class="hud-controls-row">
-                  <div class="hud-left-group">
-                    <button class="hud-ctrl-btn" id="hud-play-btn" title="Putar / Jeda (Space)">
-                      <svg class="ctrl-icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                      <svg class="ctrl-icon-pause" viewBox="0 0 24 24" fill="currentColor" style="display: none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                    </button>
-
-                    <div class="hud-volume-group">
-                      <button class="hud-ctrl-btn" id="hud-mute-btn" title="Suara (M)">
-                        <svg class="ctrl-icon-vol" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
-                        <svg class="ctrl-icon-mute" viewBox="0 0 24 24" fill="currentColor" style="display: none;"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
-                      </button>
-                      <input type="range" class="hud-volume-slider" id="hud-volume-slider" min="0" max="1" step="0.05" value="0.9" title="Volume">
-                    </div>
-
-                    <span class="hud-timestamp" id="hud-timestamp">0:00 / 0:00</span>
-                  </div>
-
-                  <div class="hud-center-group">
-                    <span class="hud-badge-quality">${item.aspectRatio || '9:16'} • ${item.resolution || '4K'}</span>
-                  </div>
-
-                  <div class="hud-right-group">
-                    <button class="hud-ctrl-btn active" id="hud-loop-btn" title="Ulangi Otomatis (Loop)">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
-                    </button>
-                    <button class="hud-ctrl-btn" id="hud-fullscreen-btn" title="Layar Penuh (F)">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        `;
-
-        const vid = mediaContainer.querySelector('video');
-        const frame = mediaContainer.querySelector('#video-cinema-frame');
-        const embedPlayer = mediaContainer.querySelector('#modal-embed-player');
-        const iframe = mediaContainer.querySelector('#modal-active-iframe');
-        const centerOverlay = mediaContainer.querySelector('#video-center-overlay');
-        const centerPlayIcon = mediaContainer.querySelector('.play-icon');
-        const centerPauseIcon = mediaContainer.querySelector('.pause-icon');
-        const centerPlayHint = mediaContainer.querySelector('#center-play-hint');
-        const unmuteBtn = mediaContainer.querySelector('#btn-unmute-video');
-        const spinner = mediaContainer.querySelector('#video-loading-spinner');
-
-        const hudPlayBtn = mediaContainer.querySelector('#hud-play-btn');
-        const hudPlayIcon = mediaContainer.querySelector('.ctrl-icon-play');
-        const hudPauseIcon = mediaContainer.querySelector('.ctrl-icon-pause');
-        const hudMuteBtn = mediaContainer.querySelector('#hud-mute-btn');
-        const hudVolIcon = mediaContainer.querySelector('.ctrl-icon-vol');
-        const hudMuteIcon = mediaContainer.querySelector('.ctrl-icon-mute');
-        const hudVolSlider = mediaContainer.querySelector('#hud-volume-slider');
-        const hudTimestamp = mediaContainer.querySelector('#hud-timestamp');
-        const hudLoopBtn = mediaContainer.querySelector('#hud-loop-btn');
-        const hudFullscreenBtn = mediaContainer.querySelector('#hud-fullscreen-btn');
-        const hudBar = mediaContainer.querySelector('#video-hud-bar');
-
-        const timelineTrack = mediaContainer.querySelector('#hud-timeline-track');
-        const timelineProgress = mediaContainer.querySelector('#hud-timeline-progress');
-        const timelineBuffer = mediaContainer.querySelector('#hud-timeline-buffer');
-        const timelineHandle = mediaContainer.querySelector('#hud-timeline-handle');
-        const timelineTooltip = mediaContainer.querySelector('#hud-timeline-tooltip');
-
-        const switchToSeamlessEmbed = () => {
-          if (spinner) spinner.style.display = 'none';
-          const embedUrl = item.gdrivePreview || (item.gdriveId ? `https://drive.google.com/file/d/${item.gdriveId}/preview` : '');
-          if (embedPlayer && iframe && embedUrl) {
-            if (vid) {
-              try { vid.pause(); } catch(e) {}
-              vid.style.display = 'none';
-            }
-            if (centerOverlay) centerOverlay.style.display = 'none';
-            if (hudBar) hudBar.style.display = 'none';
-            embedPlayer.style.display = 'block';
-            if (!iframe.src || iframe.src === 'about:blank' || iframe.src === window.location.href) {
-              iframe.src = embedUrl;
-            }
-          }
-        };
-
-        const formatTime = (secs) => {
-          if (isNaN(secs) || secs < 0) return '0:00';
-          const m = Math.floor(secs / 60);
-          const s = Math.floor(secs % 60);
-          return `${m}:${s.toString().padStart(2, '0')}`;
-        };
-
-        const updatePlayState = (playing) => {
-          if (centerPlayIcon) centerPlayIcon.style.display = playing ? 'none' : 'block';
-          if (centerPauseIcon) centerPauseIcon.style.display = playing ? 'block' : 'none';
-          if (centerPlayHint) centerPlayHint.textContent = playing ? 'JEDA' : 'KLIK UNTUK MEMUTAR';
-          if (hudPlayIcon) hudPlayIcon.style.display = playing ? 'none' : 'block';
-          if (hudPauseIcon) hudPauseIcon.style.display = playing ? 'block' : 'none';
-          if (centerOverlay) centerOverlay.classList.toggle('hidden', playing);
-        };
-
-        const togglePlay = () => {
-          if (!vid || vid.style.display === 'none') return;
-          window.CinematicAudio?.playUiClick();
-          if (vid.paused) {
-            vid.play().then(() => updatePlayState(true)).catch(() => {
-              vid.muted = true;
-              vid.play().then(() => {
-                updatePlayState(true);
-                if (unmuteBtn) unmuteBtn.style.display = 'flex';
-              });
-            });
-          } else {
-            vid.pause();
-            updatePlayState(false);
-          }
-        };
-
-        centerOverlay?.addEventListener('click', togglePlay);
-        vid?.addEventListener('click', togglePlay);
-        hudPlayBtn?.addEventListener('click', togglePlay);
-
-        // Unmute button
-        unmuteBtn?.addEventListener('click', (e) => {
-          e.stopPropagation();
-          if (vid) {
-            vid.muted = false;
-            vid.volume = 0.9;
-          }
-          if (unmuteBtn) unmuteBtn.style.display = 'none';
-          if (hudVolIcon) hudVolIcon.style.display = 'block';
-          if (hudMuteIcon) hudMuteIcon.style.display = 'none';
-          if (hudVolSlider) hudVolSlider.value = '0.9';
-        });
-
-        // Volume
-        const toggleMute = () => {
-          if (!vid) return;
-          vid.muted = !vid.muted;
-          const isM = vid.muted;
-          if (hudVolIcon) hudVolIcon.style.display = isM ? 'none' : 'block';
-          if (hudMuteIcon) hudMuteIcon.style.display = isM ? 'block' : 'none';
-          if (hudVolSlider) hudVolSlider.value = isM ? 0 : vid.volume;
-          if (!isM && unmuteBtn) unmuteBtn.style.display = 'none';
-        };
-
-        hudMuteBtn?.addEventListener('click', toggleMute);
-        hudVolSlider?.addEventListener('input', (e) => {
-          if (!vid) return;
-          const v = parseFloat(e.target.value);
-          vid.volume = v;
-          vid.muted = v === 0;
-          if (hudVolIcon) hudVolIcon.style.display = v === 0 ? 'none' : 'block';
-          if (hudMuteIcon) hudMuteIcon.style.display = v === 0 ? 'block' : 'none';
-          if (v > 0 && unmuteBtn) unmuteBtn.style.display = 'none';
-        });
-
-        // Loop
-        hudLoopBtn?.addEventListener('click', () => {
-          if (!vid) return;
-          vid.loop = !vid.loop;
-          hudLoopBtn.classList.toggle('active', vid.loop);
-        });
-
-        // Fullscreen
-        hudFullscreenBtn?.addEventListener('click', () => {
-          const targetEl = frame || vid;
-          if (!document.fullscreenElement) {
-            if (targetEl.requestFullscreen) targetEl.requestFullscreen();
-            else if (targetEl.webkitRequestFullscreen) targetEl.webkitRequestFullscreen();
-          } else {
-            if (document.exitFullscreen) document.exitFullscreen();
-          }
-        });
-
-        // Timeline Scrubbing
-        const seek = (e) => {
-          if (!vid || !vid.duration) return;
-          const rect = timelineTrack.getBoundingClientRect();
-          const pos = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-          vid.currentTime = pos * vid.duration;
-          if (timelineProgress) timelineProgress.style.width = `${pos * 100}%`;
-          if (timelineHandle) timelineHandle.style.left = `${pos * 100}%`;
-        };
-
-        timelineTrack?.addEventListener('click', seek);
-        timelineTrack?.addEventListener('mousemove', (e) => {
-          if (!vid || !vid.duration || !timelineTooltip) return;
-          const rect = timelineTrack.getBoundingClientRect();
-          const pos = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-          timelineTooltip.style.left = `${pos * 100}%`;
-          timelineTooltip.style.opacity = '1';
-          timelineTooltip.textContent = formatTime(pos * vid.duration);
-        });
-        timelineTrack?.addEventListener('mouseleave', () => {
-          if (timelineTooltip) timelineTooltip.style.opacity = '0';
-        });
-
-        // Video Events
-        vid.addEventListener('loadedmetadata', () => {
-          if (spinner) spinner.style.display = 'none';
-          if (hudTimestamp) hudTimestamp.textContent = `0:00 / ${formatTime(vid.duration)}`;
-          
-          if (vid.videoWidth && vid.videoHeight) {
-            const ratio = vid.videoWidth / vid.videoHeight;
-            const wrapper = mediaContainer.querySelector('#video-cinema-wrapper');
-            if (wrapper) {
-              wrapper.className = 'video-cinema-wrapper';
-              if (ratio < 0.85) wrapper.classList.add('orientation-vertical');
-              else if (ratio > 1.25) wrapper.classList.add('orientation-horizontal');
-              else if (ratio >= 0.85 && ratio <= 1.05) wrapper.classList.add('orientation-square');
-              else wrapper.classList.add('orientation-portrait');
-            }
-          }
-        });
-
-        vid.addEventListener('timeupdate', () => {
-          if (!vid.duration) return;
-          const pct = (vid.currentTime / vid.duration) * 100;
-          if (timelineProgress) timelineProgress.style.width = `${pct}%`;
-          if (timelineHandle) timelineHandle.style.left = `${pct}%`;
-          if (hudTimestamp) hudTimestamp.textContent = `${formatTime(vid.currentTime)} / ${formatTime(vid.duration)}`;
-
-          // Buffer calculation
-          if (vid.buffered.length > 0 && timelineBuffer) {
-            const bufferedEnd = vid.buffered.end(vid.buffered.length - 1);
-            const bufPct = (bufferedEnd / vid.duration) * 100;
-            timelineBuffer.style.width = `${bufPct}%`;
-          }
-        });
-
-        vid.addEventListener('waiting', () => {
-          if (spinner) spinner.style.display = 'flex';
-        });
-
-        vid.addEventListener('playing', () => {
-          if (spinner) spinner.style.display = 'none';
-          updatePlayState(true);
-          if (vid.muted && unmuteBtn) unmuteBtn.style.display = 'flex';
-        });
-
-        vid.addEventListener('pause', () => {
-          updatePlayState(false);
-        });
-
-        vid.addEventListener('error', () => {
-          // If primary local/proxy fails, seamlessly switch to in-modal embedded player
-          switchToSeamlessEmbed();
-        });
-
-        const isEmbedOnly = !isLocal || ['vid-018', 'vid-040', 'vid-043'].includes(item.id) || (item.size && (item.size.startsWith('0.0') || item.size.startsWith('0 MB')));
-        if (isEmbedOnly) {
-          switchToSeamlessEmbed();
-        } else {
-          // Watchdog timer for local HTML5 video loading
-          let loadTimeout = setTimeout(() => {
-            if (vid.readyState < 2) {
-              switchToSeamlessEmbed();
-            }
-          }, 3500);
-
-          vid.addEventListener('canplay', () => {
-            clearTimeout(loadTimeout);
-          }, { once: true });
-
-          vid.load();
-          const playProm = vid.play();
-          if (playProm !== undefined) {
-            playProm.then(() => {
-              clearTimeout(loadTimeout);
-              updatePlayState(true);
-              if (!vid.muted && unmuteBtn) unmuteBtn.style.display = 'none';
-            }).catch(() => {
-              vid.muted = true;
-              vid.play().then(() => {
-                clearTimeout(loadTimeout);
-                updatePlayState(true);
-                if (unmuteBtn) unmuteBtn.style.display = 'flex';
-              }).catch(() => {
-                clearTimeout(loadTimeout);
-                switchToSeamlessEmbed();
-              });
-            });
-          }
-        }
-      } else {
-        window.CinematicAudio?.duckAmbient(false);
-        window.CinematicAudio?.playShutter();
-        mediaContainer.innerHTML = `
-          <img src="${item.url}" alt="${item.title}" decoding="async" style="transform: translateZ(0); will-change: transform;" onerror="this.src='${fallbackUrl}'" />
-        `;
-      }
+      mediaContainer.innerHTML = `
+        <div class="photo-lightbox-stage" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative;">
+          <img src="${item.url}"
+               alt="${item.title}"
+               decoding="async"
+               class="lightbox-main-img"
+               style="max-width: 90vw; max-height: calc(86vh - 100px); object-fit: contain; border-radius: 16px; box-shadow: 0 25px 80px rgba(0,0,0,0.95), 0 0 40px rgba(56,189,248,0.18); transition: transform 0.3s ease;"
+               onerror="this.src='${fallbackUrl}'" />
+        </div>
+      `;
     }
 
     modal?.classList.add('active');
@@ -1067,21 +697,8 @@ class HaikelSpatialArchive {
     const modal = document.getElementById('cinema-modal');
     const mediaContainer = document.getElementById('modal-media-container');
     if (mediaContainer) {
-      const vid = mediaContainer.querySelector('video');
-      if (vid) {
-        try {
-          vid.pause();
-          vid.removeAttribute('src');
-          vid.load();
-        } catch (e) {}
-      }
-      const iframe = mediaContainer.querySelector('iframe');
-      if (iframe) {
-        iframe.src = 'about:blank';
-      }
       mediaContainer.innerHTML = '';
     }
-    window.CinematicAudio?.duckAmbient(false);
     modal?.classList.remove('active');
     window.CinematicAudio?.playUiClick();
     this.renderMasonryGrid();

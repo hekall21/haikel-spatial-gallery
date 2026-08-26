@@ -185,15 +185,11 @@ class HaikelMediaDatabase {
 
     // 3. Category Filter
     if (options.category && options.category !== 'all') {
-      if (options.category === 'reels') {
-        items = items.filter(it => it.orientation === 'vertical' || it.aspectRatio === '9:16');
-      } else if (options.category === 'cinema') {
-        items = items.filter(it => it.orientation === 'horizontal' || it.aspectRatio === '16:9');
-      } else if (options.category === 'edits') {
-        items = items.filter(it => (it.title && it.title.includes('TEMPLATE')) || (it.category && it.category.includes('Motion')));
-      } else {
-        items = items.filter(it => it.category?.toLowerCase() === options.category.toLowerCase());
-      }
+      const catLower = options.category.toLowerCase();
+      items = items.filter(it => 
+        it.category?.toLowerCase().includes(catLower) ||
+        (it.tags && it.tags.some(t => t.toLowerCase().includes(catLower)))
+      );
     }
 
     // 4. Favorites Only Filter
@@ -201,36 +197,25 @@ class HaikelMediaDatabase {
       items = items.filter(it => it.isFavorite || it.isLiked);
     }
 
-    // 5. Watch History Only Filter
-    if (options.onlyWatched) {
-      items = items.filter(it => (it.watchProgress && it.watchProgress > 0) || it.lastWatchedAt);
-      items.sort((a, b) => (b.lastWatchedAt || 0) - (a.lastWatchedAt || 0));
-    }
-
-    // 6. Full-Text Search Query
+    // 5. Full-Text Search Query
     if (options.search && options.search.trim()) {
       const q = options.search.toLowerCase().trim();
       items = items.filter(it =>
         it.title?.toLowerCase().includes(q) ||
         it.id?.toLowerCase().includes(q) ||
         it.category?.toLowerCase().includes(q) ||
-        it.aspectRatio?.toLowerCase().includes(q) ||
         it.resolution?.toLowerCase().includes(q) ||
         it.date?.includes(q) ||
         (it.tags && it.tags.some(t => t.toLowerCase().includes(q)))
       );
     }
 
-    // 7. Sorting Engine
+    // 6. Sorting Engine
     const sort = options.sortBy || 'default';
     if (sort === 'likes' || sort === 'popular') {
       items.sort((a, b) => (b.likes || 0) - (a.likes || 0));
     } else if (sort === 'views') {
       items.sort((a, b) => (b.views || 0) - (a.views || 0));
-    } else if (sort === 'duration_desc') {
-      items.sort((a, b) => (b.duration || 0) - (a.duration || 0));
-    } else if (sort === 'duration_asc') {
-      items.sort((a, b) => (a.duration || 0) - (b.duration || 0));
     } else if (sort === 'newest') {
       items.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
     }
@@ -239,7 +224,7 @@ class HaikelMediaDatabase {
   }
 
   // =========================================================================
-  // MUTATION API (Likes, Favorites, Views, Watch Progress)
+  // MUTATION API (Likes, Favorites, Views)
   // =========================================================================
 
   /**
@@ -250,64 +235,34 @@ class HaikelMediaDatabase {
     const item = this.memoryCatalog.find(it => it.id === id);
     if (!item) return null;
 
-    const newLiked = !item.isLiked;
-    item.isLiked = newLiked;
-    item.likes = Math.max(0, (item.likes || 0) + (newLiked ? 1 : -1));
+    item.isLiked = !item.isLiked;
+    item.likes = item.isLiked ? (item.likes + 1) : Math.max(0, item.likes - 1);
+    item.isFavorite = item.isLiked;
 
-    // Save to localStorage for quick sync
+    // Save to localStorage for instant persistence
     try {
-      const likesMap = JSON.parse(localStorage.getItem('haikel_gallery_likes') || '{}');
-      if (newLiked) likesMap[id] = true;
-      else delete likesMap[id];
-      localStorage.setItem('haikel_gallery_likes', JSON.stringify(likesMap));
+      const savedLikes = JSON.parse(localStorage.getItem('haikel_gallery_likes') || '{}');
+      savedLikes[id] = item.isLiked;
+      localStorage.setItem('haikel_gallery_likes', JSON.stringify(savedLikes));
     } catch (e) {}
 
     // Save to IndexedDB
     if (this.db) {
       try {
         const tx = this.db.transaction('media', 'readwrite');
-        tx.objectStore('media').put(item);
-      } catch (e) {
-        console.warn('DB like update error:', e);
-      }
-    }
-
-    // Sync to backend DB API (optimistic background dispatch)
-    this.dispatchBackendSync('/@api/likes', { id, action: newLiked ? 'like' : 'unlike' });
-
-    return { id, isLiked: newLiked, likes: item.likes };
-  }
-
-  /**
-   * Toggle Favorite flag
-   */
-  async toggleFavorite(id) {
-    await this.readyPromise;
-    const item = this.memoryCatalog.find(it => it.id === id);
-    if (!item) return null;
-
-    const newFav = !item.isFavorite;
-    item.isFavorite = newFav;
-
-    try {
-      const favMap = JSON.parse(localStorage.getItem('haikel_gallery_favorites') || '{}');
-      if (newFav) favMap[id] = true;
-      else delete favMap[id];
-      localStorage.setItem('haikel_gallery_favorites', JSON.stringify(favMap));
-    } catch (e) {}
-
-    if (this.db) {
-      try {
-        const tx = this.db.transaction('media', 'readwrite');
-        tx.objectStore('media').put(item);
+        const store = tx.objectStore('media');
+        store.put(item);
       } catch (e) {}
     }
 
-    return { id, isFavorite: newFav };
+    // Async broadcast to backend API
+    this.dispatchBackendSync('/@api/likes', { id, action: item.isLiked ? 'like' : 'unlike' });
+
+    return { id, isLiked: item.isLiked, likes: item.likes };
   }
 
   /**
-   * Increment view count when video/photo is opened
+   * Increment view count when photo is opened
    */
   async incrementViewCount(id) {
     await this.readyPromise;
@@ -319,11 +274,11 @@ class HaikelMediaDatabase {
     if (this.db) {
       try {
         const tx = this.db.transaction('media', 'readwrite');
-        tx.objectStore('media').put(item);
+        const store = tx.objectStore('media');
+        store.put(item);
       } catch (e) {}
     }
 
-    // Background sync to backend API
     this.dispatchBackendSync('/@api/views', { id });
   }
 
@@ -390,29 +345,16 @@ class HaikelMediaDatabase {
   async getDatabaseStats() {
     await this.readyPromise;
     const all = this.memoryCatalog;
-    const videos = all.filter(it => it.type === 'video');
-    const photos = all.filter(it => it.type === 'photo');
-
-    const totalDurationSecs = videos.reduce((acc, v) => acc + (v.duration || 0), 0);
     const totalLikes = all.reduce((acc, it) => acc + (it.likes || 0), 0);
     const totalViews = all.reduce((acc, it) => acc + (it.views || 0), 0);
-    const verticalReelsCount = videos.filter(v => v.orientation === 'vertical' || v.aspectRatio === '9:16').length;
-    const widescreenCount = videos.filter(v => v.orientation === 'horizontal' || v.aspectRatio === '16:9').length;
-    const squareCount = videos.filter(v => v.orientation === 'square' || v.aspectRatio === '1:1').length;
-
-    const topLiked = [...videos].sort((a, b) => (b.likes || 0) - (a.likes || 0))[0] || null;
-    const topViewed = [...videos].sort((a, b) => (b.views || 0) - (a.views || 0))[0] || null;
+    const topLiked = [...all].sort((a, b) => (b.likes || 0) - (a.likes || 0))[0] || null;
+    const topViewed = [...all].sort((a, b) => (b.views || 0) - (a.views || 0))[0] || null;
 
     return {
       totalMedia: all.length,
-      totalVideos: videos.length,
-      totalPhotos: photos.length,
-      totalDurationMinutes: Math.round(totalDurationSecs / 60 * 10) / 10,
+      totalPhotos: all.length,
       totalLikes,
       totalViews,
-      verticalReelsCount,
-      widescreenCount,
-      squareCount,
       topLiked,
       topViewed
     };
