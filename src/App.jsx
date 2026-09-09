@@ -8,6 +8,7 @@ import { Navbar } from './components/Navbar';
 import { FilterBar } from './components/FilterBar';
 import { SpatialStage } from './components/SpatialStage';
 import { MasonryStage } from './components/MasonryStage';
+import { CoverflowStage } from './components/CoverflowStage';
 import { CinemaLightbox } from './components/CinemaLightbox';
 import { SyncModal } from './components/SyncModal';
 import { StatsFooter } from './components/StatsFooter';
@@ -178,6 +179,11 @@ export function App() {
         {/* Dynamic Display Mode */}
         {viewMode === 'spatial' ? (
           <SpatialStage
+            items={filteredMedia}
+            onSelect={(item) => setSelectedMedia(item)}
+          />
+        ) : viewMode === 'coverflow' ? (
+          <CoverflowStage
             items={filteredMedia}
             onSelect={(item) => setSelectedMedia(item)}
           />

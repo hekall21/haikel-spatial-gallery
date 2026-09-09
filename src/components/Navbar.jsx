@@ -121,6 +121,20 @@ export function Navbar({
             <span className="hidden md:inline">Editorial Grid</span>
             <span className="md:hidden">Grid</span>
           </button>
+
+          <button
+            onClick={() => handleModeChange('coverflow')}
+            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
+              viewMode === 'coverflow'
+                ? 'bg-white text-black shadow-md font-semibold'
+                : 'text-neutral-300 hover:text-white hover:bg-white/5'
+            }`}
+            title="3D Coverflow Perspective Ring"
+          >
+            <Film className="w-3.5 h-3.5" />
+            <span className="hidden md:inline">3D Coverflow</span>
+            <span className="md:hidden">3D Ring</span>
+          </button>
         </div>
 
         {/* Right Controls: Ambient Sound, SFX, Reset, Sync */}
