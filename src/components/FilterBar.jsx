@@ -86,11 +86,10 @@ export function FilterBar({
             setSortBy(e.target.value);
           }}
           className="bg-neutral-900/80 border border-white/10 rounded-xl px-2.5 py-1.5 text-xs text-neutral-300 focus:outline-none focus:border-sky-500/50 font-sans cursor-pointer"
-        >
           <option value="default">Default Order</option>
-          <option value="featured">Featured First ✦</option>
-          <option value="likes">Most Liked ❤️</option>
-          <option value="views">Most Viewed 👁️</option>
+          <option value="featured">Featured First</option>
+          <option value="likes">Most Liked</option>
+          <option value="views">Most Viewed</option>
         </select>
       </div>
 
