@@ -9,6 +9,8 @@ import { FilterBar } from './components/FilterBar';
 import { SpatialStage } from './components/SpatialStage';
 import { MasonryStage } from './components/MasonryStage';
 import { CoverflowStage } from './components/CoverflowStage';
+import GlassFolderCardsDemo from './components/ui/glass-folder-demo';
+import { CinematicFooter } from './components/ui/motion-footer';
 import { CinemaLightbox } from './components/CinemaLightbox';
 import { SyncModal } from './components/SyncModal';
 import { StatsFooter } from './components/StatsFooter';
@@ -187,6 +189,8 @@ export function App() {
             items={filteredMedia}
             onSelect={(item) => setSelectedMedia(item)}
           />
+        ) : viewMode === 'folders' ? (
+          <GlassFolderCardsDemo />
         ) : (
           <MasonryStage
             items={filteredMedia}
@@ -202,6 +206,17 @@ export function App() {
         videoCount={videoCount}
         viewMode={viewMode}
       />
+
+      {/* Cinematic Curtain-Reveal Footer for rich scroll views */}
+      {(viewMode === 'masonry' || viewMode === 'folders') && (
+        <CinematicFooter
+          brandTitle="HAIKEL SPATIAL"
+          giantText="GALLERY"
+          tagline="Ready to explore the full archive?"
+          primaryActionText="Return to Spatial 3D"
+          primaryActionHref="#top"
+        />
+      )}
 
       {/* Fullscreen Instant Cinema Lightbox */}
       <AnimatePresence>

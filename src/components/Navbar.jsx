@@ -10,7 +10,8 @@ import {
   Film,
   Music,
   SlidersHorizontal,
-  Download
+  Download,
+  Folder
 } from 'lucide-react';
 import { soundEngine } from '../utils/soundEngine';
 
@@ -134,6 +135,20 @@ export function Navbar({
             <Film className="w-3.5 h-3.5" />
             <span className="hidden md:inline">3D Coverflow</span>
             <span className="md:hidden">3D Ring</span>
+          </button>
+
+          <button
+            onClick={() => handleModeChange('folders')}
+            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
+              viewMode === 'folders'
+                ? 'bg-white text-black shadow-md font-semibold'
+                : 'text-neutral-300 hover:text-white hover:bg-white/5'
+            }`}
+            title="3D Frosted Glass Folders"
+          >
+            <Folder className="w-3.5 h-3.5" />
+            <span className="hidden md:inline">Glass Folders</span>
+            <span className="md:hidden">Folders</span>
           </button>
         </div>
 
